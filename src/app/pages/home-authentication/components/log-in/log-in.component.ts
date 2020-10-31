@@ -12,4 +12,8 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  teste() {
+    console.log('Fui chamado quando clicado')
+  }
+
 }
