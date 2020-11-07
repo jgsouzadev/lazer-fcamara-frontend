@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 16px;
+  height: 100%;
+
+  img {
+    padding-bottom: 32px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+  }
+
+  .button-submit {
+    margin-top: 16px;
+    background: #FC6027;
+    color: #fff;
+    font-size: 18px;
+    height: 54px;
+    width: 100%;
+  }
+
+  button:disabled {
+    opacity: 0.8;
+  }
+}

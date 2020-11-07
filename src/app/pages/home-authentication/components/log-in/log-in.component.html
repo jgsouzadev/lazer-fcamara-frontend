@@ -1,14 +1,18 @@
-<form class="example-form" style="display: flex; flex-direction: column; padding: 0 32px; background: #fff;">
-  <mat-form-field class="example-full-width">
-    <mat-label>Seu melhor e-mail</mat-label>
-    <input matInput placeholder="E-mail" type="text">
+<form class="example-form">
+  <img src="../../../../../assets/fifo.ico" width="120px" alt="Icone do Pagina" srcset="">
+
+<div>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Usuário</mat-label>
+    <input formControlName="Login" matInput placeholder="E-mail" type="text" >
   </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Sua password</mat-label>
-    <input matInput placeholder="Senha" type="password">
+  <mat-form-field appearence="outline" class="example-full-width" appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input formControlName="senha" matInput placeholder="Senha" type="password">
   </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Sua password</mat-label>
-    <input matInput placeholder="Senha" type="password">
-  </mat-form-field>
+</div>
+
+
+  <button class="button-submit" type="submit" mat-raised-button>Login</button>
+
 </form>
