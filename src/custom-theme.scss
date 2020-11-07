@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $lazer-fcamara-primary: mat-palette($mat-orange, 900);
-$lazer-fcamara-accent: mat-palette($mat-pink, A200, A100, A400);
+$lazer-fcamara-accent: mat-palette($mat-deep-purple, 700);
 
 // The warn palette is optional (defaults to red).
 $lazer-fcamara-warn: mat-palette($mat-red);

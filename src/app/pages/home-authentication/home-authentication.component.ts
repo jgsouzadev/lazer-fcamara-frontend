@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAuthenticationComponent implements OnInit {
 
-  backgroundColor: string =  '#E65100';
-  color: string = '#fff'
+  backgroundColor: string =  'accent';
 
   constructor() { }
 

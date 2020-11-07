@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 
 interface IUser {
   name: string;
@@ -17,17 +17,19 @@ interface IUser {
 export class SignUpComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    this.formBuilder();
+    this.formBuilderUser();
   }
 
-  formBuilder() {
-    this.userForm = new FormGroup({
-      name: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
+  formBuilderUser() {
+    this.userForm = this.formBuilder.group({
+      name: [null, Validators.required],
+      email: [null, Validators.required],
+      password: [null, Validators.required],
     })
   }
 

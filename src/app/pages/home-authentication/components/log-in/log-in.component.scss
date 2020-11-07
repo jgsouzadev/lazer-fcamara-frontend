@@ -15,6 +15,17 @@ form {
     flex-direction: column;
     width: 100%;
 
+    .example-full-width {
+      position: relative;
+
+      span {
+        position: absolute;
+        left: -11px;
+        bottom: -18px;
+        font-size: 12px;
+        color: red;
+      }
+    }
   }
 
   .button-submit {

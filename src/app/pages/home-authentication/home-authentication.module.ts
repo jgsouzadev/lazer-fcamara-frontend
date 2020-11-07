@@ -7,7 +7,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { MaterialModule } from "../../shared/material/material.module";
 import { ComponentsModule } from "../../shared/components/components.module";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -17,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     HomeAuthenticationRoutingModule,
     MaterialModule,
     ComponentsModule,
-    FormsModule,
     ReactiveFormsModule
   ]
 })
