@@ -1,12 +1,8 @@
-<app-header></app-header>
-
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="First">
+<mat-tab-group class="tab-group" mat-align-tabs="center" mat-stretch-tabs headerPosition="below" [color]="color" [backgroundColor]="backgroundColor">
+  <mat-tab label="Entrar" class="tab">
     <app-log-in></app-log-in>
   </mat-tab>
-  <mat-tab label="Second">
+  <mat-tab label="Inscreva-se" class="tab">
     <app-sign-up></app-sign-up>
   </mat-tab>
 </mat-tab-group>
-
-<app-footer></app-footer>
