@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home-authentication', pathMatch: 'full' },
+  { path: '', redirectTo: 'queue-entry', pathMatch: 'full' },
   {
     path: 'home-authentication',
     loadChildren: () =>
@@ -10,6 +10,7 @@ const routes: Routes = [
         (m) => m.HomeAuthenticationModule
       ),
   },
+  { path: 'queue-entry', loadChildren: () => import('./pages/queue-entry/queue-entry.module').then(m => m.QueueEntryModule) },
   { path: '**', redirectTo: 'home-authentication'},
 ];
 
