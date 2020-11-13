@@ -1,2 +1,2 @@
-<app-queue-in></app-queue-in>
-<app-user-on-queue></app-user-on-queue>
+<app-queue-in (userPositionEvent)='userPosition = $event'></app-queue-in>
+<app-user-on-queue [userPosition]='userPosition'></app-user-on-queue>

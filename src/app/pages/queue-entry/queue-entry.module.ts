@@ -8,7 +8,9 @@ import { ComponentsModule } from "../../shared/components/components.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { QueueInComponent } from './components/queue-in/queue-in.component';
 import { MatSelectModule } from '@angular/material/select';
-import { UserOnQueueComponent } from './components/user-on-queue.component';
+import { UserOnQueueComponent } from './components/user-on-queue/user-on-queue.component';
+
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { UserOnQueueComponent } from './components/user-on-queue.component';
     MaterialModule,
     ComponentsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule  // Doing nothing rn because it's already in app.module
   ]
 })
 export class QueueEntryModule { }

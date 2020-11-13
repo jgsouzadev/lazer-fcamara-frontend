@@ -2,11 +2,11 @@
     <h1>Plataformas</h1>
     <mat-form-field appearance="fill">
       <mat-label>Escolha uma plataforma</mat-label>
-      <mat-select formControlName="platform">
-        <mat-option *ngFor="let platform of platforms" [value]="platform.value"> {{platform.value}} </mat-option>
+      <mat-select [(ngModel)]="selectedPlatform" formControlName="platform" [disabled]="selectFilter">
+        <mat-option *ngFor="let platform of platforms" [value]="{ id: platform.id, value: platform.value}"> {{platform.value}} </mat-option>
       </mat-select>
     </mat-form-field>
-    <span id="queueCount" *ngIf="!platformForm.invalid">{{queueNumber(platformForm.value.platform)}} pessoas na fila</span>
+    <p style="display: inline-block;" id="queueCount" *ngIf="!platformForm.invalid">&nbsp;&nbsp;{{queueNumber()}} pessoas na fila</p>
     <br>  <!-- temporary break line-->
-    <button class="button-submit" type="submit" [disabled]="platformForm.invalid" mat-raised-button>Entrar</button>
+    <button class="button-submit" type="submit" [disabled]="platformForm.invalid || buttonFilter" mat-raised-button>Entrar</button>
 </form>
