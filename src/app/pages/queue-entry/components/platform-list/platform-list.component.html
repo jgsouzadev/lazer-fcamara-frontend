@@ -1,0 +1,5 @@
+<mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)">
+  <mat-list-option *ngFor="let platform of platforms" [value]="{ id: platform.id, value: platform.value}">
+    {{platform.value}}
+  </mat-list-option>
+</mat-selection-list>

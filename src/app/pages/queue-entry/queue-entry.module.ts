@@ -7,21 +7,19 @@ import { MaterialModule } from "../../shared/material/material.module";
 import { ComponentsModule } from "../../shared/components/components.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { QueueInComponent } from './components/queue-in/queue-in.component';
-import { MatSelectModule } from '@angular/material/select';
 import { UserOnQueueComponent } from './components/user-on-queue/user-on-queue.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { PlatformListComponent } from './components/platform-list/platform-list.component'
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent],
+  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,
-    MaterialModule,
+    MaterialModule,   // Discuss if it's actually needed
     ComponentsModule,
-    ReactiveFormsModule,
-    MatSelectModule,
     HttpClientModule  // Doing nothing rn because it's already in app.module
   ]
 })

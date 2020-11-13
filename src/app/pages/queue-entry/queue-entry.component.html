@@ -1,2 +1,2 @@
-<app-queue-in (userPositionEvent)='userPosition = $event'></app-queue-in>
-<app-user-on-queue [userPosition]='userPosition'></app-user-on-queue>
+<app-queue-in (userPositionEvent)='userPosition = $event.position; selectedPlatform = $event.platform'></app-queue-in>
+<app-user-on-queue [userPosition]='userPosition' [selectedPlatform]='this.selectedPlatform'></app-user-on-queue>

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { HttpService } from '../../http.service'
 
 export interface Platforms {
@@ -18,7 +17,6 @@ export interface PlatformQueue {
   styleUrls: ['./queue-in.component.scss']
 })
 export class QueueInComponent implements OnInit {
-  platformForm: FormGroup
 
   platforms: Platforms[] /*= [
     { id: 1, value: "PS4" },
@@ -30,7 +28,7 @@ export class QueueInComponent implements OnInit {
   
   selectedPlatform: Platforms
 
-  selectFilter: boolean = true  
+  // Disables the button after being clicked
   buttonFilter: boolean = false
 
   /* Testing two-way binding example
@@ -38,24 +36,20 @@ export class QueueInComponent implements OnInit {
   @Output() sizeChange = new EventEmitter<number>();
   */
 
-  @Output() userPositionEvent = new EventEmitter<number>();
+  @Output() userPositionEvent = new EventEmitter<any>();
   
   constructor(
-    private formBuilder: FormBuilder,
     private httpService: HttpService
   ) { }
 
   ngOnInit(): void {
-    this.formBuilderUser()
-
     this.httpService.getPlatforms().subscribe(data => {
       console.log(data);
       
       this.platformQueue = [ ...data.queue ]
       this.platforms = [ ...data.options ]
-      this.selectFilter = false
-      /*console.log(this.platformQueue);
-      console.log(this.platforms);*/
+      //console.log(this.platformQueue);
+      //console.log(this.platforms);
     })
     /* Testing two-way binding example
     setInterval(() => {
@@ -65,26 +59,22 @@ export class QueueInComponent implements OnInit {
     */
   }
 
-  formBuilderUser() {
-    this.platformForm = this.formBuilder.group({
-      platform: [null, Validators.required]
-    })
-  }
-
   // can be made in 2 ways, with the selectedPlatform, or calling the function with the platform as parameter
   // queueNumber(platformForm.value.platform.id), discuss which one is better
   queueNumber() { 
-    //console.log('oi'); 
-    //console.log(this.platformQueue.find(platform => platform.id === platformId).queueCount) // Why logging a lot of times
     return this.platformQueue.find(platform => platform.id === this.selectedPlatform.id).queueCount
   }
 
   enviar() {
     //e.preventDefault()
-    console.log(this.platformForm);
-    this.httpService.enterQueue(this.platformForm.value.platform).subscribe(data => {
+    console.log(this.selectedPlatform);
+    this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
       console.log(data.userInfo);
-      this.userPositionEvent.emit(data.userInfo.position)
+      const userInfo = {
+        position: data.userInfo.position,
+        platform: this.selectedPlatform
+      }
+      this.userPositionEvent.emit(userInfo)
       this.buttonFilter = true
     })
   }

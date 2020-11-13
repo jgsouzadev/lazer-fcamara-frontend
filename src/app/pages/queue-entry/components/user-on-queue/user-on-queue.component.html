@@ -1,5 +1,6 @@
 <br>
 <br>
 <br>
+<p *ngIf="selectedPlatform">Plataforma: {{selectedPlatform.value}}</p>
 <p *ngIf="userPosition">Sua posição atual: {{userPosition}}</p>
 <button *ngIf="userPosition" mat-raised-button> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
