@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Platforms, PlatformQueue } from '../queue-in/queue-in.component'
 
 @Component({
   selector: 'app-platform-list',
@@ -7,7 +8,8 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 })
 export class PlatformListComponent implements OnInit {
 
-  @Input() platforms: any
+  @Input() platforms: Platforms[]
+  @Input() platformQueue: PlatformQueue[]
 
   @Output() selectedPlatformEvent = new EventEmitter();
 

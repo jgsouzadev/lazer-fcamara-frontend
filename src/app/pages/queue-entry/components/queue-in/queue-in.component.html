@@ -3,12 +3,14 @@
   <mat-label>Escolha uma plataforma</mat-label>
   <app-platform-list 
     [platforms]="platforms"
+    [platformQueue]="platformQueue"
     (selectedPlatformEvent)="this.selectedPlatform = $event"
   ></app-platform-list>
   <!-- <mat-select [(ngModel)]="selectedPlatform" formControlName="platform" [disabled]="selectFilter">
     <mat-option *ngFor="let platform of platforms" [value]="{ id: platform.id, value: platform.value}"> {{platform.value}} </mat-option>
-  </mat-select>!--> 
-  <p style="display: inline-block;" id="queueCount" *ngIf="this.selectedPlatform">{{queueNumber()}} pessoas na fila</p>
+  </mat-select>!-->
+
+  <!-- <p style="display: inline-block;" id="queueCount" *ngIf="this.selectedPlatform">{{queueNumber()}} pessoas na fila</p>!-->
   <br>  <!-- temporary break line-->
   <button 
     class="button-submit" 
