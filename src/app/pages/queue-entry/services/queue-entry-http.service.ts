@@ -1,6 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Platforms, PlatformQueue } from './components/queue-in/queue-in.component'
+import { Platforms, PlatformQueue } from '../components/queue-in/queue-in.component'
 
 interface Get {
   options: Array<Platforms>;
@@ -17,7 +17,7 @@ interface Post {
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class QueueEntryHttpService {
 
   constructor(
     private httpClient: HttpClient

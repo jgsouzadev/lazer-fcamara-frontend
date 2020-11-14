@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { HttpService } from '../../http.service'
+import { QueueEntryHttpService } from '../../queue-entry-http.service'
 
 export interface Platforms {
   id: number;
@@ -39,7 +39,7 @@ export class QueueInComponent implements OnInit {
   @Output() userPositionEvent = new EventEmitter<any>();
   
   constructor(
-    private httpService: HttpService
+    private httpService: QueueEntryHttpService
   ) { }
 
   ngOnInit(): void {
@@ -67,9 +67,9 @@ export class QueueInComponent implements OnInit {
 
   enviar() {
     //e.preventDefault()
-    console.log(this.selectedPlatform);
+    //console.log(this.selectedPlatform);
     this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-      console.log(data.userInfo);
+      //console.log(data.userInfo);
       const userInfo = {
         position: data.userInfo.position,
         platform: this.selectedPlatform
