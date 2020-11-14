@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { QueueEntryHttpService } from '../../queue-entry-http.service'
+import { QueueEntryHttpService } from '../../services/queue-entry-http.service'
 
 export interface Platforms {
   id: number;
@@ -61,9 +61,9 @@ export class QueueInComponent implements OnInit {
 
   // can be made in 2 ways, with the selectedPlatform, or calling the function with the platform as parameter
   // queueNumber(platformForm.value.platform.id), discuss which one is better
-  queueNumber() { 
+  /*queueNumber() { 
     return this.platformQueue.find(platform => platform.id === this.selectedPlatform.id).queueCount
-  }
+  }*/
 
   enviar() {
     //e.preventDefault()
