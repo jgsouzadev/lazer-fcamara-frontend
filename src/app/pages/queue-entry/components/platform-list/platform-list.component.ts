@@ -24,7 +24,4 @@ export class PlatformListComponent implements OnInit {
   onSelectChangeEvent(e) {
     this.selectedPlatformEvent.emit(e.option._value)
   }
-
-  next() {
-  }
 }

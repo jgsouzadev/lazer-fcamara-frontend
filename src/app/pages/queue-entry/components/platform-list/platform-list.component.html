@@ -1,7 +1,7 @@
 
 <div class="content">
-  <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)">
-    <mat-list-option *ngFor="let platform of platforms;" [value]="{ id: platform.id, value: platform.value}" (click)="next()">
+  <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;">
+    <mat-list-option *ngFor="let platform of platforms;" [value]="{ id: platform.id, value: platform.value}">
       <div class="box-item-platform">
         <img *ngIf="platform.value == 'PS4'" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
         <img *ngIf="platform.value == 'Sinuca/PingPong'" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">

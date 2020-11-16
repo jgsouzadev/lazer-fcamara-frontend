@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
+import { MatStepper } from '@angular/material/stepper';
 
 export interface Platforms {
   id: number;
@@ -57,4 +58,11 @@ export class QueueEntryComponent implements OnInit {
     this.userPosition = $event
   }
   */
+
+  @ViewChild('stepper') private myStepper: MatStepper;
+  
+  handlePlatformChange($event) {
+    this.selectedPlatform = $event
+    this.myStepper.next()
+  }
 }
