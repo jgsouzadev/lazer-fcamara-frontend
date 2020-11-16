@@ -38,7 +38,7 @@ export class QueueEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.getPlatforms().subscribe(data => {
-      console.log(data);
+      //console.log(data);
 
       this.platformQueue = [ ...data.queue ]
       this.platforms = [ ...data.options ]
@@ -62,8 +62,6 @@ export class QueueEntryComponent implements OnInit {
   @ViewChild('stepper') private myStepper: MatStepper;
   
   handlePlatformChange() {
-    console.log('oi');
-    
     this.myStepper.next()
   }
 

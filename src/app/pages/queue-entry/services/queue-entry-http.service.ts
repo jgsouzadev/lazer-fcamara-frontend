@@ -24,7 +24,6 @@ export class QueueEntryHttpService {
   ) { }
 
   getPlatforms() {
-    console.log('getPlatforms works!');
     return this.httpClient.get<Get>("https://www.fakeapi.online/api/apis/jaimemathias/api/platform")
   }
 
