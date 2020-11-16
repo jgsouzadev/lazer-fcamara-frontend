@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Platforms } from '../../queue-entry.component';
 import { QueueEntryHttpService } from '../../services/queue-entry-http.service'
 
 
@@ -19,14 +20,18 @@ export class QueueInComponent implements OnInit {
   ]
 
   // Disables the button after being clicked
-  buttonFilter: boolean = false
-
   /* Testing two-way binding example
   @Input()  size: number;
   @Output() sizeChange = new EventEmitter<number>();
   */
+ 
+  @Input() buttonFilter: boolean = false
 
   @Output() userPositionEvent = new EventEmitter<any>();
+  
+  @Output() onClickEvent = new EventEmitter<any>();
+
+  @Input() selectedPlatform: Platforms
 
   constructor(
     private httpService: QueueEntryHttpService
@@ -34,6 +39,20 @@ export class QueueInComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  getImageSrc() {
+    switch (this.selectedPlatform.id) {
+      case 1:
+        return "../../../../../assets/PS4.svg"
+      case 2: 
+        return "../../../../../assets/Ping-Pong.svg"
+      case 3:
+      case 4: 
+        return "../../../../../assets/snooker.svg"
+      default:
+        //return "../../../../../assets/PS4.svg"
+    }
   }
 
   // can be made in 2 ways, with the selectedPlatform, or calling the function with the platform as parameter

@@ -65,4 +65,15 @@ export class QueueEntryComponent implements OnInit {
     this.selectedPlatform = $event
     this.myStepper.next()
   }
+
+  buttonFilter: boolean = false
+
+  handleClickEvent() {
+    this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
+      //console.log(data.userInfo);
+      this.userPosition = data.userInfo.position
+      this.buttonFilter = true
+      this.myStepper.next()
+    })
+  }
 }

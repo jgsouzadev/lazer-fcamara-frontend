@@ -1,8 +1,8 @@
 <div class="queue-in">
 
   <div class="box-title">
-    <img src="../../../../../assets/PS4.svg" alt="Ícone da plataforma">
-    <h1>Playstation 4</h1>
+    <img [src]="getImageSrc()" alt="Ícone da plataforma">
+    <h1>{{selectedPlatform.value}}</h1>
   </div>
 
   <div class="list-users">
@@ -11,6 +11,6 @@
     </div>
   </div>
 
-  <button class="button-submit" type="submit" mat-raised-button>Entrar na fila</button>
+  <button class="button-submit" type="submit" mat-raised-button (click)="onClickEvent.emit()" [disabled]="buttonFilter">Entrar na fila</button>
 
 </div>
