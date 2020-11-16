@@ -1,5 +1,5 @@
 <div *ngIf="selectedPlatform && userPosition">
   <p>Plataforma: {{selectedPlatform.value}}</p>
   <p>Sua posição atual: {{userPosition}}</p>
-  <button mat-raised-button> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+  <button mat-raised-button (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
 </div>

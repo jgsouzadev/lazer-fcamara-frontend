@@ -21,7 +21,12 @@
       ></app-queue-in>
   </mat-step>
   <mat-step>
-    <app-user-on-queue [userPosition]='userPosition' [selectedPlatform]='selectedPlatform' *ngIf="userPosition"></app-user-on-queue>
+    <app-user-on-queue 
+      [userPosition]='userPosition' 
+      [selectedPlatform]='selectedPlatform' 
+      *ngIf="userPosition"
+      (onUserQuitQueue)="handleUserQuitQueue()"
+      ></app-user-on-queue>
   </mat-step>
 </mat-vertical-stepper>
 

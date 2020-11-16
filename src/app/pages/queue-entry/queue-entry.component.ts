@@ -75,4 +75,11 @@ export class QueueEntryComponent implements OnInit {
       this.myStepper.next()
     })
   }
+
+  handleUserQuitQueue() {
+    console.log('sai!');
+    this.userPosition = 0
+    this.buttonFilter = false
+    this.myStepper.reset()
+  }
 }
