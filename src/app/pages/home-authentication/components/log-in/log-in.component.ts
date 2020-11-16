@@ -34,16 +34,19 @@ export class LogInComponent implements OnInit {
   }
 
   async authentication() {
-    let userToken = await this.authService.authentication(this.userForm.value);
+    let userToken: any = await this.authService.authentication(this.userForm.value);
 
     if(!userToken) {
       this.openSnackBar('Verifique sua senha ou seu email', 'Fechar')
+      return
     }
+
+    await this.router.navigateByUrl('queue-entry');
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2500,
+      duration: 3000,
     });
   }
 }
