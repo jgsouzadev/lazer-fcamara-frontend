@@ -17,6 +17,8 @@ export class AuthService {
     //will be used
     const userToken = this.getLocalUser();
 
+
+
     return new HttpHeaders({
       Authorization2: 'Bearer ' + userToken,
     });
@@ -27,46 +29,45 @@ export class AuthService {
 
     let userToken = token == 'false' ? false : token;
 
-    return userToken || true;
+    return userToken || false;
   }
 
   async authentication(dataUserAuthentication) {
-    const userToken: any = await this.http
+    try {
+      const userToken: any = await this.http
       .post(`${environment.apiUrl}/auth`, {
         email: dataUserAuthentication.email,
         password: dataUserAuthentication.password,
       })
       .toPromise()
-      .then(
-        async token => {
-          this.saveUser(token);
 
-          await this.router.navigateByUrl('queue-entry');
-        },
-        error => {
-          return false
-        }
-      );
+    this.saveUser(userToken.token);
 
-    return userToken;
+    return userToken.token;
+    } catch (error) {
+      if (environment.modeDebug) {
+        console.log('error', error);
+      }
+      return null
+    }
   }
 
   async createUser(userCreate) {
-    const user: any = await this.http
-      .post(`${environment.apiUrl}/auth`, userCreate)
-      .toPromise()
-      .then(
-        async token => {
-          this.saveUser(token);
+    try {
+      userCreate.filial = 1;
+      const user: any = await this.http
+        .post(`${environment.apiUrl}/users`, userCreate)
+        .toPromise()
 
-          await this.router.navigateByUrl('queue-entry')
-        },
-        error => {
-          return false
-        }
-      );
+    this.saveUser(user.token);
 
-    return user;
+    return user.token;
+    } catch (error) {
+      if (environment.modeDebug) {
+        console.log('error', error);
+      }
+      return null
+    }
   }
 
   saveUser(userToken) {

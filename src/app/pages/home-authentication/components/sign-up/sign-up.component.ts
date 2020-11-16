@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { AuthService } from "../../../../auth.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +17,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +38,15 @@ export class SignUpComponent implements OnInit {
 
     if (!userAuthenticate) {
       this.openSnackBar('Lamento, mas não foi possível criar seu usuário', 'Fechar');
+      return
     }
+
+    await this.router.navigateByUrl('queue-entry')
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2500,
+      duration: 3000,
     });
   }
 }
