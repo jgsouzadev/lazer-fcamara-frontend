@@ -33,7 +33,7 @@ export class AuthService {
   async authentication(dataUserAuthentication) {
     const userToken: any = await this.http
       .post(`${environment.apiUrl}/auth`, {
-        username: dataUserAuthentication.email,
+        email: dataUserAuthentication.email,
         password: dataUserAuthentication.password,
       })
       .toPromise()
@@ -41,7 +41,7 @@ export class AuthService {
         async token => {
           this.saveUser(token);
 
-          await this.router.navigateByUrl('queue-entry/platform-list');
+          await this.router.navigateByUrl('queue-entry');
         },
         error => {
           return false
@@ -59,7 +59,7 @@ export class AuthService {
         async token => {
           this.saveUser(token);
 
-          await this.router.navigateByUrl('queue-entry/platform-list')
+          await this.router.navigateByUrl('queue-entry')
         },
         error => {
           return false

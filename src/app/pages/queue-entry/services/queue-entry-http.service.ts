@@ -1,6 +1,5 @@
 import { Injectable, Type } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Platforms, PlatformQueue } from '../components/queue-in/queue-in.component'
 
 interface Get {
   options: Array<Platforms>;

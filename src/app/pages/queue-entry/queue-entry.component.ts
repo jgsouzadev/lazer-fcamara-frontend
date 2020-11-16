@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Platforms } from './components/queue-in/queue-in.component'
+import { QueueEntryHttpService } from './services/queue-entry-http.service';
+
+export interface Platforms {
+  id: number;
+  value: String; // in the angular doc example, it has a value and a viewValue, it seems like the value should be like an id
+}
+
+export interface PlatformQueue {
+  id: number;
+  queueCount: number;
+}
+
 
 @Component({
   selector: 'app-queue-entry',
@@ -8,13 +19,37 @@ import { Platforms } from './components/queue-in/queue-in.component'
 })
 export class QueueEntryComponent implements OnInit {
 
+  platforms: Platforms[] /*= [
+    { id: 1, value: "PS4" },
+    { id: 2, value: "Monopoly"  },
+    { id: 3, value: "Sinuca/PingPong"}
+  ];*/
+
+  platformQueue: PlatformQueue[]
+
   userPosition: number = 0
 
   selectedPlatform: Platforms
 
-  constructor() { }
+  constructor(
+    private httpService: QueueEntryHttpService
+  ) { }
 
   ngOnInit(): void {
+    this.httpService.getPlatforms().subscribe(data => {
+      console.log(data);
+
+      this.platformQueue = [ ...data.queue ]
+      this.platforms = [ ...data.options ]
+      //console.log(this.platformQueue);
+      //console.log(this.platforms);
+    })
+    /* Testing two-way binding example
+    setInterval(() => {
+      this.size = this.size + 1
+      this.sizeChange.emit(this.size)
+    }, 1000)
+    */
   }
 
   /* Doesnt need this implementation, can be done in html itself

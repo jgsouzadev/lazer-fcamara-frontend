@@ -2,3 +2,39 @@
   padding-top: 0px;
   // because of the padding, when clicking it was outlining the whole component
 }
+
+.content {
+  padding: 0 16px;
+}
+
+::ng-deep .mat-list-item {
+  height: 60px !important;
+  border-radius: 5px;
+  border: 1px solid #7a7a7a;
+  margin-bottom: 16px;
+}
+
+.box-item-platform {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  img {
+    width: 50px;
+    padding-right: 16px;
+  }
+
+  .text-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    p {
+      margin: 0;
+      color: #707070;
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}

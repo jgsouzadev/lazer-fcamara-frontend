@@ -1,23 +1,16 @@
 <div class="queue-in">
-  <h1>Plataformas</h1>
-  <mat-label>Escolha uma plataforma</mat-label>
-  <app-platform-list 
-    [platforms]="platforms"
-    [platformQueue]="platformQueue"
-    (selectedPlatformEvent)="this.selectedPlatform = $event"
-  ></app-platform-list>
-  <!-- <mat-select [(ngModel)]="selectedPlatform" formControlName="platform" [disabled]="selectFilter">
-    <mat-option *ngFor="let platform of platforms" [value]="{ id: platform.id, value: platform.value}"> {{platform.value}} </mat-option>
-  </mat-select>!-->
 
-  <!-- <p style="display: inline-block;" id="queueCount" *ngIf="this.selectedPlatform">{{queueNumber()}} pessoas na fila</p>!-->
-  <br>  <!-- temporary break line-->
-  <button 
-    class="button-submit" 
-    type="submit" 
-    [disabled]="!this.selectedPlatform || buttonFilter" 
-    (click)="this.enviar()"
-    mat-raised-button
-    >Entrar
-  </button>
+  <div class="box-title">
+    <img src="../../../../../assets/PS4.svg" alt="Ícone da plataforma">
+    <h1>Playstation 4</h1>
+  </div>
+
+  <div class="list-users">
+    <div class="item-user" *ngFor="let user of userQueue">
+      <p>{{user.name}}</p>
+    </div>
+  </div>
+
+  <button class="button-submit" type="submit" mat-raised-button>Entrar na fila</button>
+
 </div>

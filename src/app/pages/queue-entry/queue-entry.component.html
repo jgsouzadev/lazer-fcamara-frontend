@@ -1,2 +1,21 @@
-<app-queue-in (userPositionEvent)='userPosition = $event.position; selectedPlatform = $event.platform'></app-queue-in>
+<app-header></app-header>
+<div>
+  <h1>Plataformas</h1>
+  <span>Escolha uma plataforma</span>
+</div>
+<mat-vertical-stepper #stepper>
+  <mat-step >
+    <app-platform-list
+    [platforms]="platforms"
+    [platformQueue]="platformQueue"
+    (selectedPlatformEvent)="this.selectedPlatform = $event"
+  ></app-platform-list>
+  </mat-step>
+  <mat-step >
+    <app-queue-in (userPositionEvent)='userPosition = $event.position; selectedPlatform = $event.platform'></app-queue-in>
+  </mat-step>
+  <mat-step>
+
+  </mat-step>
+</mat-vertical-stepper>
 <app-user-on-queue [userPosition]='userPosition' [selectedPlatform]='this.selectedPlatform'></app-user-on-queue>
