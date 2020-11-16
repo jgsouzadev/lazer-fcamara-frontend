@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Platforms } from '../../queue-entry.component'
 
 @Component({
@@ -11,6 +11,8 @@ export class UserOnQueueComponent implements OnInit {
   @Input() userPosition: number
 
   @Input() selectedPlatform: Platforms
+
+  @Output() onUserQuitQueue = new EventEmitter()
 
   constructor() { }
 
