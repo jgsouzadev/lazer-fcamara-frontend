@@ -1,0 +1,18 @@
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+
+  h1 {
+    color: #707070;
+    font-weight: 400;
+    font-size: 32px;
+  }
+
+  span {
+    color: #707070;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

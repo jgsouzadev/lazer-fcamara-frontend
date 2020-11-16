@@ -11,6 +11,8 @@ import { UserOnQueueComponent } from './components/user-on-queue/user-on-queue.c
 
 import { HttpClientModule } from '@angular/common/http';
 import { PlatformListComponent } from './components/platform-list/platform-list.component'
+import { AuthService } from 'src/app/auth.service';
+import { AuthGuard } from 'src/app/auth.guard';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { PlatformListComponent } from './components/platform-list/platform-list.
     MaterialModule,   // Discuss if it's actually needed
     ComponentsModule,
     HttpClientModule  // Doing nothing rn because it's already in app.module
-  ]
+  ],
+  providers: [AuthService, AuthGuard]
 })
 export class QueueEntryModule { }

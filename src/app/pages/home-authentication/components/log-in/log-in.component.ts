@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { AuthService } from "../../../../auth.service";
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-log-in',
@@ -10,7 +16,10 @@ export class LogInComponent implements OnInit {
   userForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -19,12 +28,22 @@ export class LogInComponent implements OnInit {
 
   formBuilderUser() {
     this.userForm = this.formBuilder.group({
-      email: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
     })
   }
 
-  enviar() {
-    console.log('user', this.userForm);
+  async authentication() {
+    let userToken = await this.authService.authentication(this.userForm.value);
+
+    if(!userToken) {
+      this.openSnackBar('Verifique sua senha ou seu email', 'Fechar')
+    }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2500,
+    });
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Platforms, PlatformQueue } from '../components/queue-in/queue-in.component'
+import { Platforms, PlatformQueue } from '../queue-entry.component'
 
 interface Get {
   options: Array<Platforms>;
@@ -24,7 +24,6 @@ export class QueueEntryHttpService {
   ) { }
 
   getPlatforms() {
-    console.log('getPlatforms works!');
     return this.httpClient.get<Get>("https://www.fakeapi.online/api/apis/jaimemathias/api/platform")
   }
 

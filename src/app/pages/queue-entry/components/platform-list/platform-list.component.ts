@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
-import { Platforms, PlatformQueue } from '../queue-in/queue-in.component'
+import { Platforms, PlatformQueue } from '../../queue-entry.component'
 
 @Component({
   selector: 'app-platform-list',
@@ -8,17 +8,25 @@ import { Platforms, PlatformQueue } from '../queue-in/queue-in.component'
 })
 export class PlatformListComponent implements OnInit {
 
-  @Input() platforms: Platforms[]
-  @Input() platformQueue: PlatformQueue[]
+  @Input() platforms: Platforms
+  @Input() platformQueue: PlatformQueue
 
-  @Output() selectedPlatformEvent = new EventEmitter();
+  @Output() onPlatformChange = new EventEmitter();
+  @Output() onPlatformClick = new EventEmitter();
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
+    //console.log('platforms', this.platforms);
+    //console.log('platforms', this.platformQueue);
   }
 
   onSelectChangeEvent(e) {
-    this.selectedPlatformEvent.emit(e.option._value)
+    this.onPlatformChange.emit(e.option._value)
+  }
+  
+  nextStep() {
+    this.onPlatformClick.emit()
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Platforms } from '../queue-in/queue-in.component'
+import { Platforms } from '../../queue-entry.component'
 
 @Component({
   selector: 'app-user-on-queue',
@@ -17,5 +17,5 @@ export class UserOnQueueComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
 }
