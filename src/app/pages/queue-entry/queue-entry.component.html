@@ -8,7 +8,8 @@
     <app-platform-list
     [platforms]="platforms"
     [platformQueue]="platformQueue"
-    (onPlatformChange)="handlePlatformChange($event)"
+    (onPlatformChange)="selectedPlatform = $event"
+    (onPlatformClick)="handlePlatformChange()"
   ></app-platform-list>
   </mat-step>
   <mat-step >

@@ -1,11 +1,11 @@
 
 <div class="content">
   <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;">
-    <mat-list-option *ngFor="let platform of platforms;" [value]="{ id: platform.id, value: platform.value}">
+    <mat-list-option *ngFor="let platform of platforms;" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()">
       <div class="box-item-platform">
-        <img *ngIf="platform.value == 'PS4'" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
-        <img *ngIf="platform.value == 'Sinuca/PingPong'" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
-        <img *ngIf="platform.value == 'Monopoly' || platform.value == 'War'" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+        <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+        <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
+        <img *ngIf="platform.id == 3 || platform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
         <div class="text-item">
           <p>{{platform.value}}</p>
           <p>4 Pessoas na fila</p>

@@ -10,7 +10,8 @@ export class PlatformListComponent implements OnInit {
   @Input() platforms: any
   @Input() platformQueue: any
 
-  @Output() selectedPlatformEvent = new EventEmitter();
+  @Output() onPlatformChange = new EventEmitter();
+  @Output() onPlatformClick = new EventEmitter();
 
   constructor(
   ) { }
@@ -22,6 +23,10 @@ export class PlatformListComponent implements OnInit {
   }
 
   onSelectChangeEvent(e) {
-    this.selectedPlatformEvent.emit(e.option._value)
+    this.onPlatformChange.emit(e.option._value)
+  }
+  
+  nextStep() {
+    this.onPlatformClick.emit()
   }
 }

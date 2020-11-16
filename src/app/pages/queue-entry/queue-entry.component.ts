@@ -61,8 +61,9 @@ export class QueueEntryComponent implements OnInit {
 
   @ViewChild('stepper') private myStepper: MatStepper;
   
-  handlePlatformChange($event) {
-    this.selectedPlatform = $event
+  handlePlatformChange() {
+    console.log('oi');
+    
     this.myStepper.next()
   }
 
