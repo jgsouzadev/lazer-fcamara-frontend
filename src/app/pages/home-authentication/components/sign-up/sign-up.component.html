@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="enviar()" class="example-form">
+<form [formGroup]="userForm" (ngSubmit)="createAccount()" class="example-form">
   <img src="../../../../../assets/fifo.ico" width="120px" alt="Icone do Pagina" srcset="">
 
   <div>
@@ -17,7 +17,7 @@
     <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>Sua senha *</mat-label>
       <input formControlName="password" name="password" matInput placeholder="Senha" type="password">
-      <span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha a senha</span>
+      <span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha a senha com ao menos 6 caracteres</span>
     </mat-form-field>
   </div>
   <button class="button-submit" type="submit" [disabled]="userForm.invalid" mat-raised-button>Cadastrar-se</button>
