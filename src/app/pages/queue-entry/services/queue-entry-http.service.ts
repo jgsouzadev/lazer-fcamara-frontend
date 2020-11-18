@@ -14,6 +14,14 @@ interface Post {
   }
 }
 
+interface GetPlatformQueue {
+  queue: Array<PlatformQueue>
+}
+
+interface GetUserPosition {
+  position: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,10 +41,10 @@ export class QueueEntryHttpService {
   }
 
   getPlatformQueue() {
-    return this.httpClient.get<any>('https://www.fakeapi.online/api/apis/jaimemathias/api/plataform/platform-queue')
+    return this.httpClient.get<GetPlatformQueue>('https://www.fakeapi.online/api/apis/jaimemathias/api/plataform/platform-queue')
   }
 
   getUserPosition(userId) {
-    return this.httpClient.get<any>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
+    return this.httpClient.get<GetUserPosition>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
   }
 }
