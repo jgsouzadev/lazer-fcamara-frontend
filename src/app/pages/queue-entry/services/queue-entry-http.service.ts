@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Platforms, PlatformQueue } from '../queue-entry.component'
 
 interface Get {
-  options: Array<Platforms>;
+  platforms: Array<Platforms>;
   queue: Array<PlatformQueue>;
 }
 
@@ -28,15 +28,15 @@ export class QueueEntryHttpService {
   }
 
   enterQueue(selectedPlatform) {
-    return this.httpClient.post<Post>('https://www.fakeapi.online/api/apis/jaimemathias/api/fila/checkin', selectedPlatform)
+    return this.httpClient.post<Post>('https://www.fakeapi.online/api/apis/jaimemathias/api/queue/checkin', selectedPlatform)
     // Maybe do ../checkin/selectedPlatform? it'd have to change the method
   }
 
   getPlatformQueue() {
-    return this.httpClient.get<PlatformQueue>('https://www.fakeapi.online/api/plataforma/platform-queue')
+    return this.httpClient.get<any>('https://www.fakeapi.online/api/apis/jaimemathias/api/plataform/platform-queue')
   }
 
   getUserPosition(userId) {
-    return this.httpClient.get<Number>('https://www.fakeapi.online/api/apis/jaimemathias/api/usuario/' + userId)
+    return this.httpClient.get<Number>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
   }
 }
