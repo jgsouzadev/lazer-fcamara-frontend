@@ -8,8 +8,8 @@ import { Platforms, PlatformQueue } from '../../queue-entry.component'
 })
 export class PlatformListComponent implements OnInit {
 
-  @Input() platforms: Platforms
-  @Input() platformQueue: PlatformQueue
+  @Input() platforms: Platforms[]
+  @Input() platformQueue: PlatformQueue[]
 
   @Output() onPlatformChange = new EventEmitter();
   @Output() onPlatformClick = new EventEmitter();
