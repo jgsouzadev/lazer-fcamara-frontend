@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Platforms, PlatformQueue } from '../queue-entry.component'
 
 interface Get {
-  options: Array<Platforms>;
+  platforms: Array<Platforms>;
   queue: Array<PlatformQueue>;
 }
 
@@ -12,6 +12,14 @@ interface Post {
     id: number
     position: number
   }
+}
+
+interface GetPlatformQueue {
+  queue: Array<PlatformQueue>
+}
+
+interface GetUserPosition {
+  position: number
 }
 
 @Injectable({
@@ -27,7 +35,16 @@ export class QueueEntryHttpService {
     return this.httpClient.get<Get>("https://www.fakeapi.online/api/apis/jaimemathias/api/platform")
   }
 
-  enterQueue(user) {
-    return this.httpClient.post<Post>('https://www.fakeapi.online/api/apis/jaimemathias/api/fila/checkin', user)
+  enterQueue(selectedPlatform) {
+    return this.httpClient.post<Post>('https://www.fakeapi.online/api/apis/jaimemathias/api/queue/checkin', selectedPlatform)
+    // Maybe do ../checkin/selectedPlatform? it'd have to change the method
+  }
+
+  getPlatformQueue() {
+    return this.httpClient.get<GetPlatformQueue>('https://www.fakeapi.online/api/apis/jaimemathias/api/plataform/platform-queue')
+  }
+
+  getUserPosition(userId) {
+    return this.httpClient.get<GetUserPosition>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
   }
 }

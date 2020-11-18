@@ -12,7 +12,6 @@ export interface PlatformQueue {
   queueCount: number;
 }
 
-
 @Component({
   selector: 'app-queue-entry',
   templateUrl: './queue-entry.component.html',
@@ -20,17 +19,15 @@ export interface PlatformQueue {
 })
 export class QueueEntryComponent implements OnInit {
 
-  platforms: Platforms[] /*= [
-    { id: 1, value: "PS4" },
-    { id: 2, value: "Monopoly"  },
-    { id: 3, value: "Sinuca/PingPong"}
-  ];*/
-
+  platforms: Platforms[]
   platformQueue: PlatformQueue[]
-
-  userPosition: number = 0
-
+  
   selectedPlatform: Platforms
+  
+  buttonFilter: boolean = false
+
+  userId: number = 0
+  userPosition: number = 0
 
   constructor(
     private httpService: QueueEntryHttpService
@@ -38,48 +35,48 @@ export class QueueEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.getPlatforms().subscribe(data => {
-      //console.log(data);
-
       this.platformQueue = [ ...data.queue ]
-      this.platforms = [ ...data.options ]
-      //console.log(this.platformQueue);
-      //console.log(this.platforms);
+      this.platforms = [ ...data.platforms ]
     })
-    /* Testing two-way binding example
+    
     setInterval(() => {
-      this.size = this.size + 1
-      this.sizeChange.emit(this.size)
-    }, 1000)
-    */
+      this.httpService.getPlatformQueue().subscribe(data => {
+        this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
+      })
+    }, 300000) // 5 minutes
   }
-
-  /* Doesnt need this implementation, can be done in html itself
-  receiveUserPosition($event) {
-    this.userPosition = $event
-  }
-  */
 
   @ViewChild('stepper') private myStepper: MatStepper;
-  
   handlePlatformChange() {
     this.myStepper.next()
   }
 
-  buttonFilter: boolean = false
-
-  handleClickEvent() {
+  handleUserEnterQueue() {
     this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-      //console.log(data.userInfo);
       this.userPosition = data.userInfo.position
       this.buttonFilter = true
       this.myStepper.next()
+      this.postStorageItem('userId', data.userInfo.id)
+      this.userId = data.userInfo.id
     })
+    setInterval(() => {
+      this.httpService.getUserPosition(this.userId).subscribe(data => {
+        this.userPosition = data.position
+      })
+    }, 60000)// 1 minute
   }
 
   handleUserQuitQueue() {
-    console.log('sai!');
     this.userPosition = 0
     this.buttonFilter = false
     this.myStepper.reset()
+  }
+
+  postStorageItem(dataName: string, data) {
+    localStorage.setItem(dataName, data)
+  }
+
+  getStorageItem(data: string) {
+    localStorage.getItem(data)
   }
 }
