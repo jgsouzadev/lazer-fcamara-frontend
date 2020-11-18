@@ -37,6 +37,6 @@ export class QueueEntryHttpService {
   }
 
   getUserPosition(userId) {
-    return this.httpClient.get<Number>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
+    return this.httpClient.get<any>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
   }
 }

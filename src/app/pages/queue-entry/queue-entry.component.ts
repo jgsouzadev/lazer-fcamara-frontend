@@ -26,6 +26,7 @@ export class QueueEntryComponent implements OnInit {
   
   buttonFilter: boolean = false
 
+  userId: number = 0
   userPosition: number = 0
 
   constructor(
@@ -55,12 +56,27 @@ export class QueueEntryComponent implements OnInit {
       this.userPosition = data.userInfo.position
       this.buttonFilter = true
       this.myStepper.next()
+      this.postStorageItem('userId', data.userInfo.id)
+      this.userId = data.userInfo.id
     })
+    setInterval(() => {
+      this.httpService.getUserPosition(this.userId).subscribe(data => {
+        this.userPosition = data.position
+      })
+    }, 60000)// 1 minute
   }
 
   handleUserQuitQueue() {
     this.userPosition = 0
     this.buttonFilter = false
     this.myStepper.reset()
+  }
+
+  postStorageItem(dataName: string, data) {
+    localStorage.setItem(dataName, data)
+  }
+
+  getStorageItem(data: string) {
+    localStorage.getItem(data)
   }
 }
