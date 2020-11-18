@@ -16,7 +16,7 @@
     <app-queue-in 
       (userPositionEvent)='userPosition = $event.position;' 
       [selectedPlatform]='selectedPlatform' 
-      (onClickEvent)="handleClickEvent()"
+      (onClickEvent)="handleUserEnterQueue()"
       [buttonFilter]="buttonFilter"
       ></app-queue-in>
   </mat-step>

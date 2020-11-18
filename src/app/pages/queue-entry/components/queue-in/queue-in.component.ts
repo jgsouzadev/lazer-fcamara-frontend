@@ -20,11 +20,6 @@ export class QueueInComponent implements OnInit {
   ]
 
   // Disables the button after being clicked
-  /* Testing two-way binding example
-  @Input()  size: number;
-  @Output() sizeChange = new EventEmitter<number>();
-  */
- 
   @Input() buttonFilter: boolean = false
 
   @Output() userPositionEvent = new EventEmitter<any>();
@@ -53,25 +48,6 @@ export class QueueInComponent implements OnInit {
       default:
         //return "../../../../../assets/PS4.svg"
     }
-  }
-
-  // can be made in 2 ways, with the selectedPlatform, or calling the function with the platform as parameter
-  // queueNumber(platformForm.value.platform.id), discuss which one is better
-  /*queueNumber() {
-    return this.platformQueue.find(platform => platform.id === this.selectedPlatform.id).queueCount
-  }*/
-
-  enviar() {
-    //e.preventDefault()
-    //console.log(this.selectedPlatform);
-    // this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-      //console.log(data.userInfo);
-      // const userInfo = {
-      //   position: data.userInfo.position,
-      //   platform: this.selectedPlatform
-      // }
-      // this.userPositionEvent.emit(userInfo)
-      // this.buttonFilter = true
   }
 }
 

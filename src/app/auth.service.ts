@@ -29,7 +29,7 @@ export class AuthService {
 
     let userToken = token == 'false' ? false : token;
 
-    return userToken || false;
+    return userToken || true;
   }
 
   async authentication(dataUserAuthentication) {

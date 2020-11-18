@@ -27,7 +27,16 @@ export class QueueEntryHttpService {
     return this.httpClient.get<Get>("https://www.fakeapi.online/api/apis/jaimemathias/api/platform")
   }
 
-  enterQueue(user) {
-    return this.httpClient.post<Post>('https://www.fakeapi.online/api/apis/jaimemathias/api/fila/checkin', user)
+  enterQueue(selectedPlatform) {
+    return this.httpClient.post<Post>('https://www.fakeapi.online/api/apis/jaimemathias/api/fila/checkin', selectedPlatform)
+    // Maybe do ../checkin/selectedPlatform? it'd have to change the method
+  }
+
+  getPlatformQueue() {
+    return this.httpClient.get<PlatformQueue>('https://www.fakeapi.online/api/plataforma/platform-queue')
+  }
+
+  getUserPosition(userId) {
+    return this.httpClient.get<Number>('https://www.fakeapi.online/api/apis/jaimemathias/api/usuario/' + userId)
   }
 }
