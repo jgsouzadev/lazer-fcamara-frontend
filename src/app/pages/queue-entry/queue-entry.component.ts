@@ -67,9 +67,16 @@ export class QueueEntryComponent implements OnInit {
   }
 
   handleUserQuitQueue() {
+    if (this.userPosition == 1) {
+      console.log('oi');
+    }
+    else {
+      //this.httpService.quitQueue()
+    }
     this.userPosition = 0
     this.buttonFilter = false
     this.myStepper.reset()
+    this.removeStorageItem('userId')
   }
 
   postStorageItem(dataName: string, data) {
@@ -78,5 +85,9 @@ export class QueueEntryComponent implements OnInit {
 
   getStorageItem(data: string) {
     localStorage.getItem(data)
+  }
+
+  removeStorageItem(data: string) {
+    localStorage.removeItem('userId')
   }
 }
