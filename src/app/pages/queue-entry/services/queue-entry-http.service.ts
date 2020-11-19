@@ -47,4 +47,14 @@ export class QueueEntryHttpService {
   getUserPosition(userId) {
     return this.httpClient.get<GetUserPosition>('https://www.fakeapi.online/api/apis/jaimemathias/api/user/' + userId)
   }
+
+  quitQueue(userId) {
+    return this.httpClient.put("https://www.fakeapi.online/api/apis/jaimemathias/api/user/queue-checkout/" + userId, { status_user: false })
+    // 'put' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
+  }
+
+  quitGame(userId) {
+    return this.httpClient.put("https://www.fakeapi.online/api/apis/jaimemathias/api/user/game-checkout/" + userId, { status_user: false })
+    // 'put' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
+  }
 }
