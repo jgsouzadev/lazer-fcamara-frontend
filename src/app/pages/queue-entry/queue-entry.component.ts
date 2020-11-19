@@ -29,6 +29,9 @@ export class QueueEntryComponent implements OnInit {
   userId: number = 0
   userPosition: number = 0
 
+  refIntervalUserPosition: number
+  refIntervalPlatformQueue: Number
+
   constructor(
     private httpService: QueueEntryHttpService
   ) { }
@@ -37,13 +40,13 @@ export class QueueEntryComponent implements OnInit {
     this.httpService.getPlatforms().subscribe(data => {
       this.platformQueue = [ ...data.queue ]
       this.platforms = [ ...data.platforms ]
+
+      this.refIntervalPlatformQueue = setInterval(() => {
+        this.httpService.getPlatformQueue().subscribe(data => {
+          this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
+        })
+      }, 300000) // 5 minutes
     })
-    
-    setInterval(() => {
-      this.httpService.getPlatformQueue().subscribe(data => {
-        this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
-      })
-    }, 300000) // 5 minutes
   }
 
   @ViewChild('stepper') private myStepper: MatStepper;
@@ -53,23 +56,48 @@ export class QueueEntryComponent implements OnInit {
 
   handleUserEnterQueue() {
     this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-      this.userPosition = data.userInfo.position
       this.buttonFilter = true
-      this.myStepper.next()
-      this.postStorageItem('userId', data.userInfo.id)
+      this.userPosition = data.userInfo.position
       this.userId = data.userInfo.id
+      this.postStorageItem('userId', data.userInfo.id)
+      this.myStepper.next()
+
+      this.refIntervalUserPosition = setInterval(() => {
+        if (this.userPosition) {
+          this.httpService.getUserPosition(this.userId).subscribe(data => {
+            if (this.userPosition) {
+              // There was cases that the request was made in the same moment that the interval was cleared
+              // so it'd think that the user is still in the queue
+              this.userPosition = data.position
+            }
+          })
+        }
+      }, 60000)// 1 minute
     })
-    setInterval(() => {
-      this.httpService.getUserPosition(this.userId).subscribe(data => {
-        this.userPosition = data.position
-      })
-    }, 60000)// 1 minute
   }
 
   handleUserQuitQueue() {
+    if (this.userPosition == 1) {
+      this.httpService.quitGame(this.userId).subscribe(() => { 
+        console.log('Sucesso ao sair do jogo!')
+        this.removeUser()
+      })
+    }
+    else {
+      this.httpService.quitQueue(this.userId).subscribe(() => { 
+        console.log('Sucesso ao sair da fila!')
+        this.removeUser()
+      })
+    }
+  }
+
+  removeUser() {
+    clearInterval(this.refIntervalUserPosition)
     this.userPosition = 0
-    this.buttonFilter = false
+    this.userId = 0
+    this.removeStorageItem('userId')
     this.myStepper.reset()
+    this.buttonFilter = false
   }
 
   postStorageItem(dataName: string, data) {
@@ -78,5 +106,9 @@ export class QueueEntryComponent implements OnInit {
 
   getStorageItem(data: string) {
     localStorage.getItem(data)
+  }
+
+  removeStorageItem(data: string) {
+    localStorage.removeItem('userId')
   }
 }
