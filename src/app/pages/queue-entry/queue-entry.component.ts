@@ -63,17 +63,27 @@ export class QueueEntryComponent implements OnInit {
       this.httpService.getUserPosition(this.userId).subscribe(data => {
         this.userPosition = data.position
       })
-    }, 60000)// 1 minute
+    }, 1000)// 1 minute
   }
 
   handleUserQuitQueue() {
     if (this.userPosition == 1) {
-      console.log('oi');
+      this.httpService.quitGame(this.userId).subscribe(() => { 
+        console.log('Sucesso ao sair do jogo!')
+        this.removeUser()
+      })
     }
     else {
-      //this.httpService.quitQueue()
+      this.httpService.quitQueue(this.userId).subscribe(() => { 
+        console.log('Sucesso ao sair da fila!')
+        this.removeUser()
+      })
     }
+  }
+
+  removeUser() {
     this.userPosition = 0
+    this.userId = 0
     this.buttonFilter = false
     this.myStepper.reset()
     this.removeStorageItem('userId')

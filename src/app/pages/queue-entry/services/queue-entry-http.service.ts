@@ -49,12 +49,12 @@ export class QueueEntryHttpService {
   }
 
   quitQueue(userId) {
-    return this.httpClient.put("https://www.fakeapi.online/api/apis/jaimemathias/api/user/queue-checkout/" + userId, { status_user: false })
-    // 'put' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
+    return this.httpClient.post("https://www.fakeapi.online/api/apis/jaimemathias/api/user/queue-checkout/" + userId, { status_user: false })
+    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
   }
 
   quitGame(userId) {
-    return this.httpClient.put("https://www.fakeapi.online/api/apis/jaimemathias/api/user/game-checkout/" + userId, { status_user: false })
-    // 'put' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
+    return this.httpClient.post("https://www.fakeapi.online/api/apis/jaimemathias/api/user/game-checkout/" + userId, { status_user: false })
+    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
   }
 }
