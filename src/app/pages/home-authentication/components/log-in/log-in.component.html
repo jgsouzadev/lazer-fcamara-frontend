@@ -1,38 +1,56 @@
-<form [formGroup]="userForm" (ngSubmit)="authentication()" class="example-form">
-  <img class="logo" src="../../../../../assets/Logo Fifo.svg" alt="Icone do Pagina" srcset="">
+<div class="main">
 
-  <div class="pontos-grandes">
-    <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="Design pontos">
+  <div class="desktop-content">
+    <div class="hero">
+      <img class="logo-desktop" src="../../../../../assets/Logo Fifo negativo.svg" alt="Icone da página">
+      
+      <div class="content">
+        <h1>A FILA DIGITAL DO FIFO</h1>
+        <p>Escolha sua plataforma de jogo e aguarde sua vez com mais liberdade</p>
+      </div>
+    </div>
   </div>
-  <div class="main-content">
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Email *</mat-label>
-      <input formControlName="email" name="name" matInput placeholder="E-mail" type="email">
-      <mat-hint>usuario@fcamara.com.br</mat-hint>
-      <!--<span *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">Preencha seu e-mail</span> !-->
-    </mat-form-field>
-    <mat-form-field appearence="outline" class="example-full-width" appearance="outline">
-      <mat-label>Senha *</mat-label>
-      <input formControlName="password" name="password" matInput placeholder="Senha" type="password">
-      <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha sua senha</span>!-->
-    </mat-form-field>
+  
+  <div class="mobile-main">
 
-    <div class="link-block">
-      <a href="#">Esqueci minha senha.</a>
+    <div class="pontos-grandes">
+      <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="Design pontos">
+    </div>
+  
+    <div class="form-hero">
+      <img class="logo-mobile" src="../../../../../assets/Logo Fifo.svg" alt="Icone do página" srcset="">
+
+      <div class="main-content">
+        <form [formGroup]="userForm" (ngSubmit)="authentication()" class="example-form">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email *</mat-label>
+            <input formControlName="email" name="name" matInput placeholder="E-mail" type="email">
+            <mat-hint>usuario@fcamara.com.br</mat-hint>
+            <!--<span *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">Preencha seu e-mail</span> !-->
+          </mat-form-field>
+          <mat-form-field appearence="outline" class="example-full-width" appearance="outline">
+          <mat-label>Senha *</mat-label>
+          <input formControlName="password" name="password" matInput placeholder="Senha" type="password">
+          <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha sua senha</span>!-->
+        </mat-form-field>
+      </form>
+
+        <div class="link-block">
+          <a href="#">Esqueci minha senha.</a>
+        </div>
+        
+        <button class="button-submit" type="submit" [disabled]="userForm.invalid">Entrar</button>
+      
+      </div>
+      <p class="cadastrar">Não tem uma conta? <a routerLink="sign-up">Cadastre-se.</a></p>
     </div>
     
-    <button class="button-submit" type="submit" [disabled]="userForm.invalid">Entrar</button>
-
+    <div class="ondas">
+      <img src="../../../../../assets/Grafismo ondas.svg" alt="Design ondas">
+    </div>
+    
+    <div class="pontos-pequenos">
+      <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="Design pontos">
+    </div>  
   </div>
-  <p class="cadastrar">Não tem uma conta? <a routerLink="sign-up">Cadastre-se.</a></p>
-
-
-  <div class="ondas">
-    <img src="../../../../../assets/Grafismo ondas.svg" alt="Design ondas">
-  </div>
-
-  <div class="pontos-pequenos">
-    <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="Design pontos">
-  </div>
-
-</form>
+</div>

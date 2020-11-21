@@ -1,64 +1,78 @@
 @import "../../../../../custom-theme.scss";
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 16px;
+.main {
+  height: 100%;
+  width: 100%;
+}
+
+.desktop-content {
+  display: none;
+}
+
+.mobile-main {
+  width: 100%;
   height: 100%;
   background-color: $background-color;
+  position: relative;
+  overflow: auto;
 
-  .logo {
-    padding: 2em 0 12em;
-    width: 110px;
-  }
-
-  .main-content {
+  .form-hero {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 100%;
     width: 90%;
-    z-index: 10;
-
-    /*.example-full-width {
-      position: relative;
-
-      span {
-        position: absolute;
-        left: -11px;
-        bottom: -18px;
-        font-size: 12px;
-        color: red;
-      }
-    }*/
-
-    mat-form-field:first-child {
-      margin: 6px 0;
-    }
-
-    .link-block {
-      margin-top: -13px;
-      display: block;
-      text-align: right;
-    }
-
-    .button-submit {
-      margin-top: 34px;
-      background-color: $primary-color;
-      color: #fff;
-      font-size: 18px;
-      height: 60px;
-      text-transform: uppercase;
-      border-radius: 6px;
-    }
+    margin: 0 auto;
   
-    button:disabled {
-      background-color: $primary-color-disabled
+    .logo-mobile {
+      padding: 2em 0 12em;
+      width: 115px;
     }
-  }
 
-  .cadastrar {
-    margin-bottom: 40px;
-    margin-top: auto;
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      width: 90%;
+      position: relative;
+      z-index: 10;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    
+        mat-form-field:first-child {
+          margin: 10px 0;
+        }
+      }
+    
+      .link-block {
+        margin-top: -13px;
+        display: block;
+        text-align: right;
+      }
+
+      .button-submit {
+        margin-top: 34px;
+        background-color: $primary-color;
+        color: #fff;
+        font-size: 18px;
+        height: 60px;
+        text-transform: uppercase;
+        border-radius: 6px;
+        width: 100%;
+      }
+    
+      button:disabled {
+        background-color: $primary-color-disabled
+      }
+    }
+
+    .cadastrar {
+      margin-bottom: 40px;
+      margin-top: auto;
+    }
   }
 }
 
@@ -66,6 +80,7 @@ form {
   position: absolute;
   width: 100%;
   top: 90px;
+  overflow: hidden;
 }
 
 .ondas {
@@ -81,4 +96,59 @@ form {
   text-align: right;
   bottom: 60px;
   overflow: hidden;
+}
+
+@media(min-width: 1024px) {
+  .main {
+    display: flex;
+    height: 100%;
+  }
+
+  .mobile-main {
+    width: 50%;
+
+    .main-content {
+      top: 30%;
+    }
+  }
+
+  .logo-mobile {
+    display: none;
+  }
+
+  .desktop-content {
+    display: block;
+    background-color: $laranjaf2;
+    width: 50%;
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      width: 75%;
+      height: 100%;
+      margin: 0 auto;
+      
+      img {
+        margin-top: 3em;
+        align-self: flex-start;
+      }
+
+      .content {
+        position: relative;
+        color: #fff;
+        align-self: center;
+        top: 26%;
+
+        h1 {
+          text-align: left;
+          font-weight: bold;
+          font-size: 30px;
+        }
+
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
