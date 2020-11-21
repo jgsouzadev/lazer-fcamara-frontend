@@ -16,6 +16,7 @@ button {
   border-style: none;
   outline: none;
   cursor: pointer;
+  transition: .5s;
 }
 
 button:disabled {
