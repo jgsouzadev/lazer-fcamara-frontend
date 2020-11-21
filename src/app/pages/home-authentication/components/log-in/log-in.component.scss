@@ -10,8 +10,8 @@
 }
 
 .mobile-main {
+  min-height: 100%; // This was very important to not break the graphisms, it will always load at least the height needed
   width: 100%;
-  height: 100%;
   background-color: $background-color;
   position: relative;
   overflow: auto;
@@ -20,9 +20,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    //height: 100%; // Important to the desktop version
     width: 90%;
     margin: 0 auto;
+    min-height: 100vh; // This was very important to not break the graphisms, it will always load at least the height needed
   
     .logo-mobile {
       padding: 2em 0 12em;
@@ -62,6 +63,7 @@
         text-transform: uppercase;
         border-radius: 6px;
         width: 100%;
+        margin-bottom: 1em;
       }
     
       button:disabled {
@@ -71,7 +73,7 @@
 
     .cadastrar {
       margin-bottom: 40px;
-      margin-top: auto;
+      margin-top: auto; // sticks to the bottom when the is flex-direction: column; on the parent component
     }
   }
 }
@@ -79,26 +81,38 @@
 .pontos-grandes {
   position: absolute;
   width: 100%;
-  top: 90px;
+  top: 12%;
   overflow: hidden;
 }
 
 .ondas {
   position: absolute;
   width: 100%;
-  bottom: 80px;
+  bottom: 10%;
   overflow: hidden;
 }
+
+/*.button-submit:after {
+  content: "";
+  background: url("../../../../../assets/Grafismo ondas.svg");
+  position: absolute;
+  width: 112px;
+  bottom: -30%;
+  left: -40px;
+  height: 56px;
+  overflow: hidden;
+}*/
 
 .pontos-pequenos {
   position: absolute;
   width: 100%;
   text-align: right;
-  bottom: 60px;
+  bottom: 8%;
   overflow: hidden;
 }
 
-@media(min-width: 1024px) {
+// When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
+@media all and (min-width: 1024px) {
   .main {
     display: flex;
     height: 100%;
@@ -107,7 +121,13 @@
   .mobile-main {
     width: 50%;
 
-    .main-content {
+    .form-hero {
+      height: 100%;
+    }
+
+    // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
+    .main-content { 
+      position: relative;
       top: 30%;
     }
   }
