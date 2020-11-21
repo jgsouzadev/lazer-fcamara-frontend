@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
-$font-stack: Montserrat, "Helvetica Neue", sans-serif;
+@import "./custom-theme.scss";
 
 * {
   margin: 0;
@@ -11,4 +10,14 @@ $font-stack: Montserrat, "Helvetica Neue", sans-serif;
 .material-icons {
   font-family: 'Material Icons' !important;
   // the Icons need a specific font that cannot be overwritten
+}
+
+button {
+  border-style: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: initial;
 }

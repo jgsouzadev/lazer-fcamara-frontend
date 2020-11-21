@@ -1,21 +1,25 @@
+@import "../../../../../custom-theme.scss";
+
 form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   padding: 0 16px;
   height: 100%;
+  background-color: $background-color;
 
-  img {
-    padding-bottom: 32px;
+  .logo {
+    padding: 2em 0 12em;
+    width: 110px;
   }
 
-  div {
+  .main-content {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
+    z-index: 10;
 
-    .example-full-width {
+    /*.example-full-width {
       position: relative;
 
       span {
@@ -25,19 +29,56 @@ form {
         font-size: 12px;
         color: red;
       }
+    }*/
+
+    mat-form-field:first-child {
+      margin: 6px 0;
+    }
+
+    .link-block {
+      margin-top: -13px;
+      display: block;
+      text-align: right;
+    }
+
+    .button-submit {
+      margin-top: 34px;
+      background-color: $primary-color;
+      color: #fff;
+      font-size: 18px;
+      height: 60px;
+      text-transform: uppercase;
+      border-radius: 6px;
+    }
+  
+    button:disabled {
+      background-color: $primary-color-disabled
     }
   }
 
-  .button-submit {
-    margin-top: 16px;
-    background: #FC6027;
-    color: #fff;
-    font-size: 18px;
-    height: 54px;
-    width: 100%;
+  .cadastrar {
+    margin-bottom: 40px;
+    margin-top: auto;
   }
+}
 
-  button:disabled {
-    opacity: 0.6;
-  }
+.pontos-grandes {
+  position: absolute;
+  width: 100%;
+  top: 90px;
+}
+
+.ondas {
+  position: absolute;
+  width: 100%;
+  bottom: 80px;
+  overflow: hidden;
+}
+
+.pontos-pequenos {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  bottom: 60px;
+  overflow: hidden;
 }
