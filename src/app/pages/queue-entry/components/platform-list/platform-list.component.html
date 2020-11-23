@@ -35,7 +35,13 @@
           </div>
         </mat-list-option>
       </mat-selection-list>
-      <button *ngIf="!userChecked" class="platform-list-bttn" type="button" [disabled]="buttonFilter" (click)="onClickEvent.emit()">Entrar na fila</button>
+      <button 
+        class="platform-list-bttn" 
+        type="button" 
+        [disabled]="buttonFilter" 
+        (click)="onClickEvent.emit()"
+        >{{ userChecked ? 'Ver minha posição' : 'Entrar na fila' }}
+      </button>
     </div>
   </div>
 </div>

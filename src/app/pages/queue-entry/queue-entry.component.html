@@ -6,7 +6,7 @@
   (onPlatformClick)="handlePlatformChange()"
   (onClickEvent)="handleUserEnterQueue()"
   [userChecked]="userChecked"
-  *ngIf="!userPosition"
+  *ngIf="!userPosition || userChecked"
 ></app-platform-list>
 <!--
 <app-queue-in 
@@ -22,7 +22,7 @@
 -->
 <app-user-on-queue 
   [userPosition]='userPosition' 
-  *ngIf="userPosition"
+  *ngIf="userPosition && !userChecked"
   (onUserQuitQueue)="handleUserQuitQueue()"
   (onUserChecking)="userChecked = true"
 ></app-user-on-queue>

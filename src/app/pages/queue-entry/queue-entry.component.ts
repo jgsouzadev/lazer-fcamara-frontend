@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
@@ -62,30 +63,33 @@ export class QueueEntryComponent implements OnInit {
   }
 
   handleUserEnterQueue() {
-    this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-      this.buttonFilter = true
-      this.userPosition = data.userInfo.position
-      this.userId = data.userInfo.id
-      this.refIntervalUserPosition = setInterval(() => {
-        if (this.userPosition) {
-          this.httpService.getUserPosition(this.userId).subscribe(data => {
-            if (this.userPosition) {
-              // There was cases that the request was made in the same moment that the interval was cleared
-              // so it'd think that the user is still in the queue
-              this.userPosition = data.position
-            }
-          })
-        }
-      }, 60000)// 1 minute
-    })
+    if (this.userChecked) {
+      this.userChecked = false
+    }
+    else {
+      this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
+        this.userPosition = data.userInfo.position
+        this.userId = data.userInfo.id
+        this.refIntervalUserPosition = setInterval(() => {
+          if (this.userPosition) {
+            this.httpService.getUserPosition(this.userId).subscribe(data => {
+              if (this.userPosition) {
+                // There was cases that the request was made in the same moment that the interval was cleared
+                // so it'd think that the user is still in the queue
+                this.userPosition = data.position
+              }
+            })
+          }
+        }, 60000)// 1 minute
+      })
+    }
   }
 
   handleUserQuitQueue() {
     if (this.userPosition == 1) {
       this.httpService.quitGame(this.userId).subscribe(() => { 
-        console.log('Sucesso ao sair do jogo!')
         this.userPosition = 0;
-        this.buttonFilter = false
+        this.buttonFilter = true
         this.userChecked = false
         this.userId = 0
         clearInterval(this.refIntervalUserPosition)
@@ -94,9 +98,8 @@ export class QueueEntryComponent implements OnInit {
     }
     else {
       this.httpService.quitQueue(this.userId).subscribe(() => { 
-        console.log('Sucesso ao sair da fila!')
         this.userPosition = 0
-        this.buttonFilter = false
+        this.buttonFilter = true
         this.userChecked = false
         this.userId = 0
         clearInterval(this.refIntervalUserPosition)
