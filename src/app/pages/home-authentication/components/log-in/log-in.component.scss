@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.desktop-content {
+.mobile-hide {
   display: none;
 }
 
@@ -99,20 +99,9 @@ mat-form-field {
   overflow: hidden;
 }
 
-/*.button-submit:after {
-  content: "";
-  background: url("../../../../../assets/Grafismo ondas.svg");
-  position: absolute;
-  width: 112px;
-  bottom: -30%;
-  left: -40px;
-  height: 56px;
-  overflow: hidden;
-}*/
-
 .pontos-pequenos {
   position: absolute;
-  width: 100%;
+  width: auto;
   text-align: right;
   bottom: 8%;
   overflow: hidden;
@@ -121,6 +110,10 @@ mat-form-field {
 
 // When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
 @media all and (min-width: 1280px) {
+  .mobile-hide {
+    display: block;
+  }
+
   .main {
     display: flex;
     height: 100%;
@@ -131,6 +124,11 @@ mat-form-field {
 
     .form-hero {
       height: 100%;
+
+      .cadastrar {
+        margin-bottom: 0px;
+        margin-top: 350px;
+      }
     }
 
     // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
@@ -144,43 +142,32 @@ mat-form-field {
     display: none;
   }
 
-  .desktop-content {
-    display: block;
-    background-color: $laranjaf2;
-    width: 50%;
-    /*background: url('../../../../../assets/Background Figma Desktop 2 1.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;*/
+  .pontos-grandes {
+    left: 0;
+    img {
+      width: 142px;
+      height: 137px;
+    }
+  }
 
-    .hero {
-      display: flex;
-      flex-direction: column;
-      width: 75%;
-      height: 100%;
-      margin: 0 auto;
-      
-      img {
-        margin-top: 3em;
-        align-self: flex-start;
-      }
+  .ondas {
+    img {
+      width: 165px;
+    }
+  }
 
-      .content {
-        position: relative;
-        color: #fff;
-        align-self: center;
-        top: 26%;
+  .pontos-pequenos {
+    right: 5px;
+    bottom: 5%;
 
-        h1 {
-          text-align: left;
-          font-weight: bold;
-          font-size: 30px;
-        }
+    img {
+      width: 205px;
+    }
+  }
 
-        p {
-          font-size: 20px;
-        }
-      }
+  mat-form-field {
+    input {
+      font-size: 15px;
     }
   }
 }

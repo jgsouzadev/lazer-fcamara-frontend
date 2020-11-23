@@ -1,43 +1,175 @@
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 16px;
+@import "../../../../../custom-theme.scss";
+
+.main {
   height: 100%;
+  width: 100%;
+}
 
-  img {
-    padding-bottom: 32px;
-  }
+.mobile-hide {
+  display: none;
+}
 
-  div {
+.mobile-main {
+  min-height: 100%; // This was very important to not break the graphisms, it will always load at least the height needed
+  width: 100%;
+  background-color: $background-color;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .form-hero {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+    //height: 100%; // Important to the desktop version
+    width: 90%;
+    margin: 0 auto;
+    min-height: 100vh; // This was very important to not break the graphisms, it will always load at least the height needed
+  
+    .logo-mobile {
+      padding: 2em 0 12em;
+      width: 115px;
+    }
 
-    .example-full-width {
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      width: 90%;
       position: relative;
+      z-index: 10;
 
-      span {
-        position: absolute;
-        left: -11px;
-        bottom: -18px;
-        font-size: 12px;
-        color: red;
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    
+        mat-form-field:first-of-type {
+          margin-bottom: -5px;
+
+        }
+
+        mat-form-field {
+          ::ng-deep .mat-form-field-subscript-wrapper {
+            padding: 2px 1px 0;
+            margin: 0;
+          }
+        }
       }
+    }
+    .login {
+      margin-bottom: 40px;
+      margin-top: auto; // sticks to the bottom when the is flex-direction: column; on the parent component
+    }
+  }
+}
+
+.button-submit {
+  margin-top: 34px;
+  background-color: $primary-color;
+  color: #fff;
+  font-size: 18px;
+  height: 60px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 1em;
+
+  &:active {
+    background-color: $laranjaf1
+  }
+}
+
+mat-form-field {
+  ::ng-deep .mat-form-field-flex {
+    background-color: #fff;
+  }
+} 
+
+.pontos-grandes {
+  position: absolute;
+  width: 100%;
+  top: 12%;
+  left: -24px;
+  overflow: hidden;
+}
+
+.ondas {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+  overflow: hidden;
+}
+
+.pontos-pequenos {
+  position: absolute;
+  width: auto;
+  text-align: right;
+  bottom: 8%;
+  overflow: hidden;
+  right: -33px;
+}
+
+// When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
+@media all and (min-width: 1280px) {
+  .mobile-hide {
+    display: block;
+  }
+
+  .main {
+    display: flex;
+    height: 100%;
+  }
+
+  .mobile-main {
+    width: 50%;
+
+    .form-hero {
+      height: 100%;
+
+      .login {
+        margin-bottom: 0px;
+        margin-top: 350px;
+      }
+    }
+
+    // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
+    .main-content { 
+      position: relative;
+      top: 30%;
     }
   }
 
-  .button-submit {
-    margin-top: 16px;
-    background: #FC6027;
-    color: #fff;
-    font-size: 18px;
-    height: 54px;
-    width: 100%;
+  .logo-mobile {
+    display: none;
   }
 
-  button:disabled {
-    opacity: 0.6;
+  .pontos-grandes {
+    left: 0;
+    img {
+      width: 142px;
+      height: 137px;
+    }
+  }
+
+  .ondas {
+    img {
+      width: 165px;
+    }
+  }
+
+  .pontos-pequenos {
+    right: 5px;
+    bottom: 5%;
+
+    img {
+      width: 205px;
+    }
+  }
+
+  mat-form-field {
+    input {
+      font-size: 15px;
+    }
   }
 }
