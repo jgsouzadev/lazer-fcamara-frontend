@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
 export interface Platforms {
@@ -50,6 +50,13 @@ export class QueueEntryComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.userPosition = 0;
+    this.buttonFilter = false
+    clearInterval(this.refIntervalUserPosition)
+    clearInterval(this.refIntervalUserPosition)
+  }
+
   handlePlatformChange() {
     this.buttonFilter = false;
   }
@@ -77,11 +84,23 @@ export class QueueEntryComponent implements OnInit {
     if (this.userPosition == 1) {
       this.httpService.quitGame(this.userId).subscribe(() => { 
         console.log('Sucesso ao sair do jogo!')
+        this.userPosition = 0;
+        this.buttonFilter = false
+        this.userChecked = false
+        this.userId = 0
+        clearInterval(this.refIntervalUserPosition)
+        clearInterval(this.refIntervalUserPosition)
       })
     }
     else {
       this.httpService.quitQueue(this.userId).subscribe(() => { 
         console.log('Sucesso ao sair da fila!')
+        this.userPosition = 0
+        this.buttonFilter = false
+        this.userChecked = false
+        this.userId = 0
+        clearInterval(this.refIntervalUserPosition)
+        clearInterval(this.refIntervalUserPosition)
       })
     }
   }

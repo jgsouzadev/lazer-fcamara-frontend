@@ -14,6 +14,11 @@
   [selectedPlatform]='selectedPlatform' 
   (onClickEvent)="handleUserEnterQueue()"
 ></app-queue-in>
+
+*ngIf="!userPosition || userChecked"
+
+
+*ngIf="userPosition && !userChecked"
 -->
 <app-user-on-queue 
   [userPosition]='userPosition' 
