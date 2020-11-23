@@ -36,12 +36,13 @@ $lazer-fcamara-theme: mat-light-theme((
 
 html, body { height: 100%; width: 100%; }
 body { margin: 0; font-family: Montserrat, "Helvetica Neue", sans-serif; }
+.mat-typography p { margin: 0; }
 
 // Variables
 $font-stack: Montserrat, "Helvetica Neue", sans-serif;
 $background-color: #E5E5E5;
 $primary-color: #FF4500;
-$primary-color-disabled: #FC6027;
+$laranjaf1: #FC6027;
 $laranjaf2: #FF662E;
 $bluef0: #414099;
 $bluef1: #484EA5;

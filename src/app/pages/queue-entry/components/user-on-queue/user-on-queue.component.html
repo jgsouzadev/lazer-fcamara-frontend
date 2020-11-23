@@ -1,16 +1,17 @@
-<app-header></app-header>
 <div class="user-on-queue">
   <div class="hero">
     <div class="content">
-      <p>Sua posição na fila:</p>
+      <p class="title">Sua posição na fila:</p>
       <div class="user-position">
-        {{userPosition}}
+        <p>{{userPosition}}</p>
       </div>
-      <p>...</p>
+      <p class="pontos">...</p>
       <p>Aguarde a notificação quando for sua vez.</p>
-      <p>Boa sorte!</p>
-      <button (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
-      <button (click)="onUserChecking.emit()">OK</button>
+      <p class="boa-sorte">Boa sorte!</p>
+      <div class="bttns">
+        <button class="sair-bttn" (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+        <button class="ok-bttn"   (click)="onUserChecking.emit()">OK</button>
+      </div>
     </div>
   </div>
 </div>
