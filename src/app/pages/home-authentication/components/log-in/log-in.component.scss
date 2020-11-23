@@ -14,7 +14,7 @@
   width: 100%;
   background-color: $background-color;
   position: relative;
-  overflow: auto;
+  overflow: hidden;
 
   .form-hero {
     display: flex;
@@ -92,6 +92,7 @@ mat-form-field {
   position: absolute;
   width: 100%;
   top: 12%;
+  left: -24px;
   overflow: hidden;
 }
 
@@ -119,6 +120,7 @@ mat-form-field {
   text-align: right;
   bottom: 8%;
   overflow: hidden;
+  right: -33px;
 }
 
 // When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
