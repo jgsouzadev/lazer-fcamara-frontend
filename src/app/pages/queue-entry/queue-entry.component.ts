@@ -46,9 +46,11 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
       this.platforms = [ ...data.platforms ]
 
       this.refIntervalPlatformQueue = setInterval(() => {
-        this.httpService.getPlatformQueue().subscribe(data => {
-          this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
-        })
+        if (this.userPosition !== 1) {
+          this.httpService.getPlatformQueue().subscribe(data => {
+            this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
+          })
+        }
       }, 300000) // 5 minutes
     },
     (error) => {
@@ -77,7 +79,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.userPosition = data.userInfo.position
         this.userId = data.userInfo.id
         this.refIntervalUserPosition = setInterval(() => {
-          if (this.userPosition) {
+          if (this.userPosition && this.userPosition !== 1) {
             this.httpService.getUserPosition(this.userId).subscribe(data => {
               if (this.userPosition) {
                 // There was cases that the request was made in the same moment that the interval was cleared
