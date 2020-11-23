@@ -1,12 +1,14 @@
 <div class="user-on-queue">
   <div class="hero">
     <div class="content">
-      <p class="title">Sua posição na fila:</p>
-      <div class="user-position">
-        <p>{{userPosition}}</p>
-      </div>
-      <p class="pontos">...</p>
-      <p>Aguarde a notificação quando for sua vez.</p>
+      <ng-template [ngIf]="userPosition > 0" [ngIfElse]="suavez">
+        <p class="title">Sua posição na fila:</p>
+        <div class="user-position">
+          <p>{{userPosition}}</p>
+        </div>
+        <p class="pontos">...</p>
+        <p>Aguarde a notificação quando for sua vez.</p>
+      </ng-template>
       <p class="boa-sorte">Boa sorte!</p>
       <div class="bttns">
         <button class="sair-bttn" (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
@@ -15,3 +17,8 @@
     </div>
   </div>
 </div>
+
+<ng-template #suavez>
+  <p class="jogar">Sua vez de jogar!</p>
+  <img class="medalha" src="../../../../../assets/medalha 1.svg" alt="Medalha">
+</ng-template>
