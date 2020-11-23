@@ -76,6 +76,7 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('userToken');
+    this.router.navigateByUrl('home-authentication')
   }
 
 }
