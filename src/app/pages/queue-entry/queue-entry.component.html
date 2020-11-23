@@ -1,15 +1,15 @@
 <app-platform-list
-[platforms]="platforms"
-[platformQueue]="platformQueue"
-(onPlatformChange)="selectedPlatform = $event"
-(onPlatformClick)="handlePlatformChange()"
+  [platforms]="platforms"
+  [platformQueue]="platformQueue"
+  (onPlatformChange)="selectedPlatform = $event"
+  (onPlatformClick)="handlePlatformChange()"
+  [buttonFilter]="buttonFilter"
 ></app-platform-list>
 <!--
 <app-queue-in 
   (userPositionEvent)='userPosition = $event.position;' 
   [selectedPlatform]='selectedPlatform' 
   (onClickEvent)="handleUserEnterQueue()"
-  [buttonFilter]="buttonFilter"
 ></app-queue-in>
 <app-user-on-queue 
   [userPosition]='userPosition' 
