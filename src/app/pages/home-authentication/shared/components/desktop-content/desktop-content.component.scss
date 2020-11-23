@@ -9,6 +9,7 @@
   background-color: $laranjaf2;
   width: 50vw;
   height: 100%;
+  position: relative;
 
   .hero {
     display: flex;
@@ -16,6 +17,7 @@
     width: 75%;
     height: 100%;
     margin: 0 auto;
+    position: relative;
     
     img {
       margin-top: 3em;
@@ -38,5 +40,56 @@
         font-size: 20px;
       }
     }
+  }
+}
+
+// Graphisms 
+.graphism {
+  position: absolute;
+  overflow: hidden;
+}
+
+.ondas {
+  left: 0;
+  top: 120px;
+
+  img {
+    width: 113px;
+  }
+}
+
+.pontos {
+  right: 100px;
+  top: 35px;
+  
+  img {
+    width: 142px;
+  }
+}
+
+.pontos2 {
+  left: 195px;
+  bottom: 188px;
+  
+  img {
+    width: 142px;
+  }
+}
+
+.pontos-4 {
+  right: 31px;
+  bottom: 359px;
+  
+  img {
+    width: 61px;
+  }
+}
+
+.x {
+  right: 120px;
+  bottom: 108px;
+  
+  img {
+    width: 60px;
   }
 }
