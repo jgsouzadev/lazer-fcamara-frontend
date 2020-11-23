@@ -13,14 +13,12 @@ export class AuthService {
     private router: Router
   ) { }
 
-  async authHeaders() {
-    //will be used
+  authHeaders() {
     const userToken = this.getLocalUser();
 
-
-
     return new HttpHeaders({
-      Authorization2: 'Bearer ' + userToken,
+      'Authorization': 'Bearer ' + userToken,
+      'Content-Type': 'application/json'
     });
   }
 
