@@ -101,7 +101,7 @@ mat-form-field {
 
 .pontos-pequenos {
   position: absolute;
-  width: 100%;
+  width: auto;
   text-align: right;
   bottom: 8%;
   overflow: hidden;
@@ -125,9 +125,9 @@ mat-form-field {
     .form-hero {
       height: 100%;
 
-      .login {
+      .cadastrar {
         margin-bottom: 0px;
-        margin-top: 350px; // sticks to the bottom when the is flex-direction: column; on the parent component
+        margin-top: 350px;
       }
     }
 
@@ -140,5 +140,34 @@ mat-form-field {
 
   .logo-mobile {
     display: none;
+  }
+
+  .pontos-grandes {
+    left: 0;
+    img {
+      width: 142px;
+      height: 137px;
+    }
+  }
+
+  .ondas {
+    img {
+      width: 165px;
+    }
+  }
+
+  .pontos-pequenos {
+    right: 5px;
+    bottom: 5%;
+
+    img {
+      width: 205px;
+    }
+  }
+
+  mat-form-field {
+    input {
+      font-size: 15px;
+    }
   }
 }
