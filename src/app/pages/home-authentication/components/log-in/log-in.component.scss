@@ -14,7 +14,7 @@
   width: 100%;
   background-color: $background-color;
   position: relative;
-  overflow: auto;
+  overflow: hidden;
 
   .form-hero {
     display: flex;
@@ -69,6 +69,10 @@
       button:disabled {
         background-color: $primary-color-disabled
       }
+
+      .button-submit:hover {
+        background-color: red;  // mudar isso
+      }
     }
 
     .cadastrar {
@@ -78,10 +82,17 @@
   }
 }
 
+mat-form-field {
+  ::ng-deep .mat-form-field-flex {
+    background-color: #fff;
+  }
+} 
+
 .pontos-grandes {
   position: absolute;
   width: 100%;
   top: 12%;
+  left: -24px;
   overflow: hidden;
 }
 
@@ -109,10 +120,11 @@
   text-align: right;
   bottom: 8%;
   overflow: hidden;
+  right: -33px;
 }
 
 // When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
-@media all and (min-width: 1024px) {
+@media all and (min-width: 1280px) {
   .main {
     display: flex;
     height: 100%;
@@ -140,6 +152,10 @@
     display: block;
     background-color: $laranjaf2;
     width: 50%;
+    /*background: url('../../../../../assets/Background Figma Desktop 2 1.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;*/
 
     .hero {
       display: flex;

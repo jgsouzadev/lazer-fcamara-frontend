@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
-
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -35,7 +35,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatInputModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatRippleModule
   ]
 })
 export class MaterialModule { }

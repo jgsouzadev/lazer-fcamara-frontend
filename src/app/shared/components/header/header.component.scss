@@ -1,23 +1,37 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80px;
-  background: orangered;
-  padding: 0 16px;
+@import "../../../../custom-theme.scss";
 
-  .icon {
+.bg {
+  background: #FF662E;
+
+  header {
     display: flex;
-
-    p {
-      color: #fff;
-      font-size: 42px;
-      margin: 20px 0 0 0;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 16px;
+  
+    .icon {
+      display: flex;
+  
+      p {
+        color: #fff;
+        font-size: 42px;
+        margin: 20px 0 0 0;
+      }
+    }
+  
+    .sair {
+      width: 35px;
     }
   }
+}
 
-  span {
-    font-size: 42px;
-    color: #fff;
+@media all and (min-width: 1280px) {
+  header {
+    width: 80%;
+    margin: 0 auto;
+    .sair {
+      padding-right: 15px;
+    }
   }
 }

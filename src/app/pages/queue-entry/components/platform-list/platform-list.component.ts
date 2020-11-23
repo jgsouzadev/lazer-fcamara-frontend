@@ -14,6 +14,9 @@ export class PlatformListComponent implements OnInit {
   @Output() onPlatformChange = new EventEmitter();
   @Output() onPlatformClick = new EventEmitter();
 
+  // Disables the button after being clicked
+  @Input() buttonFilter: boolean = false
+
   constructor(
   ) { }
 

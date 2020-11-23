@@ -1,17 +1,60 @@
+@import "../../../../../custom-theme.scss";
+
+.mobile-hide {
+  display: none;
+}
+
 .mat-list-base {
   padding-top: 0px;
   // because of the padding, when clicking it was outlining the whole component
 }
 
 .content {
-  padding: 0 16px;
+  padding: 0 3px;
+}
+
+.platform-list {
+  background-color: $background-color;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+
+  header {
+    p {
+      font-size: 15px;
+      padding: 45px 0 7px;
+    }
+  }
 }
 
 ::ng-deep .mat-list-item {
-  height: 60px !important;
-  border-radius: 5px;
-  border: 1px solid #7a7a7a;
+  height: 100px !important;
+  border-radius: 8px;
+  //border: 1px solid #7a7a7a;
   margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 1.5px 4px 5px #9b9b9b;
+  //padding: 15px 0 !important;
+
+  &:hover {
+    background-color: #fff !important;
+  }
+
+  &:active, &:focus {
+    box-shadow: inset 0 0 10px 1px #929292;
+  }
+}
+
+.mat-list-single-selected-option {
+  background: #fff !important;
 }
 
 .box-item-platform {
@@ -20,8 +63,9 @@
   align-items: center;
 
   img {
-    width: 50px;
-    padding-right: 16px;
+    width: 80px;
+    height: 75px;
+    position: absolute;
   }
 
   .text-item {
@@ -30,11 +74,145 @@
     width: 100%;
     align-items: center;
 
-    p {
-      margin: 0;
-      color: #707070;
-      font-weight: 400;
-      font-size: 14px;
+    div {
+      width: 130px;
+
+      p {
+        margin: 0;
+        color: #000000;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 35px;
+      }
+  
+      #platform-name {
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.content {
+  .platform-list-bttn {
+    background-color: $bluef0;
+    width: 180px;
+    height: 50px;
+    color: #fff;
+    border-radius: 6px;
+    text-transform: uppercase;
+    float: right;
+    outline: none;
+    margin-top: 3px;
+    font-size: 15px;
+
+    &:active {
+      background-color: $bluef1;
+    }
+  }
+}
+
+// Graphisms 
+.pontos-pequenos {
+  position: absolute;
+  right: -8px;
+  overflow: hidden;
+  width: 76px;
+  height: 72px;
+  padding-top: 6px;
+}
+
+.pontos-grandes {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding-top: 6px;
+  width: 110px;
+  height: 80px;
+}
+
+.ondas, .ondas-finas {
+  position: absolute;
+  overflow: hidden;
+  padding-top: 6px;
+  bottom: 10px;
+}
+
+@media all and (min-width: 1280px) {
+
+  .desktop-hide {
+    display: none;
+  }
+
+  .mobile-hide {
+    display: block;
+  }
+
+  .hero {
+    width: 40%;
+    header {
+      p {
+        font-size: 18px;
+        padding: 80px 0 7px;
+      }
+    }
+  }
+
+  .box-item-platform {
+    .text-item {
+      div {
+        margin-left: -2em;
+      }
+    }
+  }
+
+  .pontos-4 {
+    position: absolute;
+    overflow: hidden;
+    padding-top: 6px;
+    top: 285px;
+    left: 130px;
+  }
+
+  .pontos-pequenos {
+    right: 130px;
+    width: 110px;
+    height: unset;
+    img {
+      width: 100%;
+    }
+  }
+  
+  .pontos-grandes {
+    width: 185px;
+    height: 310px;
+    img {
+      width: 180px;
+    }
+  }
+  
+  .ondas-finas {
+    bottom: 125px;
+    width: 300px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .content {
+    .platform-list-bttn {
+      width: 210px;
+      height: 60px;
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  .box-item-platform {
+    img {
+      position: relative;
+      margin-right: 16px;
     }
   }
 }
