@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
 export interface Platforms {
@@ -31,6 +31,8 @@ export class QueueEntryComponent implements OnInit {
   refIntervalUserPosition: number
   refIntervalPlatformQueue: Number
 
+  userChecked: boolean = false
+
   constructor(
     private httpService: QueueEntryHttpService
   ) { }
@@ -48,6 +50,13 @@ export class QueueEntryComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.userPosition = 0;
+    this.buttonFilter = false
+    clearInterval(this.refIntervalUserPosition)
+    clearInterval(this.refIntervalUserPosition)
+  }
+
   handlePlatformChange() {
     this.buttonFilter = false;
   }
@@ -57,8 +66,6 @@ export class QueueEntryComponent implements OnInit {
       this.buttonFilter = true
       this.userPosition = data.userInfo.position
       this.userId = data.userInfo.id
-      this.postStorageItem('userId', data.userInfo.id)
-
       this.refIntervalUserPosition = setInterval(() => {
         if (this.userPosition) {
           this.httpService.getUserPosition(this.userId).subscribe(data => {
@@ -77,34 +84,24 @@ export class QueueEntryComponent implements OnInit {
     if (this.userPosition == 1) {
       this.httpService.quitGame(this.userId).subscribe(() => { 
         console.log('Sucesso ao sair do jogo!')
-        this.removeUser()
+        this.userPosition = 0;
+        this.buttonFilter = false
+        this.userChecked = false
+        this.userId = 0
+        clearInterval(this.refIntervalUserPosition)
+        clearInterval(this.refIntervalUserPosition)
       })
     }
     else {
       this.httpService.quitQueue(this.userId).subscribe(() => { 
         console.log('Sucesso ao sair da fila!')
-        this.removeUser()
+        this.userPosition = 0
+        this.buttonFilter = false
+        this.userChecked = false
+        this.userId = 0
+        clearInterval(this.refIntervalUserPosition)
+        clearInterval(this.refIntervalUserPosition)
       })
     }
-  }
-
-  removeUser() {
-    clearInterval(this.refIntervalUserPosition)
-    this.userPosition = 0
-    this.userId = 0
-    this.removeStorageItem('userId')
-    this.buttonFilter = false
-  }
-
-  postStorageItem(dataName: string, data) {
-    localStorage.setItem(dataName, data)
-  }
-
-  getStorageItem(data: string) {
-    localStorage.getItem(data)
-  }
-
-  removeStorageItem(data: string) {
-    localStorage.removeItem('userId')
   }
 }

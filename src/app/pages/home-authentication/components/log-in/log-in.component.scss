@@ -64,14 +64,10 @@
         border-radius: 6px;
         width: 100%;
         margin-bottom: 1em;
-      }
-    
-      button:disabled {
-        background-color: $primary-color-disabled
-      }
 
-      .button-submit:hover {
-        background-color: red;  // mudar isso
+        &:active {
+          background-color: $laranjaf1
+        }
       }
     }
 
