@@ -10,6 +10,7 @@
   min-height: 100%;
   display: flex;
   overflow: hidden;
+  position: relative;
   //justify-content: center;
 }
 
@@ -23,6 +24,7 @@
   align-items: center;
   margin: 20vh auto;
   height: 350px;
+  position: relative;
 
   .content {
     display: flex;
@@ -139,5 +141,51 @@
     .bttns {
       margin-top: 2em;
     }
+  }
+}
+
+// Graphisms
+.ondas {
+  position: absolute;
+  overflow: hidden;
+  top: 50px;
+  left: 30px;
+
+  img {
+    width: 83px;
+  }
+}
+
+.pontos-grandes {
+  position: absolute;
+  overflow: hidden;
+  top: 20px;
+  right: 30px;
+
+  img {
+    height: 105px;
+    width: 116px;
+  }
+}
+
+.pontos-pequenos {
+  position: absolute;
+  overflow: hidden;
+  bottom: 91px;
+  left: 37px;
+
+  img {
+    width: 76px;
+  }
+}
+
+.ondas2 {
+  position: absolute;
+  overflow: hidden;
+  bottom: 32px;
+  right: -7px;
+
+  img {
+    width: 113px;
   }
 }
