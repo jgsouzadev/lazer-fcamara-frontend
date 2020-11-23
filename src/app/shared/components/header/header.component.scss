@@ -9,6 +9,8 @@
     justify-content: space-between;
     height: 80px;
     padding: 0 16px;
+    width: 85%;
+    margin: auto;
   
     .icon {
       display: flex;
@@ -31,9 +33,7 @@
 
 @media all and (min-width: 1280px) {
   header {
-    width: 80%;
-    margin: 0 auto;
-    .sair {
+    a {
       margin-right: 25px;
     }
   }
