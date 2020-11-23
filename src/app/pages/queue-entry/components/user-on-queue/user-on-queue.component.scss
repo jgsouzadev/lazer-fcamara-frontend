@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   margin: 20vh auto;
-  height: 350px;
+  height: 370px;
   position: relative;
 
   .content {
@@ -33,6 +33,7 @@
     justify-content: space-around;
     width: 80%;
     margin: auto;
+    height: 310px;
 
     p {
       font-size: 14px;
@@ -122,7 +123,7 @@
   flex-direction: column;
   align-items: center;
   margin: 30vh auto;
-  height: 200px;
+  height: 220px;
 
   .content-quit {
     display: flex;
@@ -130,7 +131,7 @@
     align-items: center;
     width: 80%;
     margin: auto;
-    height: 300px;
+    height: 220px;
     justify-content: center;
     text-align: center;
 
@@ -139,7 +140,7 @@
     }
     
     .bttns {
-      margin-top: 2em;
+      margin-top: 2.5em;
     }
   }
 }
@@ -187,5 +188,125 @@
 
   img {
     width: 113px;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .mobile-hide {
+    display: block;
+  }
+  
+  .desktop-hide {
+    display: none;
+  }
+  
+  .hero {
+    width: 30%;
+    height: 480px;
+  
+    .content {
+      height: 420px;
+
+      .boa-sorte {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .confirm-user-quit {
+    width: 25%;
+    height: 280px;
+    
+    .content-quit {
+      width: 75%;
+      
+      p {
+        font-size: 16px;
+      }
+
+      p:first-of-type {
+        margin-bottom: 40px;
+      }
+
+      .bttns {
+        margin-top: 3.8em;
+      }
+    }
+  }
+
+  .bttns {
+    .sair-bttn {
+      font-size: 16px;
+    }
+  
+    .ok-bttn {
+      font-size: 16px;
+    }
+  }
+
+  // Graphisms 
+  .pontos-4 {
+    position: absolute;
+    overflow: hidden;
+    top: 307px;
+    left: 126px;
+  
+    img {
+      width: 60px;
+    }
+  }
+
+  .ondas-finas {
+    position: absolute;
+    overflow: hidden;
+    top: 70px;
+    right: 40%;
+  
+    img {
+      width: 200px;
+    }
+  }
+
+  .pontos-grandes {
+    top: 86px;
+    right: 135px;
+    
+    img {
+      height: 124px;
+      width: 129px;
+    }
+  }
+
+  .ondas-finas2 {
+    position: absolute;
+    overflow: hidden;
+    bottom: 115px;
+    left: 135px;
+  
+    img {
+      height: 91px;
+      width: 200px;
+    }
+  }
+
+  .pontos-4-2 {
+    position: absolute;
+    overflow: hidden;
+    bottom: 150px;
+    right: 45%;
+  
+    img {
+      width: 60px;
+    }
+  }
+    
+  .pontos-pequenos {
+    bottom: 100px;
+    right: 135px;
+    left: unset;
+  
+    img {
+      width: 172px;
+    }
   }
 }
