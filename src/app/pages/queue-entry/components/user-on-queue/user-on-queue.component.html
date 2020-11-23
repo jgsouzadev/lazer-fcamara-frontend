@@ -1,7 +1,7 @@
 <div class="user-on-queue">
-  <div class="hero">
+  <div class="hero" *ngIf="!userQuit">
     <div class="content">
-      <ng-template [ngIf]="userPosition > 0" [ngIfElse]="suavez">
+      <ng-template [ngIf]="userPosition > 1" [ngIfElse]="suavez">
         <p class="title">Sua posição na fila:</p>
         <div class="user-position">
           <p>{{userPosition}}</p>
@@ -11,8 +11,18 @@
       </ng-template>
       <p class="boa-sorte">Boa sorte!</p>
       <div class="bttns">
-        <button class="sair-bttn" (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
-        <button class="ok-bttn"   (click)="onUserChecking.emit()">OK</button>
+        <button class="sair-bttn" (click)="userPosition === 1 ? onUserQuitQueue.emit() : userQuit = true"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+        <button class="ok-bttn"   (click)="onUserChecking.emit()">ok</button>
+      </div>
+    </div>
+  </div>
+  <div class="confirm-user-quit" *ngIf="userQuit">
+    <div class="content-quit">
+      <p>Você está saindo da fila.</p>
+      <p>Tem certeza que quer sair da fila?</p>
+      <div class="bttns">
+        <button class="sair-bttn" (click)="userQuit = false">Cancelar</button>
+        <button class="ok-bttn" (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
       </div>
     </div>
   </div>

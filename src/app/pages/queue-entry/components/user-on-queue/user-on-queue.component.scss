@@ -71,34 +71,34 @@
       font-size: 18px;
       margin: 10px 0 20px;
     }
+  }
+}
 
-    .bttns {
-      display: flex;
-      flex-flow: row nowrap;
-      width: 100%;
-      justify-content: space-between;
-      margin-bottom: 5px;
+.bttns {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 5px;
 
-      .sair-bttn {
-        background-color: #fff;
-        color: $bluef0;
-        width: 50%;
-        padding: 1.2em;
-        font-size: 12px;
-        border: 0.5px solid $bluef0;
-        border-radius: 6px;
-      }
-  
-      .ok-bttn {
-        background-color:$bluef0;
-        color: #fff;
-        width: 50%;
-        font-size: 12px;
-        border-radius: 6px;
-        margin-left: 30px;
-      }
-    }
+  .sair-bttn {
+    background-color: #fff;
+    color: $bluef0;
+    width: 50%;
+    padding: 1.2em;
+    font-size: 12px;
+    border: 0.5px solid $bluef0;
+    border-radius: 6px;
+  }
 
+  .ok-bttn {
+    background-color:$bluef0;
+    color: #fff;
+    width: 50%;
+    font-size: 12px;
+    border-radius: 6px;
+    margin-left: 30px;
+    text-transform: uppercase;
   }
 }
 
@@ -109,4 +109,35 @@
 .medalha {
   padding: 2.5em 0 1.8em;
   width: 95px;
+}
+
+.confirm-user-quit {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30vh auto;
+  height: 200px;
+
+  .content-quit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    height: 300px;
+    justify-content: center;
+    text-align: center;
+
+    p:first-of-type {
+      margin-bottom: 20px;
+    }
+    
+    .bttns {
+      margin-top: 2em;
+    }
+  }
 }

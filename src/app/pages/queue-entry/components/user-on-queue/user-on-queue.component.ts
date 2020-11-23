@@ -15,6 +15,8 @@ export class UserOnQueueComponent implements OnInit {
   @Output() onUserQuitQueue = new EventEmitter()
   @Output() onUserChecking  = new EventEmitter()
 
+  userQuit = false;
+
   constructor() { }
 
   ngOnInit(): void {
