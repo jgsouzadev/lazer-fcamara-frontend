@@ -35,7 +35,7 @@
           </div>
         </mat-list-option>
       </mat-selection-list>
-      <button class="platform-list-bttn" type="button" [disabled]="buttonFilter" (click)="onClickEvent.emit()">Entrar na fila</button>
+      <button *ngIf="!userChecked" class="platform-list-bttn" type="button" [disabled]="buttonFilter" (click)="onClickEvent.emit()">Entrar na fila</button>
     </div>
   </div>
 </div>

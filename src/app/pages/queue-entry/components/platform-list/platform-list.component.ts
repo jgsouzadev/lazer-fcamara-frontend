@@ -18,7 +18,8 @@ export class PlatformListComponent implements OnInit {
 
   // Disables the button after being clicked
   @Input() buttonFilter: boolean = false
-
+  @Input() userChecked:  boolean = false
+  
   constructor(
   ) { }
 

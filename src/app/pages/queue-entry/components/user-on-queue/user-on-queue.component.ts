@@ -10,9 +10,10 @@ export class UserOnQueueComponent implements OnInit {
 
   @Input() userPosition: number
 
-  @Input() selectedPlatform: Platforms
+  //@Input() selectedPlatform: Platforms
 
   @Output() onUserQuitQueue = new EventEmitter()
+  @Output() onUserChecking  = new EventEmitter()
 
   constructor() { }
 

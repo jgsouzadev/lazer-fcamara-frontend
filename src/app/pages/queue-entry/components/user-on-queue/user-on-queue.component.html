@@ -1,5 +1,16 @@
-<div *ngIf="selectedPlatform && userPosition">
-  <p>Plataforma: {{selectedPlatform.value}}</p>
-  <p>Sua posição atual: {{userPosition}}</p>
-  <button mat-raised-button (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+<app-header></app-header>
+<div class="user-on-queue">
+  <div class="hero">
+    <div class="content">
+      <p>Sua posição na fila:</p>
+      <div class="user-position">
+        {{userPosition}}
+      </div>
+      <p>...</p>
+      <p>Aguarde a notificação quando for sua vez.</p>
+      <p>Boa sorte!</p>
+      <button (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+      <button (click)="onUserChecking.emit()">OK</button>
+    </div>
+  </div>
 </div>

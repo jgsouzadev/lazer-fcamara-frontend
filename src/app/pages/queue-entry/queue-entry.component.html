@@ -5,7 +5,8 @@
   (onPlatformChange)="selectedPlatform = $event"
   (onPlatformClick)="handlePlatformChange()"
   (onClickEvent)="handleUserEnterQueue()"
-  *ngIf="!userPosition"
+  [userChecked]="userChecked"
+  *ngIf="!true"
 ></app-platform-list>
 <!--
 <app-queue-in 
@@ -16,7 +17,7 @@
 -->
 <app-user-on-queue 
   [userPosition]='userPosition' 
-  [selectedPlatform]='selectedPlatform' 
-  *ngIf="userPosition"
+  *ngIf="true"
   (onUserQuitQueue)="handleUserQuitQueue()"
+  (onUserChecking)="userChecked = true"
 ></app-user-on-queue>
