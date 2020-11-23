@@ -37,18 +37,18 @@
       </ng-template>
       <p class="boa-sorte">Boa sorte!</p>
       <div class="bttns">
-        <button class="sair-bttn" (click)="userPosition === 1 ? onUserQuitQueue.emit() : userQuit = true"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+        <button class="sair-bttn" (click)="userQuit = true"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
         <button class="ok-bttn"   (click)="onUserChecking.emit()">ok</button>
       </div>
     </div>
   </div>
   <div class="confirm-user-quit" *ngIf="userQuit">
     <div class="content-quit">
-      <p>Você está saindo da fila.</p>
-      <p>Tem certeza que quer sair da fila?</p>
+      <p>{{ userPosition === 1 ? 'Você está saindo do jogo.'  : 'Você está saindo da fila.' }}</p>
+      <p>{{ userPosition === 1 ? 'Tem certeza que quer sair do jogo?'  : 'Tem certeza que quer sair da fila?' }}</p>
       <div class="bttns">
         <button class="sair-bttn" (click)="userQuit = false">Cancelar</button>
-        <button class="ok-bttn" (click)="onUserQuitQueue.emit()"> {{userPosition > 1 ? 'Sair da fila' : 'Sair do jogo'}} </button>
+        <button class="ok-bttn" (click)="onUserQuitQueue.emit()"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
       </div>
     </div>
   </div>
