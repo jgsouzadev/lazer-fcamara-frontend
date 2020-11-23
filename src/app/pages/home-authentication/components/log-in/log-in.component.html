@@ -1,16 +1,5 @@
 <div class="main">
-
-  <div class="desktop-content">
-    <div class="hero">
-      <img class="logo-desktop" src="../../../../../assets/Logo Fifo negativo.svg" alt="Icone da página">
-      
-      <div class="content">
-        <h1>A FILA DIGITAL DO FIFO</h1>
-        <p>Escolha sua plataforma de jogo e aguarde sua vez com mais liberdade</p>
-      </div>
-    </div>
-  </div>
-  
+  <app-desktop-content class="mobile-hide"></app-desktop-content>
   <div class="mobile-main">
 
     <div class="pontos-grandes">
@@ -18,7 +7,7 @@
     </div>
   
     <div class="form-hero">
-      <img class="logo-mobile" src="../../../../../assets/Logo Fifo.svg" alt="Icone do página" srcset="">
+      <img class="logo-mobile" src="../../../../../assets/Logo Fifo.png" alt="Icone do página" srcset="">
 
       <div class="main-content">
         <form [formGroup]="userForm" (ngSubmit)="authentication()" class="example-form">

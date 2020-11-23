@@ -1,0 +1,42 @@
+@import "../../../../../../custom-theme.scss";
+
+.mobile-hide {
+  display: none;
+}
+
+.desktop-content {
+  display: block;
+  background-color: $laranjaf2;
+  width: 50vw;
+  height: 100%;
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+    
+    img {
+      margin-top: 3em;
+      align-self: flex-start;
+    }
+
+    .content {
+      position: relative;
+      color: #fff;
+      align-self: center;
+      top: 26%;
+
+      h1 {
+        text-align: left;
+        font-weight: bold;
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+}

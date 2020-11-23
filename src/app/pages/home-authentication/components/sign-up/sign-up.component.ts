@@ -27,21 +27,38 @@ export class SignUpComponent implements OnInit {
 
   formBuilderUser() {
     this.userForm = this.formBuilder.group({
-      name: [null, Validators.required],
+      name: [null, Validators.required, Validators.minLength(2)],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]],
-    })
+      confirmPassword: [null, [Validators.required, Validators.minLength(6)]],
+    }, { validator: this.checkPassword('password', 'confirmPassword') })
+  }
+
+  checkPassword(password: string, passwordConfirmation: string) {
+    return (group: FormGroup) => {
+      let passwordInput = group.controls[password],
+      passwordConfirmationInput = group.controls[passwordConfirmation];
+      
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({notEquivalent: true})
+      }
+      else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    }
   }
 
   async createAccount() {
-    let userAuthenticate = await this.authService.createUser(this.userForm.value);
+    if (this.userForm.valid) {
+      let userAuthenticate = await this.authService.createUser(this.userForm.value);
 
-    if (!userAuthenticate) {
-      this.openSnackBar('Lamento, mas não foi possível criar seu usuário', 'Fechar');
-      return
+      if (!userAuthenticate) {
+        this.openSnackBar('Lamento, mas não foi possível criar seu usuário', 'Fechar');
+        return
+      }
+
+      await this.router.navigateByUrl('queue-entry')
     }
-
-    await this.router.navigateByUrl('queue-entry')
   }
 
   openSnackBar(message: string, action: string) {
