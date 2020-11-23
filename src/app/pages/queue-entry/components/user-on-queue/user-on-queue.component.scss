@@ -1,0 +1,331 @@
+@import "../../../../../custom-theme.scss";
+
+.mobile-hide {
+  display: none;
+}
+
+.user-on-queue {
+  background-color: $laranjaf1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  //justify-content: center;
+}
+
+.hero {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 18vh auto;
+  height: 440px;
+  position: relative;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+    height: 350px;
+
+    p {
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .title {
+      margin-bottom: 20px;
+    }
+
+    .user-position {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: $bluef1;
+      display: flex;
+      align-items: center;
+      
+      p {
+        color: $laranjaf1;
+        width: 100%;
+        font-size: 50px;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+
+    .pontos {
+      color: $primary-color;
+      font-size: 45px !important;
+      margin-bottom: 20px;
+      margin-top: -5px;
+    }
+
+    .boa-sorte {
+      text-transform: uppercase;
+      color: $laranjaf1;
+      font-size: 18px;
+      margin: 10px 0 20px;
+    }
+  }
+}
+
+.bttns {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 5px;
+
+  .sair-bttn {
+    background-color: #fff;
+    color: $bluef0;
+    width: 50%;
+    height: 60px;
+    font-size: 12px;
+    border: 0.5px solid $bluef0;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .ok-bttn {
+    background-color:$bluef0;
+    color: #fff;
+    width: 50%;
+    font-size: 12px;
+    border-radius: 6px;
+    margin-left: 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    &:active {
+      background-color: $bluef1
+    }
+  }
+}
+
+.jogar {
+  font-size: 22px !important;
+}
+
+.medalha {
+  padding: 2.5em 0 1.8em;
+  width: 95px;
+}
+
+.confirm-user-quit {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30vh auto;
+  height: 220px;
+
+  .content-quit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    height: 220px;
+    justify-content: center;
+    text-align: center;
+
+    p:first-of-type {
+      margin-bottom: 20px;
+    }
+    
+    .bttns {
+      margin-top: 2.5em;
+    }
+  }
+}
+
+// Graphisms
+.ondas {
+  position: absolute;
+  overflow: hidden;
+  top: 50px;
+  left: 30px;
+
+  img {
+    width: 83px;
+  }
+}
+
+.pontos-grandes {
+  position: absolute;
+  overflow: hidden;
+  top: 20px;
+  right: 30px;
+
+  img {
+    height: 105px;
+    width: 116px;
+  }
+}
+
+.pontos-pequenos {
+  position: absolute;
+  overflow: hidden;
+  bottom: 91px;
+  left: 37px;
+
+  img {
+    width: 76px;
+  }
+}
+
+.ondas2 {
+  position: absolute;
+  overflow: hidden;
+  bottom: 32px;
+  right: -7px;
+
+  img {
+    width: 113px;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .mobile-hide {
+    display: block;
+  }
+  
+  .desktop-hide {
+    display: none;
+  }
+  
+  .hero {
+    width: 33%;
+    height: 520px;
+  
+    .content {
+      height: 440px;
+
+      p {
+        font-size: 18px;
+      }
+
+      .user-position {
+        width: 100px;
+        height: 100px;
+      }
+
+      .boa-sorte {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .confirm-user-quit {
+    width: 33%;
+    height: 300px;
+    
+    .content-quit {
+      width: 75%;
+      
+      p {
+        font-size: 16px;
+      }
+
+      p:first-of-type {
+        margin-bottom: 40px;
+      }
+
+      .bttns {
+        margin-top: 3.8em;
+      }
+    }
+  }
+
+  .bttns {
+    height: 60px;
+
+    .sair-bttn {
+      font-size: 16px;
+      width: 60%;
+    }
+  
+    .ok-bttn {
+      width: 60%;
+      font-size: 16px;
+    }
+  }
+
+  // Graphisms 
+  .pontos-4 {
+    position: absolute;
+    overflow: hidden;
+    top: 307px;
+    left: 126px;
+  
+    img {
+      width: 60px;
+    }
+  }
+
+  .ondas-finas {
+    position: absolute;
+    overflow: hidden;
+    top: 70px;
+    right: 40%;
+  
+    img {
+      width: 200px;
+    }
+  }
+
+  .pontos-grandes {
+    top: 86px;
+    right: 135px;
+    
+    img {
+      height: 124px;
+      width: 129px;
+    }
+  }
+
+  .ondas-finas2 {
+    position: absolute;
+    overflow: hidden;
+    bottom: 115px;
+    left: 135px;
+  
+    img {
+      height: 91px;
+      width: 200px;
+    }
+  }
+
+  .pontos-4-2 {
+    position: absolute;
+    overflow: hidden;
+    bottom: 150px;
+    right: 45%;
+  
+    img {
+      width: 60px;
+    }
+  }
+    
+  .pontos-pequenos {
+    bottom: 100px;
+    right: 135px;
+    left: unset;
+  
+    img {
+      width: 172px;
+    }
+  }
+}

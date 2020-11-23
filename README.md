@@ -1,27 +1,13 @@
 # LazerFcamara
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
+Projeto iniciado com a stack Angular para projeto para FCamara
 
-## Development server
+## Como rodar o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone o projeto, com o nodeJs instalado, execute em seu terminal o comando 'npm i' dentro da pasta do projeto;
+Após a instalação das dependências execute o comando 'ng s';
+Após finalizar o build, acesse http://localhost:4200 para visualizar o projeto.
 
-## Code scaffolding
+## Link backend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Link: https://github.com/AndrewDiass/lazer-fcamara-backend

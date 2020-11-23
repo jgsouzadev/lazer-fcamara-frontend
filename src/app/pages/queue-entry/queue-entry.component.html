@@ -1,0 +1,28 @@
+<app-platform-list
+  [platforms]="platforms"
+  [platformQueue]="platformQueue"
+  [buttonFilter]="buttonFilter"
+  (onPlatformChange)="selectedPlatform = $event"
+  (onPlatformClick)="handlePlatformChange()"
+  (onClickEvent)="handleUserEnterQueue()"
+  [userChecked]="userChecked"
+  *ngIf="!userPosition || userChecked"
+></app-platform-list>
+<!--
+<app-queue-in 
+  (userPositionEvent)='userPosition = $event.position;' 
+  [selectedPlatform]='selectedPlatform' 
+  (onClickEvent)="handleUserEnterQueue()"
+></app-queue-in>
+
+*ngIf="!userPosition || userChecked"
+
+
+*ngIf="userPosition && !userChecked"
+-->
+<app-user-on-queue 
+  [userPosition]='userPosition' 
+  *ngIf="userPosition && !userChecked"
+  (onUserQuitQueue)="handleUserQuitQueue()"
+  (onUserChecking)="userChecked = true"
+></app-user-on-queue>

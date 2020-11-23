@@ -1,0 +1,40 @@
+@import "../../../../custom-theme.scss";
+
+.bg {
+  background: #FF662E;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 16px;
+    width: 85%;
+    margin: auto;
+  
+    .icon {
+      display: flex;
+  
+      p {
+        color: #fff;
+        font-size: 42px;
+        margin: 20px 0 0 0;
+      }
+    }
+  
+    .sair {
+      width: 35px;
+      cursor: pointer;
+      outline: none;
+      padding: 10px;
+    }
+  }
+}
+
+@media all and (min-width: 1280px) {
+  header {
+    a {
+      margin-right: 25px;
+    }
+  }
+}
