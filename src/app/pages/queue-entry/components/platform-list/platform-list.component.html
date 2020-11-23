@@ -1,16 +1,26 @@
-
-<div class="content">
-  <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
-    <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()">
-      <div class="box-item-platform">
-        <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
-        <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
-        <img *ngIf="platform.id == 3 || platform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
-        <div class="text-item">
-          <p>{{platform.value}}</p>
-          <p>{{platformQueue[i].queueCount}} Pessoas na fila</p>
-        </div>
-      </div>
-    </mat-list-option>
-  </mat-selection-list>
+<div class="platform-list">
+  <app-header></app-header>
+  <div class='hero'>
+    <header>
+      <p>Olá, escolha sua plataforma de jogo</p>
+    </header>
+    <div class="content">
+      <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
+        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()" [disableRipple]='true'>
+          <div class="box-item-platform">
+            <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="platform.id == 3 || platform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+            <div class="text-item">
+                <div>
+                  <p id="platform-name">{{platform.value}}</p>
+                  <p>{{platformQueue[i].queueCount}} Pessoas na fila</p>
+                </div>
+            </div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </div>
 </div>
+

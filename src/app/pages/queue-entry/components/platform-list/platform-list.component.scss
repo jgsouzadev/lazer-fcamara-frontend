@@ -1,17 +1,53 @@
+@import "../../../../../custom-theme.scss";
+
 .mat-list-base {
   padding-top: 0px;
   // because of the padding, when clicking it was outlining the whole component
 }
 
 .content {
-  padding: 0 16px;
+  padding: 0 3px;
+}
+
+.platform-list {
+  background-color: $background-color;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.hero {
+  width: 90%;
+  margin: 0 auto;
+
+  header {
+    p {
+      font-size: 15px;
+      padding: 45px 0 7px;
+    }
+  }
 }
 
 ::ng-deep .mat-list-item {
-  height: 60px !important;
-  border-radius: 5px;
-  border: 1px solid #7a7a7a;
+  height: 100px !important;
+  border-radius: 8px;
+  //border: 1px solid #7a7a7a;
   margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 1.5px 3px rgba($color: #a1a1a1, $alpha: 0.5);
+  //padding: 15px 0 !important;
+
+  &:hover {
+    background-color: #fff !important;
+  }
+
+  &:active, &:focus {
+    box-shadow: inset 0 0 10px rgba($color: #585858, $alpha: 0.5);
+  }
+}
+
+.mat-list-single-selected-option {
+  background: #fff !important;
 }
 
 .box-item-platform {
@@ -20,7 +56,7 @@
   align-items: center;
 
   img {
-    width: 50px;
+    width: 80px;
     padding-right: 16px;
   }
 
@@ -30,11 +66,21 @@
     width: 100%;
     align-items: center;
 
-    p {
-      margin: 0;
-      color: #707070;
-      font-weight: 400;
-      font-size: 14px;
+    div {
+      width: 130px;
+
+      p {
+        margin: 0;
+        color: #000000;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 35px;
+      }
+  
+      #platform-name {
+        font-weight: 500;
+        font-size: 16px;
+      }
     }
   }
 }
