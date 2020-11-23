@@ -124,6 +124,11 @@ mat-form-field {
 
     .form-hero {
       height: 100%;
+
+      .login {
+        margin-bottom: 0px;
+        margin-top: 350px; // sticks to the bottom when the is flex-direction: column; on the parent component
+      }
     }
 
     // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)

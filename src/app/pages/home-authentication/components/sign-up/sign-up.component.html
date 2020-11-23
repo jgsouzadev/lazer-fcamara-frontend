@@ -11,7 +11,7 @@
       <div class="main-content">
         <form [formGroup]="userForm" (ngSubmit)="createAccount()">
           <mat-form-field appearance="fill">
-            <mat-label>Nome de usuário *</mat-label>
+            <mat-label>Nome completo *</mat-label>
             <input formControlName="name" name="name" matInput placeholder="Nome" type="text">
             <!--<span *ngIf="userForm.controls.name.status == 'INVALID' && userForm.controls.name.touched">Preencha seu nome</span>!-->
           </mat-form-field>
