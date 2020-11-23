@@ -17,8 +17,10 @@ button {
   outline: none;
   cursor: pointer;
   transition: .5s;
-}
 
-button:disabled {
-  cursor: initial;
+  &:disabled {
+    cursor: initial;
+  }
+
+  //&:hover {}
 }

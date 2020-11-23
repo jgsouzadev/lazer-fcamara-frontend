@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   margin: 20vh auto;
-  height: 370px;
+  height: 440px;
   position: relative;
 
   .content {
@@ -33,7 +33,7 @@
     justify-content: space-around;
     width: 80%;
     margin: auto;
-    height: 310px;
+    height: 350px;
 
     p {
       font-size: 14px;
@@ -88,7 +88,7 @@
     background-color: #fff;
     color: $bluef0;
     width: 50%;
-    padding: 1.2em;
+    padding: 1.4em;
     font-size: 12px;
     border: 0.5px solid $bluef0;
     border-radius: 6px;
@@ -102,6 +102,10 @@
     border-radius: 6px;
     margin-left: 30px;
     text-transform: uppercase;
+
+    &:active {
+      background-color: $bluef1
+    }
   }
 }
 
@@ -201,11 +205,20 @@
   }
   
   .hero {
-    width: 30%;
-    height: 480px;
+    width: 33%;
+    height: 520px;
   
     .content {
-      height: 420px;
+      height: 440px;
+
+      p {
+        font-size: 18px;
+      }
+
+      .user-position {
+        width: 100px;
+        height: 100px;
+      }
 
       .boa-sorte {
         font-size: 24px;
