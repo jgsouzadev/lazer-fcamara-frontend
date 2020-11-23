@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
-import { MatStepper } from '@angular/material/stepper';
 
 export interface Platforms {
   id: number;
@@ -24,7 +23,7 @@ export class QueueEntryComponent implements OnInit {
   
   selectedPlatform: Platforms
   
-  buttonFilter: boolean = false
+  buttonFilter: boolean = true
 
   userId: number = 0
   userPosition: number = 0
@@ -49,9 +48,8 @@ export class QueueEntryComponent implements OnInit {
     })
   }
 
-  @ViewChild('stepper') private myStepper: MatStepper;
   handlePlatformChange() {
-    this.myStepper.next()
+    this.buttonFilter = false;
   }
 
   handleUserEnterQueue() {
@@ -60,7 +58,6 @@ export class QueueEntryComponent implements OnInit {
       this.userPosition = data.userInfo.position
       this.userId = data.userInfo.id
       this.postStorageItem('userId', data.userInfo.id)
-      this.myStepper.next()
 
       this.refIntervalUserPosition = setInterval(() => {
         if (this.userPosition) {
@@ -96,7 +93,6 @@ export class QueueEntryComponent implements OnInit {
     this.userPosition = 0
     this.userId = 0
     this.removeStorageItem('userId')
-    this.myStepper.reset()
     this.buttonFilter = false
   }
 

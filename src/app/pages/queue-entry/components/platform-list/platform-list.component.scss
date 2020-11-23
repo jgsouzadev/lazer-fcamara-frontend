@@ -22,7 +22,7 @@
 }
 
 .hero {
-  width: 90%;
+  width: 87%;
   margin: 0 auto;
   position: relative;
   z-index: 10;
@@ -108,6 +108,10 @@
 
     &:active {
       background-color: $bluef1;
+    }
+
+    &:disabled {
+      opacity: 0.8;
     }
   }
 }

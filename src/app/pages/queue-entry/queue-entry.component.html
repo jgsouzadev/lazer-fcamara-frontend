@@ -1,9 +1,11 @@
 <app-platform-list
   [platforms]="platforms"
   [platformQueue]="platformQueue"
+  [buttonFilter]="buttonFilter"
   (onPlatformChange)="selectedPlatform = $event"
   (onPlatformClick)="handlePlatformChange()"
-  [buttonFilter]="buttonFilter"
+  (onClickEvent)="handleUserEnterQueue()"
+  *ngIf="!userPosition"
 ></app-platform-list>
 <!--
 <app-queue-in 
@@ -11,10 +13,10 @@
   [selectedPlatform]='selectedPlatform' 
   (onClickEvent)="handleUserEnterQueue()"
 ></app-queue-in>
+-->
 <app-user-on-queue 
   [userPosition]='userPosition' 
   [selectedPlatform]='selectedPlatform' 
   *ngIf="userPosition"
   (onUserQuitQueue)="handleUserQuitQueue()"
 ></app-user-on-queue>
--->
