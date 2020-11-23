@@ -36,7 +36,7 @@
             <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched"></span>!-->
           </mat-form-field>
           
-          <button class="button-submit" type="submit" [disabled]="userForm.invalid">Cadastrar-se</button>
+          <button class="button-submit" type="submit" [disabled]="userForm.invalid" routerLink="/queue-entry">Cadastrar-se</button>
         </form>
       </div>
       <p class="login">Já possui cadastro? <a routerLink="">Faça login.</a></p>
