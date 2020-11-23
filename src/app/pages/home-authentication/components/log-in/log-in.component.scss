@@ -124,7 +124,7 @@ mat-form-field {
 }
 
 // When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
-@media all and (min-width: 1024px) {
+@media all and (min-width: 1280px) {
   .main {
     display: flex;
     height: 100%;

@@ -1,5 +1,9 @@
 @import "../../../../../custom-theme.scss";
 
+.mobile-hide {
+  display: none;
+}
+
 .mat-list-base {
   padding-top: 0px;
   // because of the padding, when clicking it was outlining the whole component
@@ -60,7 +64,8 @@
 
   img {
     width: 80px;
-    padding-right: 16px;
+    height: 75px;
+    position: absolute;
   }
 
   .text-item {
@@ -99,6 +104,7 @@
     float: right;
     outline: none;
     margin-top: 3px;
+    font-size: 15px;
 
     &:active {
       background-color: $bluef1;
@@ -126,9 +132,87 @@
   height: 80px;
 }
 
-.ondas {
+.ondas, .ondas-finas {
   position: absolute;
   overflow: hidden;
   padding-top: 6px;
   bottom: 10px;
+}
+
+@media all and (min-width: 1280px) {
+
+  .desktop-hide {
+    display: none;
+  }
+
+  .mobile-hide {
+    display: block;
+  }
+
+  .hero {
+    width: 40%;
+    header {
+      p {
+        font-size: 18px;
+        padding: 80px 0 7px;
+      }
+    }
+  }
+
+  .box-item-platform {
+    .text-item {
+      div {
+        margin-left: -2em;
+      }
+    }
+  }
+
+  .pontos-4 {
+    position: absolute;
+    overflow: hidden;
+    padding-top: 6px;
+    top: 285px;
+    left: 130px;
+  }
+
+  .pontos-pequenos {
+    right: 130px;
+    width: 110px;
+    height: unset;
+    img {
+      width: 100%;
+    }
+  }
+  
+  .pontos-grandes {
+    width: 185px;
+    height: 310px;
+    img {
+      width: 180px;
+    }
+  }
+  
+  .ondas-finas {
+    bottom: 125px;
+    width: 300px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .content {
+    .platform-list-bttn {
+      width: 210px;
+      height: 60px;
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  .box-item-platform {
+    img {
+      position: relative;
+      margin-right: 16px;
+    }
+  }
 }
