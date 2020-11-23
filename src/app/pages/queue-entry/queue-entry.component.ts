@@ -1,6 +1,7 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
+
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 export interface Platforms {
   id: number;
@@ -17,7 +18,7 @@ export interface PlatformQueue {
   templateUrl: './queue-entry.component.html',
   styleUrls: ['./queue-entry.component.scss']
 })
-export class QueueEntryComponent implements OnInit {
+export class QueueEntryComponent implements OnInit, OnDestroy {
 
   platforms: Platforms[]
   platformQueue: PlatformQueue[]
@@ -35,7 +36,8 @@ export class QueueEntryComponent implements OnInit {
   userChecked: boolean = false
 
   constructor(
-    private httpService: QueueEntryHttpService
+    private httpService: QueueEntryHttpService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,10 @@ export class QueueEntryComponent implements OnInit {
           this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
         })
       }, 300000) // 5 minutes
+    },
+    (error) => {
+      console.error(error)
+      this.handleRequestError()
     })
   }
 
@@ -81,6 +87,10 @@ export class QueueEntryComponent implements OnInit {
             })
           }
         }, 60000)// 1 minute
+      }, 
+      (error) => {
+        console.error(error)
+        this.handleRequestError()
       })
     }
   }
@@ -94,6 +104,10 @@ export class QueueEntryComponent implements OnInit {
         this.userId = 0
         clearInterval(this.refIntervalUserPosition)
         clearInterval(this.refIntervalUserPosition)
+      },
+      (error) => {
+        console.error(error)
+        this.handleRequestError()
       })
     }
     else {
@@ -104,7 +118,17 @@ export class QueueEntryComponent implements OnInit {
         this.userId = 0
         clearInterval(this.refIntervalUserPosition)
         clearInterval(this.refIntervalUserPosition)
+      }, 
+      (error) => {
+        console.error(error)
+        this.handleRequestError()
       })
     }
+  }
+
+  handleRequestError() {
+    this._snackBar.open('Não foi possível completar a requisição, recarregue a página', 'Fechar', {
+      duration: 4000,
+    });
   }
 }
