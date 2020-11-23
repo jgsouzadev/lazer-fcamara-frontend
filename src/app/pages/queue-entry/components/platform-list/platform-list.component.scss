@@ -14,11 +14,14 @@
   min-height: 100%;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .hero {
   width: 90%;
   margin: 0 auto;
+  position: relative;
+  z-index: 10;
 
   header {
     p {
@@ -101,4 +104,31 @@
       background-color: $bluef1;
     }
   }
+}
+
+// Graphisms 
+.pontos-pequenos {
+  position: absolute;
+  right: -8px;
+  overflow: hidden;
+  width: 76px;
+  height: 72px;
+  padding-top: 6px;
+}
+
+.pontos-grandes {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding-top: 6px;
+  width: 110px;
+  height: 80px;
+}
+
+.ondas {
+  position: absolute;
+  overflow: hidden;
+  padding-top: 6px;
+  bottom: 10px;
 }
