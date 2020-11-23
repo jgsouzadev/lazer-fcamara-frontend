@@ -23,10 +23,10 @@
     //height: 100%; // Important to the desktop version
     width: 90%;
     margin: 0 auto;
-    min-height: 100vh; // This was very important to not break the graphisms, it will always load at least the height needed
+    min-height: 94vh; // This was very important to not break the graphisms, it will always load at least the height needed
   
     .logo-mobile {
-      padding: 2em 0 12em;
+      padding: 2em 0 11em;
       width: 115px;
     }
 
@@ -50,12 +50,12 @@
     
       .link-block {
         margin-top: -13px;
-        display: block;
+        display: none;
         text-align: right;
       }
 
       .button-submit {
-        margin-top: 34px;
+        margin-top: 18px;
         background-color: $primary-color;
         color: #fff;
         font-size: 18px;
@@ -73,7 +73,7 @@
     }
 
     .cadastrar {
-      margin-bottom: 40px;
+      margin-bottom: 5%;
       margin-top: auto; // sticks to the bottom when the is flex-direction: column; on the parent component
     }
   }
@@ -87,7 +87,6 @@ mat-form-field {
 
 .pontos-grandes {
   position: absolute;
-  width: 100%;
   top: 12%;
   left: -24px;
   overflow: hidden;
@@ -95,16 +94,14 @@ mat-form-field {
 
 .ondas {
   position: absolute;
-  width: 100%;
-  bottom: 10%;
+  bottom: 18%;
   overflow: hidden;
 }
 
 .pontos-pequenos {
   position: absolute;
-  width: auto;
   text-align: right;
-  bottom: 8%;
+  bottom: 16%;
   overflow: hidden;
   right: -33px;
 }

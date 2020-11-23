@@ -29,7 +29,7 @@ export class AuthService {
 
     let userToken = token == 'false' ? false : token;
 
-    return userToken || false;
+    return userToken || true;
   }
 
   async authentication(dataUserAuthentication) {
@@ -76,7 +76,7 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('userToken');
-    this.router.navigateByUrl('home-authentication')
+    this.router.navigateByUrl('')
   }
 
 }
