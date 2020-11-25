@@ -1,29 +1,25 @@
+@import "../../../../../shared/styles/graphism-style.scss";
+
 .mobile-hide {
   display: none;
 }
 
 .pontos-pequenos {
-  position: absolute;
   right: -8px;
-  overflow: hidden;
   width: 76px;
   height: 72px;
   padding-top: 6px;
 }
 
 .pontos-grandes {
-  position: absolute;
   right: 0;
   bottom: 0;
-  overflow: hidden;
   padding-top: 6px;
   width: 110px;
   height: 80px;
 }
 
 .ondas, .ondas-finas {
-  position: absolute;
-  overflow: hidden;
   padding-top: 6px;
   bottom: 10px;
 }
@@ -39,8 +35,6 @@
   }
 
   .pontos-4 {
-    position: absolute;
-    overflow: hidden;
     padding-top: 6px;
     top: 285px;
     left: 130px;

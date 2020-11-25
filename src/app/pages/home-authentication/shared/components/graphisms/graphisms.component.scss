@@ -1,21 +1,17 @@
+@import "../../../../../shared/styles/graphism-style.scss";
+
 .pontos-grandes {
-  position: absolute;
   top: 12%;
   left: -24px;
-  overflow: hidden;
 }
 
 .ondas {
-  position: absolute;
   bottom: 18%;
-  overflow: hidden;
 }
 
 .pontos-pequenos {
-  position: absolute;
   text-align: right;
   bottom: 16%;
-  overflow: hidden;
   right: -33px;
 }
 
