@@ -33,11 +33,16 @@
       h1 {
         text-align: left;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 38px;
+        margin-bottom: 58px;
+        font-weight: 600;
       }
 
       p {
-        font-size: 20px;
+        font-size: 28px;
+        line-height: 34px;
+        font-weight: 400;
+        color: $background-color;
       }
     }
   }

@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   margin: 18vh auto;
-  height: 440px;
+  height: 350px;
   position: relative;
 
   .content {
@@ -33,7 +33,7 @@
     justify-content: space-around;
     width: 80%;
     margin: auto;
-    height: 350px;
+    height: 290px;
 
     p {
       font-size: 14px;
@@ -42,6 +42,7 @@
 
     .title {
       margin-bottom: 20px;
+      font-weight: 500;
     }
 
     .user-position {
@@ -51,6 +52,7 @@
       background-color: $bluef1;
       display: flex;
       align-items: center;
+      margin-bottom: 25px;
       
       p {
         color: $laranjaf1;
@@ -61,18 +63,11 @@
       }
     }
 
-    .pontos {
-      color: $primary-color;
-      font-size: 45px !important;
-      margin-bottom: 20px;
-      margin-top: -5px;
-    }
-
     .boa-sorte {
       text-transform: uppercase;
       color: $laranjaf1;
       font-size: 18px;
-      margin: 10px 0 20px;
+      margin-top: 10px;
     }
   }
 }
@@ -82,13 +77,14 @@
   flex-flow: row nowrap;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-top: 30px;
+  height: 50px;
 
   .sair-bttn {
     background-color: #fff;
     color: $bluef0;
-    width: 50%;
-    height: 60px;
+    width: 90%;
+    height: 100%;
     font-size: 12px;
     border: 0.5px solid $bluef0;
     border-radius: 6px;
@@ -98,10 +94,11 @@
   .ok-bttn {
     background-color:$bluef0;
     color: #fff;
-    width: 50%;
+    width: 90%;
+    height: 100%;
     font-size: 12px;
     border-radius: 6px;
-    margin-left: 30px;
+    margin-left: 15px;
     text-transform: uppercase;
     font-weight: 500;
 
@@ -116,7 +113,7 @@
 }
 
 .medalha {
-  padding: 2.5em 0 1.8em;
+  margin: 2em 0 1.5em;
   width: 95px;
 }
 
@@ -129,7 +126,7 @@
   flex-direction: column;
   align-items: center;
   margin: 30vh auto;
-  height: 220px;
+  height: 225px;
 
   .content-quit {
     display: flex;
@@ -142,11 +139,15 @@
     text-align: center;
 
     p:first-of-type {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+    }
+
+    p:last-of-type {
+      font-weight: 500;
     }
     
     .bttns {
-      margin-top: 2.5em;
+      margin-top: 2.4em;
     }
   }
 }
@@ -230,13 +231,13 @@
 
   .confirm-user-quit {
     width: 33%;
-    height: 300px;
+    height: 320px;
     
     .content-quit {
       width: 75%;
       
       p {
-        font-size: 16px;
+        font-size: 18px;
       }
 
       p:first-of-type {
@@ -244,7 +245,7 @@
       }
 
       .bttns {
-        margin-top: 3.8em;
+        margin-top: 4.1em;
       }
     }
   }
@@ -255,11 +256,13 @@
     .sair-bttn {
       font-size: 16px;
       width: 60%;
+      height: 100%;
     }
   
     .ok-bttn {
       width: 60%;
       font-size: 16px;
+      height: 100%;
     }
   }
 
