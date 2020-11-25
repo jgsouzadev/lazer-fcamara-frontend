@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
       let passwordInput = group.controls[password],
       passwordConfirmationInput = group.controls[passwordConfirmation];
       
-      if (passwordInput.value !== passwordConfirmationInput.value) {
+      if ((passwordInput.value !== passwordConfirmationInput.value) || passwordInput) {
         return passwordConfirmationInput.setErrors({notEquivalent: true})
       }
       else {

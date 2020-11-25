@@ -13,25 +13,33 @@
           <mat-form-field appearance="fill">
             <mat-label>Nome completo *</mat-label>
             <input formControlName="name" name="name" matInput type="text">
-            <!--<span *ngIf="userForm.controls.name.status == 'INVALID' && userForm.controls.name.touched">Preencha seu nome</span>!-->
+            <span class="invalid-icon" *ngIf="userForm.controls.name.status == 'INVALID' && userForm.controls.name.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
             <mat-label>E-mail *</mat-label>
             <input formControlName="email" name="email" matInput placeholder="usuario@fcamara.com.br" type="email">
-            <!--<span *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">Preencha seu e-mail</span>!-->
+            <span class="invalid-icon" *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
             <mat-label>Senha *</mat-label>
             <input formControlName="password" name="password" matInput type="password">
-            <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha a senha com ao menos 6 caracteres</span>!-->
+            <span class="invalid-icon" *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
             <mat-label>Confirme sua senha *</mat-label>
             <input formControlName="confirmPassword" name="password" matInput type="password">
-            <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched"></span>!-->
+            <span class="invalid-icon" *ngIf="userForm.controls.confirmPassword.status == 'INVALID' && userForm.controls.confirmPassword.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
           </mat-form-field>
           
           <button class="button-submit" type="submit" [disabled]="userForm.invalid" routerLink="/queue-entry">Cadastrar-se</button>

@@ -14,12 +14,16 @@
           <mat-form-field appearance="fill">
             <mat-label>Email *</mat-label>
             <input formControlName="email" name="name" matInput placeholder="usuario@fcamara.com.br" type="email">
-            <!--<span *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">Preencha seu e-mail</span> !-->
+            <span class="invalid-icon" *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Senha *</mat-label>
             <input formControlName="password" name="password" matInput type="password">
-            <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha sua senha</span>!-->
+            <span class="invalid-icon" *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
           </mat-form-field>
         </form>
 
