@@ -13,7 +13,7 @@
       <div class="bttns">
         <button class="sair-bttn" (click)="userQuit = true"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
         <button class="ok-bttn"   (click)="userPosition === 1 ? onUserOnGame.emit() : onUserChecking.emit()">
-          {{ userPosition === 1 ? 'Jogar' : 'ok' }}
+          {{ userPosition === 1 ? 'Jogar!' : 'ok' }}
         </button>
       </div>
     </div>
