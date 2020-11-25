@@ -9,8 +9,9 @@ import { Platforms } from '../../queue-entry.component'
 export class UserOnGameComponent implements OnInit {
 
   @Input() selectedPlatform: Platforms
+  @Input() userPosition: number
 
-  @Output() onClickEvent = new EventEmitter<any>();
+  @Output() onUserQuitQueue = new EventEmitter();
 
   userQuit: boolean = false;
 

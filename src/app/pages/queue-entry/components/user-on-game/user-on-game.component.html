@@ -1,4 +1,4 @@
-<div class="user-on-game">
+<div class="user-on-game" *ngIf="!userQuit">
   <app-header></app-header>
   <app-graphisms></app-graphisms>
   <div class='hero'>
@@ -22,3 +22,9 @@
     <button class="sair-bttn" (click)="userQuit = true">Sair do jogo</button>
   </div>
 </div>
+
+<app-confirm-quit *ngIf="userQuit"
+  [userPosition]='userPosition'
+  (onUserCancel)="userQuit = false"
+  (onUserQuit)="onUserQuitQueue.emit()"
+></app-confirm-quit>

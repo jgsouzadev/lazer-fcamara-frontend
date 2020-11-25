@@ -7,6 +7,7 @@
   (onClickEvent)="handleUserEnterQueue()"
   [userChecked]="userChecked"
 ></app-platform-list>
+
 <!--
 <app-queue-in 
   (userPositionEvent)='userPosition = $event.position;' 
@@ -19,6 +20,7 @@
 
 *ngIf="userPosition && !userChecked"
 -->
+
 <app-user-on-queue *ngIf="userPosition && !userChecked && !userOnGame"
   [userPosition]='userPosition' 
   (onUserQuitQueue)="handleUserQuitQueue()"
@@ -27,6 +29,7 @@
 ></app-user-on-queue>
 
 <app-user-on-game *ngIf="userOnGame"
+  [userPosition]='userPosition'
   [selectedPlatform]="selectedPlatform"
-  (onClickEvent)="handleUserEnterQueue()"
+  (onUserQuitQueue)="handleUserQuitQueue()"
 ></app-user-on-game>

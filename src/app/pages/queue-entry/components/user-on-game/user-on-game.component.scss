@@ -21,7 +21,7 @@
   }
 }
 
-::ng-deep .mat-list-item {
+.mat-list-item {
   height: 130px !important;
   border-radius: 8px;
   margin-bottom: 16px;
@@ -129,7 +129,7 @@
     }
   }
 
-  ::ng-deep .mat-list-item {
+  .mat-list-item {
     height: 150px !important;
   }
 

@@ -105,6 +105,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.buttonFilter = true
         this.userChecked = false
         this.userId = 0
+        this.userOnGame = false
         clearInterval(this.refIntervalUserPosition)
         clearInterval(this.refIntervalUserPosition)
       },
@@ -119,6 +120,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.buttonFilter = true
         this.userChecked = false
         this.userId = 0
+        this.userOnGame = false
         clearInterval(this.refIntervalUserPosition)
         clearInterval(this.refIntervalUserPosition)
       }, 
