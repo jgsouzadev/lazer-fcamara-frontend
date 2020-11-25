@@ -16,6 +16,9 @@
             <span class="invalid-icon" *ngIf="userForm.controls.name.status == 'INVALID' && userForm.controls.name.touched">
               <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
             </span>
+            <span class="valid-icon" *ngIf="userForm.controls.name.status == 'VALID' && userForm.controls.name.touched">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
@@ -23,6 +26,9 @@
             <input formControlName="email" name="email" matInput placeholder="usuario@fcamara.com.br" type="email">
             <span class="invalid-icon" *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">
               <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
+            <span class="valid-icon" *ngIf="userForm.controls.email.status == 'VALID' && userForm.controls.email.touched">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
             </span>
           </mat-form-field>
           
@@ -32,6 +38,9 @@
             <span class="invalid-icon" *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">
               <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
             </span>
+            <span class="valid-icon" *ngIf="userForm.controls.password.status == 'VALID' && userForm.controls.password.touched">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
@@ -39,6 +48,9 @@
             <input formControlName="confirmPassword" name="password" matInput type="password">
             <span class="invalid-icon" *ngIf="userForm.controls.confirmPassword.status == 'INVALID' && userForm.controls.confirmPassword.touched">
               <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
+            <span class="valid-icon" *ngIf="userForm.controls.confirmPassword.status == 'VALID'">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
             </span>
           </mat-form-field>
           
@@ -56,4 +68,4 @@
       <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="Design pontos">
     </div>  
   </div>
-  </div>
+</div>
