@@ -2,9 +2,7 @@
   <app-desktop-content class="mobile-hide"></app-desktop-content>
   <div class="mobile-main">
 
-    <div class="pontos-grandes">
-      <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="Design pontos">
-    </div>
+    <app-graphisms></app-graphisms>
   
     <div class="form-hero">
       <img class="logo-mobile" src="../../../../../assets/Logo Fifo.png" alt="Icone do página" srcset="">
@@ -13,14 +11,11 @@
         <form [formGroup]="userForm" (ngSubmit)="authentication()" class="example-form">
           <mat-form-field appearance="fill">
             <mat-label>Email *</mat-label>
-            <input formControlName="email" name="name" matInput placeholder="E-mail" type="email">
-            <mat-hint>usuario@fcamara.com.br</mat-hint>
-            <!--<span *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">Preencha seu e-mail</span> !-->
+            <input formControlName="email" name="name" matInput placeholder="usuario@fcamara.com.br" type="email">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Senha *</mat-label>
-            <input formControlName="password" name="password" matInput placeholder="Senha" type="password">
-            <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha sua senha</span>!-->
+            <input formControlName="password" name="password" matInput type="password">
           </mat-form-field>
         </form>
 
@@ -33,13 +28,5 @@
       </div>
       <p class="cadastrar">Não tem uma conta? <a routerLink="sign-up">Cadastre-se.</a></p>
     </div>
-    
-    <div class="ondas">
-      <img src="../../../../../assets/Grafismo ondas.svg" alt="Design ondas">
-    </div>
-    
-    <div class="pontos-pequenos">
-      <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="Design pontos">
-    </div>  
   </div>
 </div>

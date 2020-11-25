@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 
 export interface Platforms {
   id: number;
-  value: String; // in the angular doc example, it has a value and a viewValue, it seems like the value should be like an id
+  name: String; // in the angular doc example, it has a value and a viewValue, it seems like the value should be like an id
 }
 
 export interface PlatformQueue {
@@ -34,6 +34,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   refIntervalPlatformQueue: Number
 
   userChecked: boolean = false
+  userOnGame: boolean = false
 
   constructor(
     private httpService: QueueEntryHttpService,
@@ -104,6 +105,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.buttonFilter = true
         this.userChecked = false
         this.userId = 0
+        this.userOnGame = false
         clearInterval(this.refIntervalUserPosition)
         clearInterval(this.refIntervalUserPosition)
       },
@@ -118,6 +120,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.buttonFilter = true
         this.userChecked = false
         this.userId = 0
+        this.userOnGame = false
         clearInterval(this.refIntervalUserPosition)
         clearInterval(this.refIntervalUserPosition)
       }, 

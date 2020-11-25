@@ -13,10 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlatformListComponent } from './components/platform-list/platform-list.component'
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth.guard';
+import { GraphismsComponent } from './shared/components/graphisms/graphisms.component';
+import { UserOnGameComponent } from './components/user-on-game/user-on-game.component';
+import { ConfirmQuitComponent } from './shared/components/confirm-quit/confirm-quit.component';
+import { GraphismsOrangeDisplayComponent } from './shared/components/graphisms-orange-display/graphisms-orange-display.component';
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent],
+  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent, ConfirmQuitComponent, GraphismsOrangeDisplayComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,

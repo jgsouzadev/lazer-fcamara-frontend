@@ -1,34 +1,27 @@
 <div class="platform-list">
   <app-header></app-header>
-  <div class="pontos-pequenos">
-    <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="">
-  </div>
-  <div class="ondas desktop-hide">
-    <img src="../../../../../assets/Grafismo ondas.svg" alt="">
-  </div>
-  <div class="ondas-finas mobile-hide">
-    <img src="../../../../../assets/Grafismo ondas finas.svg" alt="">
-  </div>
-  <div class="pontos-grandes">
-    <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="">
-  </div>
-  <div class="pontos-4 mobile-hide">
-    <img src="../../../../../assets/Grafismo 4 pontos.svg" alt="">
-  </div>
+  <app-graphisms></app-graphisms>
   <div class='hero'>
     <header>
-      <p>Escolha sua plataforma de jogo</p>
+      <ng-template [ngIf]="userChecked" [ngIfElse]="notchecked">
+        <h2>Ei, você já está na fila!</h2>
+        <p>Aguarde ser chamado</p>
+      </ng-template>
+      <ng-template #notchecked>
+        <h2>Olá, <span class="txt-laranja">Sangue Laranja!</span></h2>
+        <p>O que vai jogar hoje?</p>
+      </ng-template>
     </header>
     <div class="content">
       <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
-        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()" [disableRipple]='true'>
+        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, name: platform.name}" (click)="nextStep()" [disableRipple]='true' [disabled]="userChecked">
           <div class="box-item-platform">
             <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
             <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
             <img *ngIf="platform.id == 3 || platform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
             <div class="text-item">
                 <div>
-                  <p id="platform-name">{{platform.value}}</p>
+                  <p id="platform-name">{{platform.name}}</p>
                   <p>{{platformQueue[i].queueCount}} Pessoas na fila</p>
                 </div>
             </div>

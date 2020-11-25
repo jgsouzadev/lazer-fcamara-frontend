@@ -1,0 +1,30 @@
+<div class="user-on-game" *ngIf="!userQuit">
+  <app-header></app-header>
+  <app-graphisms></app-graphisms>
+  <div class='hero'>
+    <p class="title">Você está jogando</p>
+    <div class="content">
+      <mat-selection-list #platformlist [multiple]="false" style="outline: none;" [disabled]='true'>
+        <mat-list-option [value]="{ id: selectedPlatform.id, name: selectedPlatform.name}" >
+          <div class="box-item-platform">
+            <img *ngIf="selectedPlatform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="selectedPlatform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="selectedPlatform.id == 3 || selectedPlatform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+            <div class="text-item">
+                <div>
+                  <p id="platform-name">{{selectedPlatform.name}}</p>
+                </div>
+            </div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+    <button class="sair-bttn" (click)="userQuit = true">Sair do jogo</button>
+  </div>
+</div>
+
+<app-confirm-quit *ngIf="userQuit"
+  [userPosition]='userPosition'
+  (onUserCancel)="userQuit = false"
+  (onUserQuit)="onUserQuitQueue.emit()"
+></app-confirm-quit>

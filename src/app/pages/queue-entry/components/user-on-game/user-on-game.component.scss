@@ -1,0 +1,135 @@
+@import "../../../../../custom-theme.scss";
+
+.user-on-game {
+  background-color: $background-color;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero { 
+  width: 87%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+
+  .title {
+    margin: 36px 0 32px;
+    font-size: 14px;
+  }
+}
+
+.mat-list-item {
+  height: 130px !important;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 1.5px 4px 5px #9b9b9b;
+}
+
+.mat-list-item-disabled {
+  background: #fff;
+}
+
+.box-item-platform {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+
+  img {
+    width: 80px;
+    height: 75px;
+    margin-left: 12px;
+  }
+
+  .text-item {
+    width: 100%;
+    text-align: center;
+
+    div {
+      #platform-name {
+        width: 100%;
+        margin: 0;
+        color: $primary-color;
+        font-weight: 400;
+        font-size: 21px;
+      }
+    }
+  }
+}
+
+.hero {
+  .sair-bttn {
+    background-color: $bluef0;
+    width: 180px;
+    height: 50px;
+    color: #fff;
+    border-radius: 6px;
+    text-transform: uppercase;
+    float: right;
+    margin-top: 3px;
+    font-size: 15px;
+    font-weight: 500; 
+
+    &:active {
+      background-color: $bluef1;
+    }
+
+    &:disabled {
+      opacity: 0.8;
+    }
+  }
+}
+
+@media all and (min-width: 1280px) {
+
+  .desktop-hide {
+    display: none;
+  }
+
+  .mobile-hide {
+    display: block;
+  }
+
+  .hero {
+    width: 40%;
+    
+    .title {
+      margin: 56px 0 50px;
+      font-size: 21px;
+    }
+  }
+
+  .box-item-platform {
+    img {
+      width: 90px;
+      height: 80px;
+      margin-left: 17px;
+    }
+    
+    .text-item {
+      div {
+        margin-left: -2.8em;
+
+        #platform-name {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+
+  .hero {
+    .sair-bttn {
+      width: 200px;
+      height: 48px;
+      margin-top: 10px;
+    }
+  }
+
+  .mat-list-item {
+    height: 150px !important;
+  }
+
+}

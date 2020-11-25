@@ -1,29 +1,5 @@
-<div class="user-on-queue">
-  <div class="ondas desktop-hide">
-    <img src="../../../../../assets/Grafismo ondas.svg" alt="">
-  </div>
-  <div class="pontos-grandes">
-    <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="">
-  </div>
-  <div class="pontos-pequenos">
-    <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="">
-  </div>
-  <div class="ondas2 desktop-hide">
-    <img src="../../../../../assets/Grafismo ondas.svg" alt="">
-  </div>
-
-  <div class="pontos-4 mobile-hide">
-    <img src="../../../../../assets/Grafismo 4 pontos.svg" alt="">
-  </div>
-  <div class="ondas-finas mobile-hide">
-    <img src="../../../../../assets/Grafismo ondas finas.svg" alt="">
-  </div>
-  <div class="ondas-finas2 mobile-hide">
-    <img src="../../../../../assets/Grafismo ondas finas.svg" alt="">
-  </div>
-  <div class="pontos-4-2 mobile-hide">
-    <img src="../../../../../assets/Grafismo 4 pontos.svg" alt="">
-  </div>
+<div class="user-on-queue" *ngIf="!userQuit">
+  <app-graphisms-orange-display></app-graphisms-orange-display>
 
   <div class="hero" *ngIf="!userQuit">
     <div class="content">
@@ -32,23 +8,13 @@
         <div class="user-position">
           <p>{{userPosition}}</p>
         </div>
-        <p class="pontos">...</p>
-        <p>Aguarde a notificação quando for sua vez.</p>
+        <p>Aguenta a ansiedade que já vou te chamar!</p>
       </ng-template>
-      <p class="boa-sorte">Boa sorte!</p>
       <div class="bttns">
         <button class="sair-bttn" (click)="userQuit = true"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
-        <button class="ok-bttn"   (click)="onUserChecking.emit()">ok</button>
-      </div>
-    </div>
-  </div>
-  <div class="confirm-user-quit" *ngIf="userQuit">
-    <div class="content-quit">
-      <p>{{ userPosition === 1 ? 'Você está saindo do jogo.'  : 'Você está saindo da fila.' }}</p>
-      <p>{{ userPosition === 1 ? 'Tem certeza que quer sair do jogo?'  : 'Tem certeza que quer sair da fila?' }}</p>
-      <div class="bttns">
-        <button class="sair-bttn" (click)="userQuit = false">Cancelar</button>
-        <button class="ok-bttn" (click)="onUserQuitQueue.emit()"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
+        <button class="ok-bttn"   (click)="userPosition === 1 ? onUserOnGame.emit() : onUserChecking.emit()">
+          {{ userPosition === 1 ? 'Jogar' : 'ok' }}
+        </button>
       </div>
     </div>
   </div>
@@ -57,4 +23,11 @@
 <ng-template #suavez>
   <p class="jogar">Sua vez de jogar!</p>
   <img class="medalha" src="../../../../../assets/medalha 1.svg" alt="Medalha">
+  <p class="boa-sorte">Bom jogo!</p>
 </ng-template>
+
+<app-confirm-quit *ngIf="userQuit"
+  [userPosition]="userPosition"
+  (onUserCancel)="userQuit = false"
+  (onUserQuit)="onUserQuitQueue.emit()"
+></app-confirm-quit>

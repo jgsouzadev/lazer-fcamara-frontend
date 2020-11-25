@@ -1,0 +1,67 @@
+@import "../../../../../shared/styles/graphism-style.scss";
+
+.mobile-hide {
+  display: none;
+}
+
+.pontos-pequenos {
+  right: -8px;
+  width: 76px;
+  height: 72px;
+  padding-top: 6px;
+}
+
+.pontos-grandes {
+  right: 0;
+  bottom: 0;
+  padding-top: 6px;
+  width: 110px;
+  height: 80px;
+}
+
+.ondas, .ondas-finas {
+  padding-top: 6px;
+  bottom: 10px;
+}
+
+@media all and (min-width: 1280px) {
+
+  .desktop-hide {
+    display: none;
+  }
+
+  .mobile-hide {
+    display: block;
+  }
+
+  .pontos-4 {
+    padding-top: 6px;
+    top: 285px;
+    left: 130px;
+  }
+
+  .pontos-pequenos {
+    right: 130px;
+    width: 110px;
+    height: unset;
+    img {
+      width: 100%;
+    }
+  }
+  
+  .pontos-grandes {
+    width: 185px;
+    height: 310px;
+    img {
+      width: 180px;
+    }
+  }
+  
+  .ondas-finas {
+    bottom: 125px;
+    width: 300px;
+    img {
+      width: 100%;
+    }
+  }
+}

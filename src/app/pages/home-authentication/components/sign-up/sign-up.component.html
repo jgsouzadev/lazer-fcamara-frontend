@@ -1,9 +1,8 @@
 <div class="main">
   <app-desktop-content class="mobile-hide"></app-desktop-content>
   <div class="mobile-main">
-    <div class="pontos-grandes">
-      <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="Design pontos">
-    </div>
+    
+    <app-graphisms></app-graphisms>
 
     <div class="form-hero">
       <img class="logo-mobile" src="../../../../../assets/Logo Fifo.png" alt="Icone do página" srcset="">
@@ -12,28 +11,46 @@
         <form [formGroup]="userForm" (ngSubmit)="createAccount()">
           <mat-form-field appearance="fill">
             <mat-label>Nome completo *</mat-label>
-            <input formControlName="name" name="name" matInput placeholder="Nome" type="text">
-            <!--<span *ngIf="userForm.controls.name.status == 'INVALID' && userForm.controls.name.touched">Preencha seu nome</span>!-->
+            <input formControlName="name" name="name" matInput type="text">
+            <span class="invalid-icon" *ngIf="userForm.controls.name.status == 'INVALID' && userForm.controls.name.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
+            <span class="valid-icon" *ngIf="userForm.controls.name.status == 'VALID' && userForm.controls.name.touched">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
             <mat-label>E-mail *</mat-label>
-            <input formControlName="email" name="email" matInput placeholder="Email" type="email">
-            <mat-hint>usuario@fcamara.com.br</mat-hint>
-            <!--<span *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">Preencha seu e-mail</span>!-->
+            <input formControlName="email" name="email" matInput placeholder="usuario@fcamara.com.br" type="email">
+            <span class="invalid-icon" *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
+            <span class="valid-icon" *ngIf="userForm.controls.email.status == 'VALID' && userForm.controls.email.touched">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
             <mat-label>Senha *</mat-label>
-            <input formControlName="password" name="password" matInput placeholder="Senha" type="password">
-            <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">Preencha a senha com ao menos 6 caracteres</span>!-->
-            <mat-hint>Sua senha deve conter 6 dígitos</mat-hint>
+            <input formControlName="password" name="password" matInput placeholder="Sua senha deve conter 6 dígitos" type="password">
+            <span class="invalid-icon" *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
+            <span class="valid-icon" *ngIf="userForm.controls.password.status == 'VALID' && userForm.controls.password.touched">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
+            </span>
           </mat-form-field>
           
           <mat-form-field appearance="fill">
             <mat-label>Confirme sua senha *</mat-label>
-            <input formControlName="confirmPassword" name="password" matInput placeholder="Senha" type="password">
-            <!--<span *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched"></span>!-->
+            <input formControlName="confirmPassword" name="password" matInput type="password">
+            <span class="invalid-icon" *ngIf="userForm.controls.confirmPassword.status == 'INVALID' && userForm.controls.confirmPassword.touched">
+              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
+            </span>
+            <span class="valid-icon" *ngIf="userForm.controls.confirmPassword.status == 'VALID'">
+              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
+            </span>
           </mat-form-field>
           
           <button class="button-submit" type="submit" [disabled]="userForm.invalid" routerLink="/queue-entry">Cadastrar-se</button>
@@ -41,13 +58,5 @@
       </div>
       <p class="login">Já possui cadastro? <a routerLink="">Faça login.</a></p>
     </div>
-      
-    <div class="ondas">
-      <img src="../../../../../assets/Grafismo ondas.svg" alt="Design ondas">
-    </div>
-    
-    <div class="pontos-pequenos">
-      <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="Design pontos">
-    </div>  
   </div>
-  </div>
+</div>
