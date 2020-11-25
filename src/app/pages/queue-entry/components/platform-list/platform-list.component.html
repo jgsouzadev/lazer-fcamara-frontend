@@ -14,14 +14,14 @@
     </header>
     <div class="content">
       <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
-        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()" [disableRipple]='true' [disabled]="userChecked">
+        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, name: platform.name}" (click)="nextStep()" [disableRipple]='true' [disabled]="userChecked">
           <div class="box-item-platform">
             <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
             <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
             <img *ngIf="platform.id == 3 || platform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
             <div class="text-item">
                 <div>
-                  <p id="platform-name">{{platform.value}}</p>
+                  <p id="platform-name">{{platform.name}}</p>
                   <p>{{platformQueue[i].queueCount}} Pessoas na fila</p>
                 </div>
             </div>

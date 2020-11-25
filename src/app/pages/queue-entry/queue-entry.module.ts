@@ -14,10 +14,11 @@ import { PlatformListComponent } from './components/platform-list/platform-list.
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth.guard';
 import { GraphismsComponent } from './shared/components/graphisms/graphisms.component';
+import { UserOnGameComponent } from './components/user-on-game/user-on-game.component';
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent],
+  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,
