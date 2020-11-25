@@ -1,4 +1,4 @@
-<div class="user-on-queue">
+<div class="user-on-queue" *ngIf="!userQuit">
   <div class="ondas desktop-hide graphism">
     <img src="../../../../../assets/Grafismo ondas.svg" alt="">
   </div>
@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div class="confirm-user-quit" *ngIf="userQuit">
+  <!-- <div class="confirm-user-quit" *ngIf="userQuit">
     <div class="content-quit">
       <p>{{ userPosition === 1 ? 'Terminou sua partida?'  : 'Que pena! Você está saindo da fila.' }}</p>
       <p>{{ userPosition === 1 ? 'Tem certeza que quer sair do jogo?'  : 'Tem certeza que quer sair da fila?' }}</p>
@@ -51,7 +51,7 @@
         <button class="ok-bttn" (click)="onUserQuitQueue.emit()"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <ng-template #suavez>
@@ -59,3 +59,9 @@
   <img class="medalha" src="../../../../../assets/medalha 1.svg" alt="Medalha">
   <p class="boa-sorte">Bom jogo!</p>
 </ng-template>
+
+<app-confirm-quit *ngIf="userQuit"
+  [userPosition]="userPosition"
+  (onUserCancel)="userQuit = false"
+  (onUserQuit)="onUserQuitQueue.emit()"
+></app-confirm-quit>

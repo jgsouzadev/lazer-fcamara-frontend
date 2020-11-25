@@ -1,0 +1,38 @@
+<div class="confirm-quit">
+  <div class="ondas desktop-hide graphism">
+    <img src="../../../../../assets/Grafismo ondas.svg" alt="">
+  </div>
+  <div class="pontos-grandes graphism">
+    <img src="../../../../../assets/Grafismo pontos grandes.svg" alt="">
+  </div>
+  <div class="pontos-pequenos graphism">
+    <img src="../../../../../assets/Grafismo pontos pequenos.svg" alt="">
+  </div>
+  <div class="ondas2 desktop-hide graphism">
+    <img src="../../../../../assets/Grafismo ondas.svg" alt="">
+  </div>
+
+  <div class="pontos-4 mobile-hide graphism">
+    <img src="../../../../../assets/Grafismo 4 pontos.svg" alt="">
+  </div>
+  <div class="ondas-finas mobile-hide graphism">
+    <img src="../../../../../assets/Grafismo ondas finas.svg" alt="">
+  </div>
+  <div class="ondas-finas2 mobile-hide graphism">
+    <img src="../../../../../assets/Grafismo ondas finas.svg" alt="">
+  </div>
+  <div class="pontos-4-2 mobile-hide graphism">
+    <img src="../../../../../assets/Grafismo 4 pontos.svg" alt="">
+  </div>
+
+  <div class="confirm-user-quit">
+    <div class="content-quit">
+      <p>{{ userPosition === 1 ? 'Terminou sua partida?'  : 'Que pena! Você está saindo da fila.' }}</p>
+      <p>{{ userPosition === 1 ? 'Tem certeza que quer sair do jogo?'  : 'Tem certeza que quer sair da fila?' }}</p>
+      <div class="bttns">
+        <button class="sair-bttn" (click)="onUserCancel.emit()">Cancelar</button>
+        <button class="ok-bttn" (click)="onUserQuit.emit()"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,10 +15,11 @@ import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth.guard';
 import { GraphismsComponent } from './shared/components/graphisms/graphisms.component';
 import { UserOnGameComponent } from './components/user-on-game/user-on-game.component';
+import { ConfirmQuitComponent } from './shared/components/confirm-quit/confirm-quit.component';
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent],
+  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent, ConfirmQuitComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,
