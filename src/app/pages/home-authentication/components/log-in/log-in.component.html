@@ -12,22 +12,10 @@
           <mat-form-field appearance="fill">
             <mat-label>Email *</mat-label>
             <input formControlName="email" name="name" matInput placeholder="usuario@fcamara.com.br" type="email">
-            <span class="invalid-icon" *ngIf="userForm.controls.email.status == 'INVALID' && userForm.controls.email.touched">
-              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
-            </span>
-            <span class="valid-icon" *ngIf="userForm.controls.email.status == 'VALID' && userForm.controls.email.touched">
-              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
-            </span>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Senha *</mat-label>
             <input formControlName="password" name="password" matInput type="password">
-            <span class="invalid-icon" *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">
-              <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
-            </span>
-            <span class="valid-icon" *ngIf="userForm.controls.password.status == 'VALID' && userForm.controls.password.touched">
-              <img src="../../../../../assets/Acerto.png" alt="Simbolo de correto">
-            </span>
           </mat-form-field>
         </form>
 

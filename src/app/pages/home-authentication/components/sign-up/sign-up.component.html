@@ -33,7 +33,7 @@
           
           <mat-form-field appearance="fill">
             <mat-label>Senha *</mat-label>
-            <input formControlName="password" name="password" matInput type="password">
+            <input formControlName="password" name="password" matInput placeholder="Sua senha deve conter 6 dígitos" type="password">
             <span class="invalid-icon" *ngIf="userForm.controls.password.status == 'INVALID' && userForm.controls.password.touched">
               <img src="../../../../../assets/Alerta.png" alt="Simbolo de incorreto">
             </span>
