@@ -4,7 +4,7 @@
   <div class='hero'>
     <p class="title">Você está jogando</p>
     <div class="content">
-      <mat-selection-list #platformlist [multiple]="false" style="outline: none;">
+      <mat-selection-list #platformlist [multiple]="false" style="outline: none;" [disabled]='true'>
         <mat-list-option [value]="{ id: selectedPlatform.id, name: selectedPlatform.name}" >
           <div class="box-item-platform">
             <img *ngIf="selectedPlatform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
