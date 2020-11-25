@@ -17,11 +17,18 @@
   </div>
   <div class='hero'>
     <header>
-      <p>Escolha sua plataforma de jogo</p>
+      <ng-template [ngIf]="userChecked" [ngIfElse]="notchecked">
+        <h2>Ei, você já está na fila!</h2>
+        <p>Aguarde ser chamado</p>
+      </ng-template>
+      <ng-template #notchecked>
+        <h2>Olá, <span class="txt-laranja">Sangue Laranja!</span></h2>
+        <p>O que vai jogar hoje?</p>
+      </ng-template>
     </header>
     <div class="content">
       <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
-        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()" [disableRipple]='true'>
+        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, value: platform.value}" (click)="nextStep()" [disableRipple]='true' [disabled]="userChecked">
           <div class="box-item-platform">
             <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
             <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">

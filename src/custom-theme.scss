@@ -33,16 +33,17 @@ $lazer-fcamara-theme: mat-light-theme((
 // that you are using.
 @include angular-material-theme($lazer-fcamara-theme);
 
+$font-stack: Montserrat, "Helvetica Neue", sans-serif;
 
 html, body { height: 100%; width: 100%; }
-body { margin: 0; font-family: Montserrat, "Helvetica Neue", sans-serif; }
-.mat-typography p { margin: 0; }
+body { margin: 0; font-family: $font-stack; }
+.mat-typography p, h2 { margin: 0; font-family: $font-stack;}
 
 // Variables
-$font-stack: Montserrat, "Helvetica Neue", sans-serif;
 $background-color: #E5E5E5;
 $primary-color: #FF4500;
 $laranjaf1: #FC6027;
 $laranjaf2: #FF662E;
 $bluef0: #414099;
 $bluef1: #484EA5;
+$lightgrey: #F1ECEC;
