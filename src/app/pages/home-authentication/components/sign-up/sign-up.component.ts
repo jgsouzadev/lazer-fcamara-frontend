@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
       name: [null, Validators.required, Validators.minLength(2)],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [null, [Validators.required, Validators.minLength(6)]],
+      confirmPassword: [null, [Validators.required]],
     }, { validator: this.checkPassword('password', 'confirmPassword') })
   }
 
@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
       let passwordInput = group.controls[password],
       passwordConfirmationInput = group.controls[passwordConfirmation];
       
-      if (passwordInput.value !== passwordConfirmationInput.value) {
+      if ((passwordInput.value !== passwordConfirmationInput.value) || (passwordConfirmationInput.value === null)) {
         return passwordConfirmationInput.setErrors({notEquivalent: true})
       }
       else {
