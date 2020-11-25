@@ -83,27 +83,6 @@ mat-form-field {
   }
 } 
 
-.pontos-grandes {
-  position: absolute;
-  top: 12%;
-  left: -24px;
-  overflow: hidden;
-}
-
-.ondas {
-  position: absolute;
-  bottom: 18%;
-  overflow: hidden;
-}
-
-.pontos-pequenos {
-  position: absolute;
-  text-align: right;
-  bottom: 16%;
-  overflow: hidden;
-  right: -33px;
-}
-
 // When writing media query, be aware of the scopes of selector of the default, because who has more selector's wins the priority in this case
 @media all and (min-width: 1280px) {
   .mobile-hide {
@@ -137,30 +116,7 @@ mat-form-field {
   .logo-mobile {
     display: none;
   }
-
-  .pontos-grandes {
-    left: 0;
-    img {
-      width: 142px;
-      height: 137px;
-    }
-  }
-
-  .ondas {
-    img {
-      width: 165px;
-    }
-  }
-
-  .pontos-pequenos {
-    right: 5px;
-    bottom: 5%;
-
-    img {
-      width: 205px;
-    }
-  }
-
+  
   mat-form-field {
     input {
       font-size: 15px;
