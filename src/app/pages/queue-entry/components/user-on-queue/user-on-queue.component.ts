@@ -14,6 +14,7 @@ export class UserOnQueueComponent implements OnInit {
 
   @Output() onUserQuitQueue = new EventEmitter()
   @Output() onUserChecking  = new EventEmitter()
+  @Output() onUserOnGame = new EventEmitter()
 
   userQuit = false;
 

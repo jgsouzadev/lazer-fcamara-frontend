@@ -57,6 +57,10 @@
   &:focus { // &:hover
     background-color: $lightgrey !important;
   }
+
+  &:hover:not(:focus) {
+    background-color: #f1f0f0 !important;
+  }
 }
 
 .mat-list-single-selected-option, .mat-list-item-disabled {
