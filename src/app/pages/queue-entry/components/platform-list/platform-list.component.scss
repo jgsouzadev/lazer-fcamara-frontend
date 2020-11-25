@@ -123,33 +123,6 @@
   }
 }
 
-// Graphisms 
-.pontos-pequenos {
-  position: absolute;
-  right: -8px;
-  overflow: hidden;
-  width: 76px;
-  height: 72px;
-  padding-top: 6px;
-}
-
-.pontos-grandes {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  padding-top: 6px;
-  width: 110px;
-  height: 80px;
-}
-
-.ondas, .ondas-finas {
-  position: absolute;
-  overflow: hidden;
-  padding-top: 6px;
-  bottom: 10px;
-}
-
 @media all and (min-width: 1280px) {
 
   .desktop-hide {
@@ -178,39 +151,6 @@
       div {
         margin-left: -2em;
       }
-    }
-  }
-
-  .pontos-4 {
-    position: absolute;
-    overflow: hidden;
-    padding-top: 6px;
-    top: 285px;
-    left: 130px;
-  }
-
-  .pontos-pequenos {
-    right: 130px;
-    width: 110px;
-    height: unset;
-    img {
-      width: 100%;
-    }
-  }
-  
-  .pontos-grandes {
-    width: 185px;
-    height: 310px;
-    img {
-      width: 180px;
-    }
-  }
-  
-  .ondas-finas {
-    bottom: 125px;
-    width: 300px;
-    img {
-      width: 100%;
     }
   }
 

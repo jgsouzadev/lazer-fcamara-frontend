@@ -13,10 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlatformListComponent } from './components/platform-list/platform-list.component'
 import { AuthService } from 'src/app/auth.service';
 import { AuthGuard } from 'src/app/auth.guard';
+import { GraphismsComponent } from './shared/components/graphisms/graphisms.component';
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent],
+  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,
