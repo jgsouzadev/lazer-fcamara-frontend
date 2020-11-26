@@ -1,6 +1,4 @@
 <div class="user-on-queue" *ngIf="!userQuit">
-  <app-graphisms-orange-display></app-graphisms-orange-display>
-
   <div class="hero" *ngIf="!userQuit">
     <div class="content">
       <ng-template [ngIf]="userPosition > 1" [ngIfElse]="suavez">
@@ -19,6 +17,7 @@
     </div>
   </div>
 </div>
+<app-graphisms-orange-display></app-graphisms-orange-display>
 
 <ng-template #suavez>
   <p class="jogar">Sua vez de jogar!</p>

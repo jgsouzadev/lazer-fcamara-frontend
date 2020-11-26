@@ -35,7 +35,7 @@ $lazer-fcamara-theme: mat-light-theme((
 
 $font-stack: Montserrat, "Helvetica Neue", sans-serif;
 
-html, body { height: 100%; width: 100%; }
+html, body { height: 100%; width: 100%; overflow: hidden; }
 body { margin: 0; font-family: $font-stack; }
 .mat-typography p, h2 { margin: 0; font-family: $font-stack;}
 

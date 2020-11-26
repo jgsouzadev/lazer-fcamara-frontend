@@ -52,13 +52,15 @@
   .pontos-grandes {
     width: 185px;
     height: 310px;
+    top: 45em;
     img {
       width: 180px;
     }
   }
   
   .ondas-finas {
-    bottom: 125px;
+    bottom: unset;
+    top: 47em;
     width: 300px;
     img {
       width: 100%;

@@ -1,6 +1,5 @@
 <div class="user-on-game" *ngIf="!userQuit">
   <app-header></app-header>
-  <app-graphisms></app-graphisms>
   <div class='hero'>
     <p class="title">Você está jogando</p>
     <div class="content">
@@ -22,6 +21,7 @@
     <button class="sair-bttn" (click)="userQuit = true">Sair do jogo</button>
   </div>
 </div>
+<app-graphisms></app-graphisms>
 
 <app-confirm-quit *ngIf="userQuit"
   [userPosition]='userPosition'
