@@ -1,0 +1,192 @@
+@import "../../../../../custom-theme.scss";
+
+.user-checked {
+  background-color: $background-color;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+.hero { 
+  width: 87%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+
+  .title {
+    margin: 36px 0 32px;
+    font-size: 14px;
+  }
+}
+
+.mat-list-item {
+  height: 130px !important;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background-color: #fff;
+  box-shadow: 1.5px 4px 5px #9b9b9b;
+}
+
+.mat-list-item-disabled {
+  background: #fff;
+}
+
+.box-item-platform {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+
+  img {
+    width: 80px;
+    height: 75px;
+    margin-left: 12px;
+  }
+
+  .text-item {
+    width: 100%;
+    text-align: center;
+    height: 100px;
+
+    div {
+      font-size: 12px;
+      
+      p:first-of-type {
+        padding-bottom: 19px;
+      }
+
+      #user-position {
+        width: 100%;
+        margin: 0;
+        color: $primary-color;
+        font-weight: 600;
+        font-size: 38px;
+      }
+
+      #platform-name {
+        padding-top: 23px;
+      }
+    }
+  }
+}
+
+.hero {
+  header {
+    font-size: 14px;
+    line-height: 15px;
+
+    h2 {
+      padding: 45px 0 8px;
+      font-size: inherit;
+      line-height: inherit;
+    }
+    
+    p {
+      padding-bottom: 15px;
+    }
+  }
+
+  .bttns {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 25px;
+    height: 50px;
+
+    .sair-bttn {
+      background-color:$bluef0;
+      color: #fff;
+      width: 90%;
+      height: 100%;
+      font-size: 12px;
+      border-radius: 6px;
+      margin-left: 15px;
+      text-transform: uppercase;
+      font-weight: 500;
+
+      &:active {
+        background-color: $bluef1
+      }
+
+      &:not(:disabled):hover {
+        background-color: $bluef2;
+      }
+    }
+    
+    .voltar-bttn {
+      background-color: #fff;
+      color: $bluef0;
+      width: 90%;
+      height: 100%;
+      font-size: 12px;
+      border: 0.5px solid $bluef0;
+      border-radius: 6px;
+      font-weight: 500;
+      text-transform: capitalize;
+
+      &:active {
+        color: $bluef1
+      }
+
+      &:not(:disabled):hover {
+        color: $bluef2;
+      }
+    }
+  }
+}
+
+.mat-list-item-disabled {
+  background: #fff;
+}
+
+@media all and (min-width: 1280px) {
+
+  .desktop-hide {
+    display: none;
+  }
+
+  .mobile-hide {
+    display: block;
+  }
+
+  .hero {
+    width: 40%;
+    
+    .title {
+      margin: 56px 0 50px;
+      font-size: 21px;
+    }
+  }
+
+  .box-item-platform {
+    img {
+      width: 90px;
+      height: 80px;
+      margin-left: 17px;
+    }
+    
+    .text-item {
+      div {
+        margin-left: -2.8em;
+
+        #platform-name {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+
+  .hero {
+    .sair-bttn {
+      width: 200px;
+      height: 48px;
+    }
+  }
+
+  .mat-list-item {
+    height: 150px !important;
+  }
+
+}

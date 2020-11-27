@@ -37,7 +37,7 @@ $font-stack: Montserrat, "Helvetica Neue", sans-serif;
 
 html, body { height: 100%; width: 100%; overflow: hidden; position: relative; }
 body { margin: 0; font-family: $font-stack; }
-.mat-typography p, h2 { margin: 0; font-family: $font-stack;}
+.mat-typography p, h2 { margin: 0; font-family: $font-stack; color: #000000;}
 
 // Variables
 $background-color: #E5E5E5;

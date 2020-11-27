@@ -28,7 +28,7 @@
   z-index: 10;
 
   header {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 15px;
 
     h2 {
@@ -47,7 +47,7 @@
   }
 }
 
-::ng-deep .mat-list-item {
+.mat-list-item {
   height: 100px !important;
   border-radius: 8px;
   margin-bottom: 16px;

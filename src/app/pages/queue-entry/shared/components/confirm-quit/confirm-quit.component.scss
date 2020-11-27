@@ -36,7 +36,7 @@
       color: $bluef1
     }
 
-    &:hover {
+    &:not(:disabled):hover {
       color: $bluef2;
     }
   }
@@ -56,7 +56,7 @@
       background-color: $bluef1
     }
     
-    &:hover {
+    &:not(:disabled):hover {
       background-color: $bluef2;
     }
   }
