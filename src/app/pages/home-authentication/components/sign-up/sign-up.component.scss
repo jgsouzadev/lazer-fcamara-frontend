@@ -12,11 +12,12 @@
 }
 
 .mobile-main {
-  min-height: 100%; // This was very important to not break the graphisms, it will always load at least the height needed
+  height: 100%; // This was very important to not break the graphisms, it will always load at least the height needed
   width: 100%;
   background-color: $background-color;
   position: relative;
   overflow: auto;
+  overflow-x: hidden;
 
   .form-hero {
     display: flex;
@@ -54,7 +55,7 @@
       }
     }
     .login {
-      margin-bottom: 5%;
+      margin-bottom: 15%;
       margin-top: auto; // sticks to the bottom when the is flex-direction: column; on the parent component
     }
   }
@@ -102,7 +103,7 @@ mat-form-field {
 
       .login {
         z-index: 10;
-        margin-top: 50%;
+        margin-top: 72px;
         padding-bottom: 30px;
       }
     }
@@ -110,7 +111,7 @@ mat-form-field {
     // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
     .main-content { 
       position: relative;
-      top: 30%;
+      margin-top: 33vh;
     }
   }
 

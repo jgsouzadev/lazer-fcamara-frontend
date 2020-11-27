@@ -23,13 +23,14 @@
     img {
       margin-top: 3em;
       align-self: flex-start;
+      position: absolute;
     }
 
     .content {
       position: relative;
       color: #fff;
       align-self: center;
-      top: 26%;
+      margin-top: 35vh;
 
       h1 {
         text-align: left;
