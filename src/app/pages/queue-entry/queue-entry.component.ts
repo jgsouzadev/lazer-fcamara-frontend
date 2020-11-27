@@ -126,6 +126,11 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
     }
   }
 
+  handleUserNotification() {
+    console.log('oi');
+    
+  }
+
   handleRequestError() {
     this._snackBar.open('Não foi possível completar a requisição, recarregue a página', 'Fechar', {
       duration: 4000,

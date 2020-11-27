@@ -14,6 +14,8 @@ export class UserCheckedComponent implements OnInit {
   @Output() onUserQuitQueue = new EventEmitter()
   @Output() onUserChecking = new EventEmitter()
 
+  @Output() onUserNotification = new EventEmitter() 
+
   userQuit: boolean = false;
 
   constructor() { }
