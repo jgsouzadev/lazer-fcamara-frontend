@@ -1,24 +1,18 @@
 <div class="platform-list">
   <app-header></app-header>
-  <app-graphisms></app-graphisms>
   <div class='hero'>
     <header>
-      <ng-template [ngIf]="userChecked" [ngIfElse]="notchecked">
-        <h2>Ei, você já está na fila!</h2>
-        <p>Aguarde ser chamado</p>
-      </ng-template>
-      <ng-template #notchecked>
-        <h2>Olá, <span class="txt-laranja">Sangue Laranja!</span></h2>
-        <p>O que vai jogar hoje?</p>
-      </ng-template>
+      <h2>Olá, <span class="txt-laranja">Sangue Laranja!</span></h2>
+      <p>O que vai jogar hoje?</p>
     </header>
     <div class="content">
       <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
         <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, name: platform.name}" (click)="nextStep()" [disableRipple]='true' [disabled]="userChecked">
           <div class="box-item-platform">
             <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
-            <img *ngIf="platform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
-            <img *ngIf="platform.id == 3 || platform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="platform.id == 2" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="platform.id == 3" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="platform.id == 4" src="../../../../../assets/Monopoly.svg" alt="Ícone para games" srcset="">
             <div class="text-item">
                 <div>
                   <p id="platform-name">{{platform.name}}</p>
@@ -33,9 +27,9 @@
         type="button" 
         [disabled]="buttonFilter" 
         (click)="onClickEvent.emit()"
-        >{{ userChecked ? 'Ver minha posição' : 'Entrar na fila' }}
+        >Entrar na fila
       </button>
     </div>
   </div>
 </div>
-
+<app-graphisms ></app-graphisms>

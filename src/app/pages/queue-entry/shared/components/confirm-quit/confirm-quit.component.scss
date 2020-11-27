@@ -9,37 +9,9 @@
   width: 100%;
   height: 100%;
   display: flex;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
   //justify-content: center;
-}
-
-.hero {
-  width: 80%;
-  background-color: #fff;
-  border-radius: 40px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 18vh auto;
-  height: 350px;
-  position: relative;
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 80%;
-    margin: auto;
-    height: 290px;
-
-    p {
-      font-size: 14px;
-      text-align: center;
-    }
-  }
 }
 
 .bttns {
@@ -59,6 +31,14 @@
     border: 0.5px solid $bluef0;
     border-radius: 6px;
     font-weight: 500;
+
+    &:active {
+      color: $bluef1
+    }
+
+    &:not(:disabled):hover {
+      color: $bluef2;
+    }
   }
 
   .ok-bttn {
@@ -75,6 +55,10 @@
     &:active {
       background-color: $bluef1
     }
+    
+    &:not(:disabled):hover {
+      background-color: $bluef2;
+    }
   }
 }
 
@@ -88,6 +72,7 @@
   align-items: center;
   margin: 30vh auto;
   height: 225px;
+  z-index: 20;
 
   .content-quit {
     display: flex;
@@ -121,23 +106,11 @@
   .desktop-hide {
     display: none;
   }
-  
-  .hero {
-    width: 33%;
-    height: 520px;
-  
-    .content {
-      height: 440px;
-
-      p {
-        font-size: 18px;
-      }
-    }
-  }
 
   .confirm-user-quit {
     width: 33%;
     height: 320px;
+    margin-bottom:  40px;
     
     .content-quit {
       width: 75%;

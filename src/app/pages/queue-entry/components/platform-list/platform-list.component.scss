@@ -18,7 +18,7 @@
   height: 100%;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .hero {
@@ -28,7 +28,7 @@
   z-index: 10;
 
   header {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 15px;
 
     h2 {
@@ -47,7 +47,7 @@
   }
 }
 
-::ng-deep .mat-list-item {
+.mat-list-item {
   height: 100px !important;
   border-radius: 8px;
   margin-bottom: 16px;
@@ -99,6 +99,7 @@
       #platform-name {
         font-weight: 500;
         font-size: 16px;
+        width: 150px;
       }
     }
   }
@@ -114,11 +115,16 @@
     text-transform: uppercase;
     float: right;
     margin-top: 3px;
+    margin-bottom: 20px;
     font-size: 15px;
     font-weight: 500; 
 
     &:active {
       background-color: $bluef1;
+    }
+
+    &:not(:disabled):hover {
+      background-color: $bluef2;
     }
 
     &:disabled {
@@ -141,7 +147,7 @@
     width: 40%;
     header {
       h2 {
-        padding: 80px 0 27px;
+        padding: 10vh 0 27px;
         font-size: 21px;
       }
       p {

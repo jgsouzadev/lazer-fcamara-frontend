@@ -1,6 +1,4 @@
 <div class="user-on-queue" *ngIf="!userQuit">
-  <app-graphisms-orange-display></app-graphisms-orange-display>
-
   <div class="hero" *ngIf="!userQuit">
     <div class="content">
       <ng-template [ngIf]="userPosition > 1" [ngIfElse]="suavez">
@@ -13,12 +11,13 @@
       <div class="bttns">
         <button class="sair-bttn" (click)="userQuit = true"> {{ userPosition > 1 ? 'Sair da fila' : 'Sair do jogo' }} </button>
         <button class="ok-bttn"   (click)="userPosition === 1 ? onUserOnGame.emit() : onUserChecking.emit()">
-          {{ userPosition === 1 ? 'Jogar' : 'ok' }}
+          {{ userPosition === 1 ? 'Jogar!' : 'ok' }}
         </button>
       </div>
     </div>
   </div>
 </div>
+<app-graphisms-orange-display></app-graphisms-orange-display>
 
 <ng-template #suavez>
   <p class="jogar">Sua vez de jogar!</p>

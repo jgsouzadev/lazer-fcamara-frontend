@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .hero { 
@@ -70,11 +70,16 @@
     text-transform: uppercase;
     float: right;
     margin-top: 3px;
+    margin-bottom: 20px;
     font-size: 15px;
     font-weight: 500; 
 
     &:active {
       background-color: $bluef1;
+    }
+
+    &:not(:disabled):hover {
+      background-color: $bluef2;
     }
 
     &:disabled {

@@ -72,30 +72,28 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   }
 
   handleUserEnterQueue() {
-    if (this.userChecked) {
-      this.userChecked = false
-    }
-    else {
-      this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-        this.userPosition = data.userInfo.position
-        this.userId = data.userInfo.id
-        this.refIntervalUserPosition = setInterval(() => {
-          if (this.userPosition && this.userPosition !== 1) {
-            this.httpService.getUserPosition(this.userId).subscribe(data => {
-              if (this.userPosition) {
-                // There was cases that the request was made in the same moment that the interval was cleared
-                // so it'd think that the user is still in the queue
-                this.userPosition = data.position
+    this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
+      this.userPosition = data.userInfo.position
+      this.userId = data.userInfo.id
+      this.refIntervalUserPosition = setInterval(() => {
+        if (this.userPosition && this.userPosition !== 1) {
+          this.httpService.getUserPosition(this.userId).subscribe(data => {
+            if (this.userPosition) {
+              // There was cases that the request was made in the same moment that the interval was cleared
+              // so it'd think that the user is still in the queue
+              this.userPosition = data.position
+              if (this.userPosition === 1) {
+                this.userChecked = false
               }
-            })
-          }
-        }, 60000)// 1 minute
-      }, 
-      (error) => {
-        console.error(error)
-        this.handleRequestError()
-      })
-    }
+            }
+          })
+        }
+      }, 25000)// 60000 = 1 minute
+    }, 
+    (error) => {
+      console.error(error)
+      this.handleRequestError()
+    })
   }
 
   handleUserQuitQueue() {
@@ -129,6 +127,16 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.handleRequestError()
       })
     }
+  }
+
+  handleUserNotification() {
+    this.httpService.disableNotifications(this.userId).subscribe(() => {
+      console.log("Notificação desativada com sucesso!");
+    }, 
+    (error) => {
+      console.error(error)
+      this.handleRequestError()
+    })
   }
 
   handleRequestError() {

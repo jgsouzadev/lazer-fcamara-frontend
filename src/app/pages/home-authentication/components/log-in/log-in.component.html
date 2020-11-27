@@ -1,9 +1,6 @@
 <div class="main">
   <app-desktop-content class="mobile-hide"></app-desktop-content>
   <div class="mobile-main">
-
-    <app-graphisms></app-graphisms>
-  
     <div class="form-hero">
       <img class="logo-mobile" src="../../../../../assets/Logo Fifo.png" alt="Icone do página" srcset="">
 
@@ -26,7 +23,8 @@
         <button class="button-submit" type="submit" [disabled]="userForm.invalid" routerLink="/queue-entry">Entrar</button>
       
       </div>
-      <p class="cadastrar">Não tem uma conta? <a routerLink="sign-up">Cadastre-se.</a></p>
+      <p class="cadastrar">Não tem possui cadastro? <a routerLink="sign-up">Cadastre-se.</a></p>
     </div>
+    <app-graphisms></app-graphisms>
   </div>
 </div>

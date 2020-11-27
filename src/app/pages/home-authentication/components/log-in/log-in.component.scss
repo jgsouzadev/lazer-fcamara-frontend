@@ -4,6 +4,7 @@
 .main {
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .mobile-hide {
@@ -11,24 +12,25 @@
 }
 
 .mobile-main {
-  min-height: 100%; // This was very important to not break the graphisms, it will always load at least the height needed
+  height: 100%; // This was very important to not break the graphisms, it will always load at least the height needed
   width: 100%;
   background-color: $background-color;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
+  overflow-x: hidden;
 
   .form-hero {
     display: flex;
     flex-direction: column;
     align-items: center;
-    //height: 100%; // Important to the desktop version
+    height: 100%; // Important to the desktop version
     width: 90%;
     margin: 0 auto;
-    min-height: 92vh; // This was very important to not break the graphisms, it will always load at least the height needed
   
     .logo-mobile {
       margin: 2em 0 11em;
       width: 115px;
+      z-index: 10;
     }
 
     .main-content {
@@ -70,11 +72,14 @@
         &:active {
           background-color: $laranjaf1
         }
+
+        &:not(:disabled):hover {
+          background-color: $laranjaf4
+        }
       }
     }
-
     .cadastrar {
-      margin-bottom: 5%;
+      margin-bottom: 15%;
       margin-top: auto; // sticks to the bottom when the is flex-direction: column; on the parent component
     }
   }
@@ -104,15 +109,16 @@ mat-form-field {
       height: 100%;
 
       .cadastrar {
-        margin-bottom: 0px;
-        margin-top: 350px;
+        z-index: 10;
+        margin-top: 72px;
+        padding-bottom: 30px;
       }
     }
 
     // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
     .main-content { 
       position: relative;
-      top: 30%;
+      margin-top: 33vh;
     }
   }
 
