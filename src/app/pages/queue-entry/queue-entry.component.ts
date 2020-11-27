@@ -82,10 +82,13 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
               // There was cases that the request was made in the same moment that the interval was cleared
               // so it'd think that the user is still in the queue
               this.userPosition = data.position
+              if (this.userPosition === 1) {
+                this.userChecked = false
+              }
             }
           })
         }
-      }, 60000)// 1 minute
+      }, 25000)// 60000 = 1 minute
     }, 
     (error) => {
       console.error(error)
