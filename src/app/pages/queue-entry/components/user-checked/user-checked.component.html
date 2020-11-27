@@ -1,0 +1,46 @@
+<div class="user-checked" *ngIf="!userQuit">
+  <app-header></app-header>
+  <div class='hero'>
+    <header>
+      <h2>Você já está na fila!</h2>
+      <p>Aguarde ser chamado</p>
+    </header>
+    <div class="content">
+      <mat-selection-list #platformlist [multiple]="false" style="outline: none;" [disabled]='true'>
+        <mat-list-option [value]="{ id: selectedPlatform.id, name: selectedPlatform.name}" >
+          <div class="box-item-platform">
+            <img *ngIf="selectedPlatform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="selectedPlatform.id == 2" src="../../../../../assets/Ping-Pong.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="selectedPlatform.id == 3 || selectedPlatform.id == 4" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+            <div class="text-item">
+                <div>
+                  <p>Sua posição na fila</p>
+                  <p id="user-position">{{ userPosition }}</p>
+                  <p id="platform-name">{{ selectedPlatform.name }}</p>
+                </div>
+            </div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+    <div class="notification-box">
+      <mat-checkbox (change)="onUserNotification.emit()" [checked]='true' [disableRipple]='true'>
+        Quero receber noficação por email.
+      </mat-checkbox>
+    </div>  
+    <div class="bttns">
+      <button class="voltar-bttn" (click)="onUserChecking.emit()">voltar</button>
+      <button class="sair-bttn" (click)="userQuit = true">Sair da fila</button>
+    </div>
+  </div>
+</div>
+<app-graphisms></app-graphisms>
+
+<app-confirm-quit *ngIf="userQuit"
+  [userPosition]='userPosition'
+  (onUserCancel)="userQuit = false"
+  (onUserQuit)="onUserQuitQueue.emit()"
+></app-confirm-quit>
+
+<!-- <input type="checkbox" id="notification" name="notification" value="Notification" checked>
+      <label for="notification">Quero receber noficação por email.</label> -->

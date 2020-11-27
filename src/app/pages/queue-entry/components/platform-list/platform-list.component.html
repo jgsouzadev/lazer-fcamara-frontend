@@ -2,14 +2,8 @@
   <app-header></app-header>
   <div class='hero'>
     <header>
-      <ng-template [ngIf]="userChecked" [ngIfElse]="notchecked">
-        <h2>Ei, você já está na fila!</h2>
-        <p>Aguarde ser chamado</p>
-      </ng-template>
-      <ng-template #notchecked>
-        <h2>Olá, <span class="txt-laranja">Sangue Laranja!</span></h2>
-        <p>O que vai jogar hoje?</p>
-      </ng-template>
+      <h2>Olá, <span class="txt-laranja">Sangue Laranja!</span></h2>
+      <p>O que vai jogar hoje?</p>
     </header>
     <div class="content">
       <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
@@ -32,7 +26,7 @@
         type="button" 
         [disabled]="buttonFilter" 
         (click)="onClickEvent.emit()"
-        >{{ userChecked ? 'Ver minha posição' : 'Entrar na fila' }}
+        >Entrar na fila
       </button>
     </div>
   </div>

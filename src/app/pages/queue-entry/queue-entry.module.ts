@@ -17,10 +17,11 @@ import { GraphismsComponent } from './shared/components/graphisms/graphisms.comp
 import { UserOnGameComponent } from './components/user-on-game/user-on-game.component';
 import { ConfirmQuitComponent } from './shared/components/confirm-quit/confirm-quit.component';
 import { GraphismsOrangeDisplayComponent } from './shared/components/graphisms-orange-display/graphisms-orange-display.component';
+import { UserCheckedComponent } from './components/user-checked/user-checked.component';
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent, ConfirmQuitComponent, GraphismsOrangeDisplayComponent],
+  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent, ConfirmQuitComponent, GraphismsOrangeDisplayComponent, UserCheckedComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,

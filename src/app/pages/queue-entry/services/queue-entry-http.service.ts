@@ -79,4 +79,13 @@ export class QueueEntryHttpService {
     )
     // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
   }
+
+  disableNotifications(userId) {
+    return this.httpClient.post(
+      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/disable-notification/" + userId, 
+      { status_user: false },
+      { headers: this.authService.authHeaders() }
+    )
+    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
+  }
 }
