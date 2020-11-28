@@ -2,22 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Platforms, PlatformQueue } from '../queue-entry.component'
 import { AuthService } from '../../../auth.service'
-
-interface GetPlatforms {
-  platforms: Array<Platforms>;
-  queue: Array<PlatformQueue>;
-}
-
-interface PostUser {
-  userInfo: {
-    id: number
-    position: number
-  }
-}
-
-interface GetPlatformQueue {
-  queue: Array<PlatformQueue>
-}
+import { environment } from 'src/environments/environment';
 
 interface GetUserPosition {
   position: number
@@ -34,58 +19,61 @@ export class QueueEntryHttpService {
   ) { }
 
   getPlatforms() {
-    return this.httpClient.get<GetPlatforms>(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/platform",
+    return this.httpClient.get<Array<Platforms>>(
+      //"https://www.fakeapi.online/api/apis/jaimemathias/api/platform",
+      `${environment.apiUrl}/platforms`,
       { headers: this.authService.authHeaders() }
     )
   }
+    
 
-  enterQueue(selectedPlatform) {
-    return this.httpClient.post<PostUser>(
-      'https://www.fakeapi.online/api/apis/jaimemathias/api/queue/checkin', 
-      selectedPlatform,
+  enterQueue({ id }) {
+    const platform = id
+    
+    return this.httpClient.put<any>(
+      //'https://www.fakeapi.online/api/apis/jaimemathias/api/queue/checkin', 
+      `${environment.apiUrl}/queues`,
+      JSON.stringify({platform}),
       { headers: this.authService.authHeaders() },
     )
-    // Maybe do ../checkin/selectedPlatform? it'd have to change the method
   }
 
   getPlatformQueue() {
-    return this.httpClient.get<GetPlatformQueue>(
-      'https://www.fakeapi.online/api/apis/jaimemathias/api/platform/platform-queue', 
+    return this.httpClient.get<Array<PlatformQueue>>(
+      //"https://www.fakeapi.online/api/apis/jaimemathias/api/platform/platform-queue",
+      `${environment.apiUrl}/queues`, 
       { headers: this.authService.authHeaders() }
     )
   }
 
-  getUserPosition(userId) {
-    return this.httpClient.get<GetUserPosition>(
-      'https://www.fakeapi.online/api/apis/jaimemathias/api/user/position/' + userId, 
+  getUserPosition({ id }) {
+    const platform = id
+
+    return this.httpClient.put<GetUserPosition>(
+      //'https://www.fakeapi.online/api/apis/jaimemathias/api/user/position/' + userId, 
+      `${environment.apiUrl}/queues/polling/`,
+      JSON.stringify({platform}),
       { headers: this.authService.authHeaders() },
     )
   }
 
-  quitQueue(userId) {
-    return this.httpClient.post("https://www.fakeapi.online/api/apis/jaimemathias/api/user/queue-checkout/" + userId, 
-      { status_user: false },
+  quitQueue({ id }) {
+    const platform = id
+
+    return this.httpClient.put(
+      `${environment.apiUrl}/queues/exit`,
+      //"https://www.fakeapi.online/api/apis/jaimemathias/api/user/queue-checkout/" + '1',
+      JSON.stringify({platform}),
       { headers: this.authService.authHeaders() }
     )
-    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
   }
 
-  quitGame(userId) {
+  disableNotifications() {
     return this.httpClient.post(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/game-checkout/" + userId, 
+      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/disable-notification/" + '1', 
       { status_user: false },
       { headers: this.authService.authHeaders() }
     )
-    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
-  }
-
-  disableNotifications(userId) {
-    return this.httpClient.post(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/disable-notification/" + userId, 
-      { status_user: false },
-      { headers: this.authService.authHeaders() }
-    )
-    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'patch'
+    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'put'
   }
 }

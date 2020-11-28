@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   modeDebug: true,
-  apiUrl: "http://localhost:3333/api",
+  //apiUrl: "http://localhost:3333/api",
+  apiUrl: "http://206.189.189.136:3333/api",
 };
 
 /*

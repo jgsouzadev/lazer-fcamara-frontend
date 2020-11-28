@@ -9,8 +9,8 @@ export interface Platforms {
 }
 
 export interface PlatformQueue {
-  id: number;
-  queueCount: number;
+  id_platform: number;
+  size: number;
 }
 
 @Component({
@@ -27,7 +27,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   
   buttonFilter: boolean = true
 
-  userId: number = 0
   userPosition: number = 0
 
   refIntervalUserPosition: number
@@ -43,28 +42,33 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.httpService.getPlatforms().subscribe(data => {
-      this.platformQueue = [ ...data.queue ]
-      this.platforms = [ ...data.platforms ]
+      this.platforms = [ ...data ]
+    }, (error) => {
+      console.error(error)
+      this.handleRequestError()
+    })
 
+    this.httpService.getPlatformQueue().subscribe(data => {
+      console.log(data);
+      this.platformQueue = [ ...data ]
       this.refIntervalPlatformQueue = setInterval(() => {
         if (this.userPosition !== 1) {
           this.httpService.getPlatformQueue().subscribe(data => {
-            this.platformQueue = [ ...data.queue ] // Discuss if this is more efficient than doing a .map
+            this.platformQueue = [ ...data ] // Discuss if this is more efficient than doing a .map
+          }, (error) => {
+            console.error(error)
+            this.handleRequestError()
           })
         }
       }, 300000) // 5 minutes
-    },
-    (error) => {
+    }, (error) => {
       console.error(error)
       this.handleRequestError()
     })
   }
 
   ngOnDestroy(): void {
-    this.userPosition = 0;
-    this.buttonFilter = false
-    clearInterval(this.refIntervalUserPosition)
-    clearInterval(this.refIntervalUserPosition)
+    this.removeUser()
   }
 
   handlePlatformChange() {
@@ -73,70 +77,53 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   handleUserEnterQueue() {
     this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
-      this.userPosition = data.userInfo.position
-      this.userId = data.userInfo.id
+      this.userPosition = data.position
       this.refIntervalUserPosition = setInterval(() => {
         if (this.userPosition && this.userPosition !== 1) {
-          this.httpService.getUserPosition(this.userId).subscribe(data => {
+          this.httpService.getUserPosition(this.selectedPlatform).subscribe(data => {
             if (this.userPosition) {
-              // There was cases that the request was made in the same moment that the interval was cleared
-              // so it'd think that the user is still in the queue
               this.userPosition = data.position
               if (this.userPosition === 1) {
                 this.userChecked = false
               }
             }
+          }, (error) => {
+            console.error(error)
+            this.handleRequestError()
           })
         }
       }, 25000)// 60000 = 1 minute
-    }, 
-    (error) => {
+    }, (error) => {
       console.error(error)
       this.handleRequestError()
     })
   }
 
   handleUserQuitQueue() {
-    if (this.userPosition == 1) {
-      this.httpService.quitGame(this.userId).subscribe(() => { 
-        this.userPosition = 0;
-        this.buttonFilter = true
-        this.userChecked = false
-        this.userId = 0
-        this.userOnGame = false
-        clearInterval(this.refIntervalUserPosition)
-        clearInterval(this.refIntervalUserPosition)
-      },
-      (error) => {
-        console.error(error)
-        this.handleRequestError()
-      })
-    }
-    else {
-      this.httpService.quitQueue(this.userId).subscribe(() => { 
-        this.userPosition = 0
-        this.buttonFilter = true
-        this.userChecked = false
-        this.userId = 0
-        this.userOnGame = false
-        clearInterval(this.refIntervalUserPosition)
-        clearInterval(this.refIntervalUserPosition)
-      }, 
-      (error) => {
-        console.error(error)
-        this.handleRequestError()
-      })
-    }
-  }
-
-  handleUserNotification() {
-    this.httpService.disableNotifications(this.userId).subscribe(() => {
-      console.log("Notificação desativada com sucesso!");
-    }, 
-    (error) => {
+    this.httpService.quitQueue(this.selectedPlatform).subscribe(() => { 
+      this.removeUser()
+    }, (error) => {
       console.error(error)
       this.handleRequestError()
     })
+  }
+
+  handleUserNotification() {
+    this.httpService.disableNotifications().subscribe(() => {
+      console.log("Notificação desativada com sucesso!");
+    }, (error) => {
+      console.error(error)
+      this.handleRequestError()
+    })
+  }
+
+  removeUser() {
+    this.userPosition = 0;
+    this.buttonFilter = true
+    this.userChecked = false
+    this.userOnGame = false
+    clearInterval(this.refIntervalUserPosition)
+    clearInterval(this.refIntervalUserPosition)
   }
 
   handleRequestError() {

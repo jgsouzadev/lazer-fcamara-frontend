@@ -17,8 +17,8 @@ export class AuthService {
     const userToken = this.getLocalUser();
 
     return new HttpHeaders({
-      'Authorization': 'Bearer ' + userToken,
-      'Content-Type': 'application/json'
+      'x-access-token': userToken,
+      'Content-Type': 'application/json',
     });
   }
 
@@ -27,7 +27,7 @@ export class AuthService {
 
     let userToken = token == 'false' ? false : token;
 
-    return userToken || true;
+    return userToken || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwNjU5MDIxMSwiZXhwIjoxNjA2NjAwMjExfQ.fHQb85ioiO91ecHcAF-fqnoS15CM11uAFQLPqRFnFfE';
   }
 
   async authentication(dataUserAuthentication) {
@@ -41,6 +41,8 @@ export class AuthService {
 
     this.saveUser(userToken.token);
 
+    // FAZER A VERIFICAÇÃO SE O USUÁRIO ESTÁ NA FILA AQUI COM O "userToken"
+
     return userToken.token;
     } catch (error) {
       if (environment.modeDebug) {
@@ -53,6 +55,8 @@ export class AuthService {
   async createUser(userCreate) {
     try {
       userCreate.filial = 1;
+      console.log(userCreate);
+      
       const user: any = await this.http
         .post(`${environment.apiUrl}/users`, userCreate)
         .toPromise()
@@ -64,7 +68,7 @@ export class AuthService {
       if (environment.modeDebug) {
         console.log('error', error);
       }
-      return null
+      return null // ACHO QUE SE MANDAR O ERROR AQUI, EU CONSIGO PEGAR A MENSAGEM DE ERROR, VERIFICAR
     }
   }
 

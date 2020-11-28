@@ -50,7 +50,9 @@ export class SignUpComponent implements OnInit {
 
   async createAccount() {
     if (this.userForm.valid) {
-      let userAuthenticate = await this.authService.createUser(this.userForm.value);
+      const { name, email, password } = this.userForm.value
+
+      let userAuthenticate = await this.authService.createUser({ name, email, password });
 
       if (!userAuthenticate) {
         this.openSnackBar('Lamento, mas não foi possível criar seu usuário', 'Fechar');
