@@ -5,6 +5,7 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { AuthService } from "../../../../auth.service";
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserOnQueueComponent } from 'src/app/pages/queue-entry/components/user-on-queue/user-on-queue.component';
 
 
 @Component({
@@ -34,14 +35,18 @@ export class LogInComponent implements OnInit {
   }
 
   async authentication() {
-    let userToken: any = await this.authService.authentication(this.userForm.value);
+    let userToken: any = await this.authService.userLogIn(this.userForm.value);
 
     if(!userToken) {
       this.openSnackBar('Verifique sua senha ou seu email', 'Fechar')
       return
     }
-
-    await this.router.navigateByUrl('queue-entry');
+    
+    if (userToken.id_platform) {
+      await this.router.navigate(['queue-entry', { id: userToken.id_platform }]);
+    } else {
+      await this.router.navigate(['queue-entry']);
+    }
   }
 
   openSnackBar(message: string, action: string) {

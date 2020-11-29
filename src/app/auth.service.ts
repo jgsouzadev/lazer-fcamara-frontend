@@ -23,14 +23,20 @@ export class AuthService {
   }
 
   getLocalUser() {
-    let token = localStorage.getItem("userToken");
+    const userToken: string = localStorage.getItem("userToken");
 
-    let userToken = token == 'false' ? false : token;
-
-    return userToken || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwNjU5MDIxMSwiZXhwIjoxNjA2NjAwMjExfQ.fHQb85ioiO91ecHcAF-fqnoS15CM11uAFQLPqRFnFfE';
+    return userToken;
   }
 
-  async authentication(dataUserAuthentication) {
+  authUser() {
+    return this.http.get<any>(
+      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/auth",
+      //`${environment.apiUrl}/user/auth`,
+      { headers: this.authHeaders() }
+    )
+  }
+
+  async userLogIn(dataUserAuthentication) {
     try {
       const userToken: any = await this.http
       .post(`${environment.apiUrl}/auth`, {
@@ -41,9 +47,8 @@ export class AuthService {
 
     this.saveUser(userToken.token);
 
-    // FAZER A VERIFICAÇÃO SE O USUÁRIO ESTÁ NA FILA AQUI COM O "userToken"
-
-    return userToken.token;
+    return userToken;
+    
     } catch (error) {
       if (environment.modeDebug) {
         console.log('error', error);

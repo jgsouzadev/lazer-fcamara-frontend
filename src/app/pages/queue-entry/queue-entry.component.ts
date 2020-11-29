@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 export interface Platforms {
   id: number;
@@ -30,31 +32,64 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   userPosition: number = 0
 
   refIntervalUserPosition: number
-  refIntervalPlatformQueue: Number
+  refIntervalPlatformQueue: number
 
   userChecked: boolean = false
   userOnGame: boolean = false
 
   constructor(
     private httpService: QueueEntryHttpService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    const queryParams = { 
+      id: this.route.snapshot.paramMap.get('id')
+    }
+
     this.httpService.getPlatforms().subscribe(data => {
       this.platforms = [ ...data ]
+      
+      if (queryParams.id) {
+        const id_platform = parseInt(queryParams.id)
+
+        this.selectedPlatform = this.platforms.find(platform => {
+          return platform.id === id_platform
+        })
+        
+        this.handleUserEnterQueue()
+      }
+      else {
+        this.authService.authUser().subscribe((data) => {
+          if (data.id_platform) { // If the user is already in queue
+            this.selectedPlatform = this.platforms.find(platform => {
+              return platform.id === data.id_platform
+            })     
+                   
+            this.handleUserEnterQueue()
+          }
+        }, (error) => {
+          console.error(error)
+          this.handleRequestError('Token inválido/expirado')
+          this.authService.logOut()
+        })
+      }
     }, (error) => {
       console.error(error)
       this.handleRequestError()
     })
 
     this.httpService.getPlatformQueue().subscribe(data => {
-      console.log(data);
       this.platformQueue = [ ...data ]
+      console.log(this.platformQueue);
+      
       this.refIntervalPlatformQueue = setInterval(() => {
         if (this.userPosition !== 1) {
           this.httpService.getPlatformQueue().subscribe(data => {
-            this.platformQueue = [ ...data ] // Discuss if this is more efficient than doing a .map
+            this.platformQueue = [ ...data ]
           }, (error) => {
             console.error(error)
             this.handleRequestError()
@@ -69,6 +104,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.removeUser()
+    clearInterval(this.refIntervalPlatformQueue)
   }
 
   handlePlatformChange() {
@@ -102,6 +138,12 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   handleUserQuitQueue() {
     this.httpService.quitQueue(this.selectedPlatform).subscribe(() => { 
       this.removeUser()
+
+      this.httpService.getPlatformQueue().subscribe(data => {
+        this.platformQueue = data
+      })
+      
+      this.router.navigateByUrl('queue-entry')
     }, (error) => {
       console.error(error)
       this.handleRequestError()
@@ -123,11 +165,10 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
     this.userChecked = false
     this.userOnGame = false
     clearInterval(this.refIntervalUserPosition)
-    clearInterval(this.refIntervalUserPosition)
   }
 
-  handleRequestError() {
-    this._snackBar.open('Não foi possível completar a requisição, recarregue a página', 'Fechar', {
+  handleRequestError(msg = "Não foi possível completar a requisição, recarregue a página") {
+    this._snackBar.open(msg, 'Fechar', {
       duration: 4000,
     });
   }
