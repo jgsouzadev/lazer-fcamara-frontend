@@ -28,7 +28,15 @@ export class AuthService {
     return userToken;
   }
 
-  async authentication(dataUserAuthentication) {
+  authUser() {
+    return this.http.get<any>(
+      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/auth",
+      //`${environment.apiUrl}/user/auth`,
+      { headers: this.authHeaders() }
+    )
+  }
+
+  async userLogIn(dataUserAuthentication) {
     try {
       const userToken: any = await this.http
       .post(`${environment.apiUrl}/auth`, {

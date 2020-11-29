@@ -3,6 +3,7 @@ import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 export interface Platforms {
   id: number;
@@ -40,7 +41,8 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
     private httpService: QueueEntryHttpService,
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +61,21 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         })
         
         this.handleUserEnterQueue()
+      }
+      else {
+        this.authService.authUser().subscribe((data) => {
+          if (data.id_platform) { // If the user is already in queue
+            this.selectedPlatform = this.platforms.find(platform => {
+              return platform.id === data.id_platform
+            })     
+                   
+            this.handleUserEnterQueue()
+          }
+        }, (error) => {
+          console.error(error)
+          this.handleRequestError('Token inválido/expirado')
+          this.authService.logOut()
+        })
       }
     }, (error) => {
       console.error(error)
@@ -150,8 +167,8 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
     clearInterval(this.refIntervalUserPosition)
   }
 
-  handleRequestError() {
-    this._snackBar.open('Não foi possível completar a requisição, recarregue a página', 'Fechar', {
+  handleRequestError(msg = "Não foi possível completar a requisição, recarregue a página") {
+    this._snackBar.open(msg, 'Fechar', {
       duration: 4000,
     });
   }

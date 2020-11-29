@@ -35,7 +35,7 @@ export class LogInComponent implements OnInit {
   }
 
   async authentication() {
-    let userToken: any = await this.authService.authentication(this.userForm.value);
+    let userToken: any = await this.authService.userLogIn(this.userForm.value);
 
     if(!userToken) {
       this.openSnackBar('Verifique sua senha ou seu email', 'Fechar')
