@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { ActivatedRoute } from '@angular/router';
 
 export interface Platforms {
   id: number;
@@ -37,20 +38,37 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   constructor(
     private httpService: QueueEntryHttpService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    const queryParams = { 
+      id: this.route.snapshot.paramMap.get('id'),
+      position: this.route.snapshot.paramMap.get('position')
+    }
+
     this.httpService.getPlatforms().subscribe(data => {
       this.platforms = [ ...data ]
+      
+      if (queryParams.id) {
+        const id_platform = parseInt(queryParams.id)
+
+        this.selectedPlatform = this.platforms.find(platform => {
+          return platform.id === id_platform
+        })
+        
+        this.handleUserEnterQueue()
+      }
     }, (error) => {
       console.error(error)
       this.handleRequestError()
     })
 
     this.httpService.getPlatformQueue().subscribe(data => {
-      console.log(data);
       this.platformQueue = [ ...data ]
+      console.log(this.platformQueue);
+      
       this.refIntervalPlatformQueue = setInterval(() => {
         if (this.userPosition !== 1) {
           this.httpService.getPlatformQueue().subscribe(data => {
