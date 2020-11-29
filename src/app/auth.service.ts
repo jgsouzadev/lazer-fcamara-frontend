@@ -23,11 +23,9 @@ export class AuthService {
   }
 
   getLocalUser() {
-    let token = localStorage.getItem("userToken");
+    const userToken: string = localStorage.getItem("userToken");
 
-    let userToken = token == 'false' ? false : token;
-
-    return userToken || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTYwNjU5MDIxMSwiZXhwIjoxNjA2NjAwMjExfQ.fHQb85ioiO91ecHcAF-fqnoS15CM11uAFQLPqRFnFfE';
+    return userToken;
   }
 
   async authentication(dataUserAuthentication) {

@@ -18,7 +18,14 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
 
   async canLoad(route: Route) {
-    return await this.verifyAccess();
+    const userToken = await this.authService.getLocalUser();
+
+    if (userToken) {
+      this.router.navigate(['/queue-entry'])
+      return false
+    }
+
+    return true
   }
 
   async verifyAccess() {
