@@ -52,9 +52,11 @@
       }
     
       .link-block {
-        margin-top: -13px;
-        display: none;
+        position: absolute;
         text-align: right;
+        z-index: 12;
+        bottom: 6.5em;
+        right: 0;
       }
 
       .button-submit {
