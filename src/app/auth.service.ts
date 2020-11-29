@@ -39,9 +39,8 @@ export class AuthService {
 
     this.saveUser(userToken.token);
 
-    // FAZER A VERIFICAÇÃO SE O USUÁRIO ESTÁ NA FILA AQUI COM O "userToken"
-
-    return userToken.token;
+    return userToken;
+    
     } catch (error) {
       if (environment.modeDebug) {
         console.log('error', error);
