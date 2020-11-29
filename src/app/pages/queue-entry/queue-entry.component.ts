@@ -123,7 +123,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
       this.removeUser()
 
       this.httpService.getPlatformQueue().subscribe(data => {
-        this.platformQueue = [ ...data ]
+        this.platformQueue = data
       })
       
       this.router.navigateByUrl('queue-entry')
