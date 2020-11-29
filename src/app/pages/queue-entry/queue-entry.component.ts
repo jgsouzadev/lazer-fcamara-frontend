@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QueueEntryHttpService } from './services/queue-entry-http.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Platforms {
   id: number;
@@ -31,7 +31,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   userPosition: number = 0
 
   refIntervalUserPosition: number
-  refIntervalPlatformQueue: Number
+  refIntervalPlatformQueue: number
 
   userChecked: boolean = false
   userOnGame: boolean = false
@@ -39,7 +39,8 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   constructor(
     private httpService: QueueEntryHttpService,
     private _snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +72,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
       this.refIntervalPlatformQueue = setInterval(() => {
         if (this.userPosition !== 1) {
           this.httpService.getPlatformQueue().subscribe(data => {
-            this.platformQueue = [ ...data ] // Discuss if this is more efficient than doing a .map
+            this.platformQueue = [ ...data ]
           }, (error) => {
             console.error(error)
             this.handleRequestError()
@@ -86,6 +87,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.removeUser()
+    clearInterval(this.refIntervalPlatformQueue)
   }
 
   handlePlatformChange() {
@@ -119,6 +121,12 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   handleUserQuitQueue() {
     this.httpService.quitQueue(this.selectedPlatform).subscribe(() => { 
       this.removeUser()
+
+      this.httpService.getPlatformQueue().subscribe(data => {
+        this.platformQueue = [ ...data ]
+      })
+      
+      this.router.navigateByUrl('queue-entry')
     }, (error) => {
       console.error(error)
       this.handleRequestError()
@@ -139,7 +147,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
     this.buttonFilter = true
     this.userChecked = false
     this.userOnGame = false
-    clearInterval(this.refIntervalUserPosition)
     clearInterval(this.refIntervalUserPosition)
   }
 

@@ -42,7 +42,7 @@ export class LogInComponent implements OnInit {
       return
     }
     
-    if (userToken.id) {
+    if (userToken.id_platform) {
       await this.router.navigate(['queue-entry', { id: userToken.id_platform }]);
     } else {
       await this.router.navigate(['queue-entry']);
