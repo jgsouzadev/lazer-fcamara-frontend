@@ -44,8 +44,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const queryParams = { 
-      id: this.route.snapshot.paramMap.get('id'),
-      position: this.route.snapshot.paramMap.get('position')
+      id: this.route.snapshot.paramMap.get('id')
     }
 
     this.httpService.getPlatforms().subscribe(data => {

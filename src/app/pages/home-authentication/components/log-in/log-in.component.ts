@@ -42,8 +42,8 @@ export class LogInComponent implements OnInit {
       return
     }
     
-    if (userToken.position) {
-      await this.router.navigate(['queue-entry', { id: userToken.id_platform, position: userToken.position }]);
+    if (userToken.id) {
+      await this.router.navigate(['queue-entry', { id: userToken.id_platform }]);
     } else {
       await this.router.navigate(['queue-entry']);
     }
