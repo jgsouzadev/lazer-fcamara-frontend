@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -20,7 +19,6 @@ export class PasswordRecoveryComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    private authService: AuthService,
     private router: Router,
     private httpClient: HttpClient
   ) { }
@@ -44,10 +42,13 @@ export class PasswordRecoveryComponent implements OnInit {
     {
       this.emailSent = true
       this.recoverForm.controls['email'].setErrors(null)
+      const refTimerInterval = setInterval(() => {
+        this.timer--
+      }, 1000)
 
       setTimeout(() => {
         this.router.navigateByUrl('home-authentication')
-        this.timer--
+        clearInterval(refTimerInterval)
       }, 5000)
     }, (error) => {
       this.openSnackBar('Email inexistente', 'Fechar')
