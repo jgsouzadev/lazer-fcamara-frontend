@@ -86,7 +86,7 @@
     align-items: center;
 
     div {
-      width: 130px;
+      width: 220px;
 
       p {
         margin: 0;
@@ -99,7 +99,7 @@
       #platform-name {
         font-weight: 500;
         font-size: 16px;
-        width: 150px;
+        width: 100%;
       }
     }
   }
@@ -152,14 +152,6 @@
       }
       p {
         padding-bottom: 24px;
-      }
-    }
-  }
-
-  .box-item-platform {
-    .text-item {
-      div {
-        margin-left: -2em;
       }
     }
   }
