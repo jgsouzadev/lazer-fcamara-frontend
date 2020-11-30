@@ -49,10 +49,9 @@ export class QueueEntryHttpService {
   getUserPosition({ id }) {
     const platform = id
 
-    return this.httpClient.put<GetUserPosition>(
+    return this.httpClient.get<GetUserPosition>(
       //'https://www.fakeapi.online/api/apis/jaimemathias/api/user/position/' + userId, 
-      `${environment.apiUrl}/queues/polling/`,
-      JSON.stringify({platform}),
+      `${environment.apiUrl}/queues/polling/` + platform,
       { headers: this.authService.authHeaders() },
     )
   }
