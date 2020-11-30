@@ -19,11 +19,6 @@ button {
   transition: .5s;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
-
-  &:disabled {
-    cursor: initial;
-    opacity: 0.85;
-  }
 }
 
 img {
