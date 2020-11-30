@@ -17,8 +17,10 @@ button {
   outline: none;
   cursor: pointer;
   transition: .5s;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
 
-  &:disabled {
-    cursor: initial;
-  }
+img {
+  user-select: none;
 }

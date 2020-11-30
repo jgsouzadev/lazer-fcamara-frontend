@@ -25,7 +25,7 @@
       </mat-selection-list>
     </div>
     <div class="notification-box">
-      <mat-checkbox (change)="onUserNotification.emit()" [checked]='true' [disableRipple]='true'>
+      <mat-checkbox (change)="onUserNotification.emit()" [checked]="userNotification" [disableRipple]='true'>
         Quero receber noficação por email.
       </mat-checkbox>
     </div>  

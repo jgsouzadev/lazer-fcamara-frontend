@@ -6,27 +6,27 @@
       <p>O que vai jogar hoje?</p>
     </header>
     <div class="content">
-      <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platformQueue">
-        <mat-list-option *ngFor="let platform of platforms; let i = index" [value]="{ id: platform.id, name: platform.name}" (click)="nextStep()" [disableRipple]='true' [disabled]="userChecked">
+      <mat-selection-list #platformlist [multiple]="false" (selectionChange)="onSelectChangeEvent($event)" style="outline: none;" *ngIf="platforms">
+        <mat-list-option *ngFor="let queue of platformQueue; let i = index" [value]="{ id: queue.id_platform, name: platforms[queue.id_platform - 1].name}" [disableRipple]='true' [disabled]="userChecked">
           <div class="box-item-platform">
-            <img *ngIf="platform.id == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
-            <img *ngIf="platform.id == 2" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
-            <img *ngIf="platform.id == 3" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
-            <img *ngIf="platform.id == 4" src="../../../../../assets/Monopoly.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="queue.id_platform == 1" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="queue.id_platform == 2" src="../../../../../assets/PS4.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="queue.id_platform == 3" src="../../../../../assets/snooker.svg" alt="Ícone para games" srcset="">
+            <img *ngIf="queue.id_platform == 4" src="../../../../../assets/Monopoly.svg" alt="Ícone para games" srcset="">
             <div class="text-item">
                 <div>
-                  <p id="platform-name">{{platform.name}}</p>
-                  <p>{{platformQueue[i].queueCount}} Pessoas na fila</p>
+                  <p id="platform-name">{{ platforms[queue.id_platform - 1].name }}</p>
+                  <p>{{queue.size}} Pessoas na fila</p>
                 </div>
             </div>
           </div>
         </mat-list-option>
       </mat-selection-list>
+      <p *ngIf="errorMessage" class="error-message">*Escolha uma plataforma de jogo para entrar na fila.</p>
       <button 
         class="platform-list-bttn" 
         type="button" 
-        [disabled]="buttonFilter" 
-        (click)="onClickEvent.emit()"
+        (click)="handleBttnClick()"
         >Entrar na fila
       </button>
     </div>

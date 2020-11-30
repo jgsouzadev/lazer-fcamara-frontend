@@ -6,7 +6,6 @@ import { AuthService } from "../../../../auth.service";
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -34,19 +33,28 @@ export class LogInComponent implements OnInit {
   }
 
   async authentication() {
-    let userToken: any = await this.authService.authentication(this.userForm.value);
+    if (this.userForm.valid) { 
+      let userToken: any = await this.authService.userLogIn(this.userForm.value);
 
-    if(!userToken) {
-      this.openSnackBar('Verifique sua senha ou seu email', 'Fechar')
-      return
+      if(!userToken) {
+        this.openSnackBar('Verifique sua senha ou seu email', 'Fechar')
+        return
+      }
+      
+      if (userToken.id_platform) {
+        await this.router.navigate(['queue-entry', { id: userToken.id_platform, position: userToken.position, notif: userToken.allowNotification, logged: true }]);
+      } else {
+        await this.router.navigate(['queue-entry', { logged: true }]);
+      }
     }
-
-    await this.router.navigateByUrl('queue-entry');
+    else {
+      this.openSnackBar('Preencha os campos obrigatórios', 'Fechar')
+    }
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 3000,
+      duration: 4000,
     });
   }
 }

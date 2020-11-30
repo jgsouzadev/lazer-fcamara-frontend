@@ -5,7 +5,7 @@
       <img class="logo-mobile" src="../../../../../assets/Logo Fifo.png" alt="Icone do página" srcset="">
 
       <div class="main-content">
-        <form [formGroup]="userForm" (ngSubmit)="authentication()" class="example-form">
+        <form [formGroup]="userForm" (ngSubmit)="authentication()">
           <mat-form-field appearance="fill">
             <mat-label>Email *</mat-label>
             <input formControlName="email" name="name" matInput placeholder="usuario@fcamara.com.br" type="email">
@@ -14,13 +14,13 @@
             <mat-label>Senha *</mat-label>
             <input formControlName="password" name="password" matInput type="password">
           </mat-form-field>
+          
+          <div class="link-block">
+            <a routerLink="recover-password">Esqueci minha senha.</a>
+          </div>
+          
+          <button class="button-submit" type="submit">Entrar</button>
         </form>
-
-        <div class="link-block">
-          <a href="#">Esqueci minha senha.</a>
-        </div>
-        
-        <button class="button-submit" type="submit" [disabled]="userForm.invalid" routerLink="/queue-entry">Entrar</button>
       
       </div>
       <p class="cadastrar">Não tem possui cadastro? <a routerLink="sign-up">Cadastre-se.</a></p>

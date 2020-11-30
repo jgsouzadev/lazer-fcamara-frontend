@@ -1,5 +1,4 @@
 @import "../../../../../custom-theme.scss";
-@import "../../shared/styles/page-style.scss";
 
 .main {
   height: 100%;
@@ -52,13 +51,15 @@
       }
     
       .link-block {
-        margin-top: -13px;
-        display: none;
+        position: absolute;
         text-align: right;
+        z-index: 12;
+        bottom: 7.5em;
+        right: 0;
       }
 
       .button-submit {
-        margin-top: 18px;
+        margin-top: 35px;
         background-color: $primary-color;
         color: #fff;
         font-size: 18px;
@@ -113,12 +114,16 @@ mat-form-field {
         margin-top: 72px;
         padding-bottom: 30px;
       }
-    }
 
-    // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
-    .main-content { 
-      position: relative;
-      margin-top: 33vh;
+      // The (top, bottom, etc) only works when the it has the position: relative; and the parent has height property (line above)
+      .main-content { 
+        position: relative;
+        margin-top: 33vh;
+
+        .link-block {
+          bottom: 7.6em;
+        }
+      }
     }
   }
 

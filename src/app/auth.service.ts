@@ -17,20 +17,25 @@ export class AuthService {
     const userToken = this.getLocalUser();
 
     return new HttpHeaders({
-      'Authorization': 'Bearer ' + userToken,
-      'Content-Type': 'application/json'
+      'x-access-token': userToken,
+      'Content-Type': 'application/json',
     });
   }
 
   getLocalUser() {
-    let token = localStorage.getItem("userToken");
+    const userToken: string = localStorage.getItem("userToken");
 
-    let userToken = token == 'false' ? false : token;
-
-    return userToken || true;
+    return userToken;
   }
 
-  async authentication(dataUserAuthentication) {
+  authUser() {
+    return this.http.get<any>(
+      `${environment.apiUrl}/auth/`,
+      { headers: this.authHeaders() }
+    )
+  }
+
+  async userLogIn(dataUserAuthentication) {
     try {
       const userToken: any = await this.http
       .post(`${environment.apiUrl}/auth`, {
@@ -41,7 +46,8 @@ export class AuthService {
 
     this.saveUser(userToken.token);
 
-    return userToken.token;
+    return userToken;
+    
     } catch (error) {
       if (environment.modeDebug) {
         console.log('error', error);
@@ -53,6 +59,8 @@ export class AuthService {
   async createUser(userCreate) {
     try {
       userCreate.filial = 1;
+      console.log(userCreate);
+      
       const user: any = await this.http
         .post(`${environment.apiUrl}/users`, userCreate)
         .toPromise()
@@ -64,7 +72,7 @@ export class AuthService {
       if (environment.modeDebug) {
         console.log('error', error);
       }
-      return null
+      return error
     }
   }
 

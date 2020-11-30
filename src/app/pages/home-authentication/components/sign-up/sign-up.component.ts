@@ -50,20 +50,27 @@ export class SignUpComponent implements OnInit {
 
   async createAccount() {
     if (this.userForm.valid) {
-      let userAuthenticate = await this.authService.createUser(this.userForm.value);
+      const { name, email, password } = this.userForm.value
 
-      if (!userAuthenticate) {
-        this.openSnackBar('Lamento, mas não foi possível criar seu usuário', 'Fechar');
+      let userAuthenticate = await this.authService.createUser({ name, email, password });
+
+      if (userAuthenticate.error) {
+        this.openSnackBar(userAuthenticate.error.msg, 'Fechar');
+        this.userForm.controls['email'].setErrors({'incorrect': true})
         return
       }
 
+      this.userForm.controls['email'].setErrors(null)
       await this.router.navigateByUrl('queue-entry')
+    }
+    else {
+      this.openSnackBar('Preencha os campos obrigatórios', 'Fechar')
     }
   }
 
-  openSnackBar(message: string, action: string) {
+  openSnackBar(message: string = 'Lamento, mas não foi possível criar seu usuário', action: string) {
     this._snackBar.open(message, action, {
-      duration: 3000,
+      duration: 5000,
     });
   }
 }
