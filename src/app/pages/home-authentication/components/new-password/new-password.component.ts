@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -15,15 +15,19 @@ export class NewPasswordComponent implements OnInit {
   newPasswordForm: FormGroup;
   emailSent: boolean = false;
 
+  queryControl: String
+
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
     private httpClient: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.queryControl = this.route.snapshot.paramMap.get('control')
     this.formBuilderUser();
   }
 
@@ -38,7 +42,10 @@ export class NewPasswordComponent implements OnInit {
     this.httpClient.post<any>(
       "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
       //`${environment.apiUrl}/`, 
-      { password: this.newPasswordForm.value.password },
+      { 
+        password: this.newPasswordForm.value.password,
+        control: this.queryControl
+      },
     ).subscribe((data) => 
     {
       this.authService.saveUser(12321)
