@@ -56,16 +56,18 @@ export class SignUpComponent implements OnInit {
 
       if (userAuthenticate.error) {
         this.openSnackBar(userAuthenticate.error.msg, 'Fechar');
+        this.userForm.controls['email'].setErrors({'incorrect': true})
         return
       }
 
+      this.userForm.controls['email'].setErrors(null)
       await this.router.navigateByUrl('queue-entry')
     }
   }
 
   openSnackBar(message: string = 'Lamento, mas não foi possível criar seu usuário', action: string) {
     this._snackBar.open(message, action, {
-      duration: 3000,
+      duration: 5000,
     });
   }
 }
