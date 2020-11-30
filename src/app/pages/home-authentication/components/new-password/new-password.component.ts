@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-password',
@@ -41,8 +42,7 @@ export class NewPasswordComponent implements OnInit {
   newPassword() {
     if (this.newPasswordForm.valid) {
       this.httpClient.post<any>(
-        "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
-        //`${environment.apiUrl}/`, 
+        `${environment.apiUrl}/new-password`, 
         { 
           password: this.newPasswordForm.value.password,
           control: this.queryControl
@@ -52,7 +52,8 @@ export class NewPasswordComponent implements OnInit {
         this.authService.saveUser(data.token)
         this.router.navigateByUrl('queue-entry')
       }, (error) => {
-        this.openSnackBar('Troca de senha inválida', 'Fechar')
+        //this.openSnackBar('Troca de senha inválida', 'Fechar')
+        this.openSnackBar('Feature futura!', 'Fechar')
   
         setTimeout(() => {
           this.router.navigateByUrl('home-authentication')

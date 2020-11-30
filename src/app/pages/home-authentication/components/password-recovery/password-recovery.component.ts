@@ -36,8 +36,7 @@ export class PasswordRecoveryComponent implements OnInit {
   recoverPassword() {
     if (this.recoverForm.valid) {
       this.httpClient.post(
-        "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
-        //`${environment.apiUrl}/`, 
+        `${environment.apiUrl}/recover-password`, 
         { email: this.recoverForm.value.email },
       ).subscribe(() => 
       {
@@ -52,7 +51,8 @@ export class PasswordRecoveryComponent implements OnInit {
           clearInterval(refTimerInterval)
         }, 5000)
       }, (error) => {
-        this.openSnackBar('Email inexistente', 'Fechar')
+        //this.openSnackBar('Email inexistente', 'Fechar')
+        this.openSnackBar('Feature futura!', 'Fechar')
         this.recoverForm.controls['email'].setErrors({'incorrect': true})
         console.error(error)
       })

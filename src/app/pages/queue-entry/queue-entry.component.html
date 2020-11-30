@@ -34,6 +34,7 @@
 <app-user-checked *ngIf="userChecked"
   [userPosition]='userPosition'
   [selectedPlatform]="selectedPlatform"
+  [userNotification]="userNotification"
   (onUserChecking)="userChecked = false"
   (onUserQuitQueue)="handleUserQuitQueue()"
   (onUserNotification)="handleUserNotification()"

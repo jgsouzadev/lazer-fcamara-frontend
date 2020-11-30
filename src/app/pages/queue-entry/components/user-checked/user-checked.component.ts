@@ -11,6 +11,8 @@ export class UserCheckedComponent implements OnInit {
   @Input() selectedPlatform: Platforms
   @Input() userPosition: number
 
+  @Input() userNotification: boolean
+
   @Output() onUserQuitQueue = new EventEmitter()
   @Output() onUserChecking = new EventEmitter()
 

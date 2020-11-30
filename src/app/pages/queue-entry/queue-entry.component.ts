@@ -35,6 +35,8 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   userChecked: boolean = false
   userOnGame: boolean = false
 
+  userNotification: boolean = true
+
   constructor(
     private httpService: QueueEntryHttpService,
     private _snackBar: MatSnackBar,
@@ -46,6 +48,8 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const queryParams = { 
       id: this.route.snapshot.paramMap.get('id'),
+      position: this.route.snapshot.paramMap.get('position'),
+      notification: this.route.snapshot.paramMap.get('notif'),
       logged: this.route.snapshot.paramMap.get('logged')
     }
 
@@ -55,24 +59,32 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
       if (queryParams.logged) {
         if (queryParams.id) {
           const id_platform = parseInt(queryParams.id)
+          this.userPosition = parseInt(queryParams.position)
+          this.userNotification = queryParams.notification == 'true' ? true : false
 
           this.selectedPlatform = this.platforms.find(platform => {
             return platform.id === id_platform
           })
-          
-          this.handleUserEnterQueue()
+          this.activatePolling()
         }
         this.router.navigateByUrl('queue-entry')
       }
       else {
+        console.log('fiz a coisa');
+        
         this.authService.authUser().subscribe((data) => {
           if (data.id_platform) { // If the user is already in queue
             this.selectedPlatform = this.platforms.find(platform => {
               return platform.id === data.id_platform
             })     
-                   
-            this.handleUserEnterQueue()
+            
+            this.userPosition = data.position
+            this.userNotification = data.allowNotification
+            this.activatePolling()
           }
+          console.log('aloo');
+          
+          console.log('oi', data);
         }, (error) => {
           console.error(error)
           this.handleRequestError(error.error.message)
@@ -112,25 +124,31 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   handleUserEnterQueue() {
     this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
       this.userPosition = data.position
-      this.refIntervalUserPosition = setInterval(() => {
-        if (this.userPosition && this.userPosition !== 1) {
-          this.httpService.getUserPosition(this.selectedPlatform).subscribe(data => {
-            if (this.userPosition) {
-              this.userPosition = data.position
-              if (this.userPosition === 1) {
-                this.userChecked = false
-              }
-            }
-          }, (error) => {
-            console.error(error)
-            this.handleRequestError()
-          })
-        }
-      }, 25000)// 60000 = 1 minute
+      this.userNotification = data.notification
+
+      this.activatePolling()
     }, (error) => {
       console.error(error)
       this.handleRequestError()
     })
+  }
+
+  activatePolling() {
+    this.refIntervalUserPosition = setInterval(() => {
+      if (this.userPosition && this.userPosition !== 1) {
+        this.httpService.getUserPosition(this.selectedPlatform).subscribe(data => {
+          if (this.userPosition) {
+            this.userPosition = data.position
+            if (this.userPosition === 1) {
+              this.userChecked = false
+            }
+          }
+        }, (error) => {
+          console.error(error)
+          this.handleRequestError()
+        })
+      }
+    }, 25000)// 60000 = 1 minute
   }
 
   handleUserQuitQueue() {

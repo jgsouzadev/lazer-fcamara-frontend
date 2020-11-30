@@ -5,8 +5,6 @@ import { QueueEntryRoutingModule } from './queue-entry-routing.module';
 import { QueueEntryComponent } from './queue-entry.component';
 import { MaterialModule } from "../../shared/material/material.module";
 import { ComponentsModule } from "../../shared/components/components.module";
-import { ReactiveFormsModule } from "@angular/forms";
-import { QueueInComponent } from './components/queue-in/queue-in.component';
 import { UserOnQueueComponent } from './components/user-on-queue/user-on-queue.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -21,7 +19,7 @@ import { UserCheckedComponent } from './components/user-checked/user-checked.com
 
 
 @NgModule({
-  declarations: [QueueEntryComponent, QueueInComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent, ConfirmQuitComponent, GraphismsOrangeDisplayComponent, UserCheckedComponent],
+  declarations: [QueueEntryComponent, UserOnQueueComponent, PlatformListComponent, GraphismsComponent, UserOnGameComponent, ConfirmQuitComponent, GraphismsOrangeDisplayComponent, UserCheckedComponent],
   imports: [
     CommonModule,
     QueueEntryRoutingModule,
