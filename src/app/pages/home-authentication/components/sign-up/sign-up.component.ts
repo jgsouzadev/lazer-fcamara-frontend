@@ -63,6 +63,9 @@ export class SignUpComponent implements OnInit {
       this.userForm.controls['email'].setErrors(null)
       await this.router.navigateByUrl('queue-entry')
     }
+    else {
+      this.openSnackBar('Preencha os campos obrigatórios', 'Fechar')
+    }
   }
 
   openSnackBar(message: string = 'Lamento, mas não foi possível criar seu usuário', action: string) {
