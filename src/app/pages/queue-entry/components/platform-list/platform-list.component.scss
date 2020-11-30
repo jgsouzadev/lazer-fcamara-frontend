@@ -133,6 +133,12 @@
   }
 }
 
+.error-message {
+  float: left;
+  width: 28vw;
+  color: $laranjaf4;
+}
+
 @media all and (min-width: 1280px) {
 
   .desktop-hide {
@@ -161,6 +167,11 @@
       width: 210px;
       height: 60px;
     }
+  }
+
+  .error-message {
+    width: 55%;
+    font-size: 16px;
   }
 }
 

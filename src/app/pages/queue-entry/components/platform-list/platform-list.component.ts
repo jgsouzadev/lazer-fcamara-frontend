@@ -12,13 +12,14 @@ export class PlatformListComponent implements OnInit {
   @Input() platformQueue: PlatformQueue[]
 
   @Output() onPlatformChange = new EventEmitter();
-  @Output() onPlatformClick = new EventEmitter();
 
   @Output() onClickEvent = new EventEmitter<any>();
 
   // Disables the button after being clicked
-  @Input() buttonFilter: boolean = false
   @Input() userChecked:  boolean = false
+
+  selectedPlatform: Platforms
+  errorMessage: boolean = false
   
   constructor(
   ) { }
@@ -29,10 +30,16 @@ export class PlatformListComponent implements OnInit {
   }
 
   onSelectChangeEvent(e) {
+    this.selectedPlatform = e.option._value
     this.onPlatformChange.emit(e.option._value)
   }
   
-  nextStep() {
-    this.onPlatformClick.emit()
+  handleBttnClick() {
+    if (this.selectedPlatform) {
+      this.onClickEvent.emit()
+    }
+    else {
+      this.errorMessage = true
+    }
   }
 }

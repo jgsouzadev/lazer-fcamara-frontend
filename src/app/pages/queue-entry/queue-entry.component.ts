@@ -27,8 +27,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
   
   selectedPlatform: Platforms
   
-  buttonFilter: boolean = true
-
   userPosition: number = 0
 
   refIntervalUserPosition: number
@@ -107,10 +105,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
     clearInterval(this.refIntervalPlatformQueue)
   }
 
-  handlePlatformChange() {
-    this.buttonFilter = false;
-  }
-
   handleUserEnterQueue() {
     this.httpService.enterQueue(this.selectedPlatform).subscribe(data => {
       this.userPosition = data.position
@@ -161,7 +155,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   removeUser() {
     this.userPosition = 0;
-    this.buttonFilter = true
     this.userChecked = false
     this.userOnGame = false
     clearInterval(this.refIntervalUserPosition)
