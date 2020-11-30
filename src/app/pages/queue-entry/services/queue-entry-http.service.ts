@@ -20,7 +20,6 @@ export class QueueEntryHttpService {
 
   getPlatforms() {
     return this.httpClient.get<Array<Platforms>>(
-      //"https://www.fakeapi.online/api/apis/jaimemathias/api/platform",
       `${environment.apiUrl}/platforms`,
       { headers: this.authService.authHeaders() }
     )
@@ -31,7 +30,6 @@ export class QueueEntryHttpService {
     const platform = id
     
     return this.httpClient.post<any>(
-      //'https://www.fakeapi.online/api/apis/jaimemathias/api/queue/checkin', 
       `${environment.apiUrl}/queues`,
       JSON.stringify({platform}),
       { headers: this.authService.authHeaders() },
@@ -40,7 +38,6 @@ export class QueueEntryHttpService {
 
   getPlatformQueue() {
     return this.httpClient.get<Array<PlatformQueue>>(
-      //"https://www.fakeapi.online/api/apis/jaimemathias/api/platform/platform-queue",
       `${environment.apiUrl}/queues`, 
       { headers: this.authService.authHeaders() }
     )
@@ -50,7 +47,6 @@ export class QueueEntryHttpService {
     const platform = id
 
     return this.httpClient.get<GetUserPosition>(
-      //'https://www.fakeapi.online/api/apis/jaimemathias/api/user/position/' + userId, 
       `${environment.apiUrl}/queues/polling/` + platform,
       { headers: this.authService.authHeaders() },
     )
@@ -61,18 +57,15 @@ export class QueueEntryHttpService {
 
     return this.httpClient.put(
       `${environment.apiUrl}/queues/exit`,
-      //"https://www.fakeapi.online/api/apis/jaimemathias/api/user/queue-checkout/" + '1',
       JSON.stringify({platform}),
       { headers: this.authService.authHeaders() }
     )
   }
 
   disableNotifications() {
-    return this.httpClient.post(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/disable-notification/" + '1', 
-      { status_user: false },
+    return this.httpClient.put(
+      `${environment.apiUrl}/queues/disable-notification`, 
       { headers: this.authService.authHeaders() }
     )
-    // 'post' method temporarily just to work at fakeapi, in the final version it'll be 'put'
   }
 }
