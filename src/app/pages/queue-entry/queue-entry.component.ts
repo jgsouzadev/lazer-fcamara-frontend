@@ -148,7 +148,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
           this.handleRequestError()
         })
       }
-    }, 25000)// 60000 = 1 minute
+    }, 60000)// 1 minute
   }
 
   handleUserQuitQueue() {
