@@ -45,20 +45,24 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const queryParams = { 
-      id: this.route.snapshot.paramMap.get('id')
+      id: this.route.snapshot.paramMap.get('id'),
+      logged: this.route.snapshot.paramMap.get('logged')
     }
 
     this.httpService.getPlatforms().subscribe(data => {
       this.platforms = [ ...data ]
       
-      if (queryParams.id) {
-        const id_platform = parseInt(queryParams.id)
+      if (queryParams.logged) {
+        if (queryParams.id) {
+          const id_platform = parseInt(queryParams.id)
 
-        this.selectedPlatform = this.platforms.find(platform => {
-          return platform.id === id_platform
-        })
-        
-        this.handleUserEnterQueue()
+          this.selectedPlatform = this.platforms.find(platform => {
+            return platform.id === id_platform
+          })
+          
+          this.handleUserEnterQueue()
+        }
+        this.router.navigateByUrl('queue-entry')
       }
       else {
         this.authService.authUser().subscribe((data) => {
@@ -71,7 +75,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
           }
         }, (error) => {
           console.error(error)
-          this.handleRequestError('Token inválido/expirado')
+          this.handleRequestError(error.error.message)
           this.authService.logOut()
         })
       }

@@ -30,8 +30,7 @@ export class AuthService {
 
   authUser() {
     return this.http.get<any>(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/auth",
-      //`${environment.apiUrl}/user/auth`,
+      `${environment.apiUrl}/auth/`,
       { headers: this.authHeaders() }
     )
   }
@@ -73,7 +72,7 @@ export class AuthService {
       if (environment.modeDebug) {
         console.log('error', error);
       }
-      return error // ACHO QUE SE MANDAR O ERROR AQUI, EU CONSIGO PEGAR A MENSAGEM DE ERROR, VERIFICAR
+      return error
     }
   }
 
