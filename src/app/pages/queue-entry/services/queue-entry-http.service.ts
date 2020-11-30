@@ -30,7 +30,7 @@ export class QueueEntryHttpService {
   enterQueue({ id }) {
     const platform = id
     
-    return this.httpClient.put<any>(
+    return this.httpClient.post<any>(
       //'https://www.fakeapi.online/api/apis/jaimemathias/api/queue/checkin', 
       `${environment.apiUrl}/queues`,
       JSON.stringify({platform}),

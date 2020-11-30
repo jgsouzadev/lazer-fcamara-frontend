@@ -11,10 +11,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { DesktopContentComponent } from './shared/components/desktop-content/desktop-content.component';
 import { GraphismsComponent } from './shared/components/graphisms/graphisms.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 
 @NgModule({
-  declarations: [HomeAuthenticationComponent, SignUpComponent, LogInComponent, DesktopContentComponent, GraphismsComponent, PasswordRecoveryComponent],
+  declarations: [HomeAuthenticationComponent, SignUpComponent, LogInComponent, DesktopContentComponent, GraphismsComponent, PasswordRecoveryComponent, NewPasswordComponent],
   imports: [
     CommonModule,
     HomeAuthenticationRoutingModule,
