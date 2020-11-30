@@ -54,8 +54,8 @@ export class SignUpComponent implements OnInit {
 
       let userAuthenticate = await this.authService.createUser({ name, email, password });
 
-      if (!userAuthenticate) {
-        this.openSnackBar('Lamento, mas não foi possível criar seu usuário', 'Fechar');
+      if (userAuthenticate.error) {
+        this.openSnackBar(userAuthenticate.error.msg, 'Fechar');
         return
       }
 
@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  openSnackBar(message: string, action: string) {
+  openSnackBar(message: string = 'Lamento, mas não foi possível criar seu usuário', action: string) {
     this._snackBar.open(message, action, {
       duration: 3000,
     });
