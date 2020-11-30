@@ -39,25 +39,30 @@ export class NewPasswordComponent implements OnInit {
   }
 
   newPassword() {
-    this.httpClient.post<any>(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
-      //`${environment.apiUrl}/`, 
-      { 
-        password: this.newPasswordForm.value.password,
-        control: this.queryControl
-      },
-    ).subscribe((data) => 
-    {
-      this.authService.saveUser(12321)
-      this.router.navigateByUrl('queue-entry')
-    }, (error) => {
-      this.openSnackBar('Troca de senha inválida', 'Fechar')
-
-      setTimeout(() => {
-        this.router.navigateByUrl('home-authentication')
-      }, 3000)
-      console.error(error)
-    })
+    if (this.newPasswordForm.valid) {
+      this.httpClient.post<any>(
+        "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
+        //`${environment.apiUrl}/`, 
+        { 
+          password: this.newPasswordForm.value.password,
+          control: this.queryControl
+        },
+      ).subscribe((data) => 
+      {
+        this.authService.saveUser(data.token)
+        this.router.navigateByUrl('queue-entry')
+      }, (error) => {
+        this.openSnackBar('Troca de senha inválida', 'Fechar')
+  
+        setTimeout(() => {
+          this.router.navigateByUrl('home-authentication')
+        }, 3000)
+        console.error(error)
+      })
+    }
+    else {
+      this.openSnackBar('Preencha os campos obrigatórios', 'Fechar')
+    }
   }
 
   checkPassword(password: string, passwordConfirmation: string) {

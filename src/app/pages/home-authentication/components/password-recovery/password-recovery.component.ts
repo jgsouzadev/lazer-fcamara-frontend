@@ -34,27 +34,32 @@ export class PasswordRecoveryComponent implements OnInit {
   }
 
   recoverPassword() {
-    this.httpClient.post(
-      "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
-      //`${environment.apiUrl}/`, 
-      { email: this.recoverForm.value.email },
-    ).subscribe(() => 
-    {
-      this.emailSent = true
-      this.recoverForm.controls['email'].setErrors(null)
-      const refTimerInterval = setInterval(() => {
-        this.timer--
-      }, 1000)
-
-      setTimeout(() => {
-        this.router.navigateByUrl('home-authentication')
-        clearInterval(refTimerInterval)
-      }, 5000)
-    }, (error) => {
-      this.openSnackBar('Email inexistente', 'Fechar')
-      this.recoverForm.controls['email'].setErrors({'incorrect': true})
-      console.error(error)
-    })
+    if (this.recoverForm.valid) {
+      this.httpClient.post(
+        "https://www.fakeapi.online/api/apis/jaimemathias/api/user/password-recovery",
+        //`${environment.apiUrl}/`, 
+        { email: this.recoverForm.value.email },
+      ).subscribe(() => 
+      {
+        this.emailSent = true
+        this.recoverForm.controls['email'].setErrors(null)
+        const refTimerInterval = setInterval(() => {
+          this.timer--
+        }, 1000)
+  
+        setTimeout(() => {
+          this.router.navigateByUrl('home-authentication')
+          clearInterval(refTimerInterval)
+        }, 5000)
+      }, (error) => {
+        this.openSnackBar('Email inexistente', 'Fechar')
+        this.recoverForm.controls['email'].setErrors({'incorrect': true})
+        console.error(error)
+      })
+    }
+    else {
+      this.openSnackBar('Preencha os campos obrigatórios', 'Fechar')
+    }
   }
 
   openSnackBar(message: string, action: string) {

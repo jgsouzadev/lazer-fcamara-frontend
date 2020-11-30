@@ -73,7 +73,7 @@ export class AuthService {
       if (environment.modeDebug) {
         console.log('error', error);
       }
-      return null // ACHO QUE SE MANDAR O ERROR AQUI, EU CONSIGO PEGAR A MENSAGEM DE ERROR, VERIFICAR
+      return error // ACHO QUE SE MANDAR O ERROR AQUI, EU CONSIGO PEGAR A MENSAGEM DE ERROR, VERIFICAR
     }
   }
 

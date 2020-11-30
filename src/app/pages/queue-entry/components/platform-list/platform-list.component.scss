@@ -86,7 +86,7 @@
     align-items: center;
 
     div {
-      width: 130px;
+      width: 220px;
 
       p {
         margin: 0;
@@ -99,7 +99,7 @@
       #platform-name {
         font-weight: 500;
         font-size: 16px;
-        width: 150px;
+        width: 100%;
       }
     }
   }
@@ -126,11 +126,13 @@
     &:not(:disabled):hover {
       background-color: $bluef2;
     }
-
-    &:disabled {
-      opacity: 0.8;
-    }
   }
+}
+
+.error-message {
+  float: left;
+  width: 28vw;
+  color: $laranjaf4;
 }
 
 @media all and (min-width: 1280px) {
@@ -156,19 +158,16 @@
     }
   }
 
-  .box-item-platform {
-    .text-item {
-      div {
-        margin-left: -2em;
-      }
-    }
-  }
-
   .content {
     .platform-list-bttn {
       width: 210px;
       height: 60px;
     }
+  }
+
+  .error-message {
+    width: 55%;
+    font-size: 16px;
   }
 }
 
