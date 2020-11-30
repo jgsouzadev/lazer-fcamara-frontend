@@ -5,8 +5,6 @@ import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { AuthService } from "../../../../auth.service";
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserOnQueueComponent } from 'src/app/pages/queue-entry/components/user-on-queue/user-on-queue.component';
-
 
 @Component({
   selector: 'app-log-in',

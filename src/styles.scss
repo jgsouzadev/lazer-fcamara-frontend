@@ -22,5 +22,10 @@ button {
 
   &:disabled {
     cursor: initial;
+    opacity: 0.85;
   }
+}
+
+img {
+  user-select: none;
 }

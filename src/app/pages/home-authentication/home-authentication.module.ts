@@ -10,10 +10,11 @@ import { ComponentsModule } from "../../shared/components/components.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { DesktopContentComponent } from './shared/components/desktop-content/desktop-content.component';
 import { GraphismsComponent } from './shared/components/graphisms/graphisms.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 
 
 @NgModule({
-  declarations: [HomeAuthenticationComponent, SignUpComponent, LogInComponent, DesktopContentComponent, GraphismsComponent],
+  declarations: [HomeAuthenticationComponent, SignUpComponent, LogInComponent, DesktopContentComponent, GraphismsComponent, PasswordRecoveryComponent],
   imports: [
     CommonModule,
     HomeAuthenticationRoutingModule,
