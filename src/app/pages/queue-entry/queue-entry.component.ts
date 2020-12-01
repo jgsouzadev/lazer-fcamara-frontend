@@ -8,6 +8,7 @@ import { AuthService } from '../../auth.service';
 export interface Platforms {
   id: number;
   name: String; // in the angular doc example, it has a value and a viewValue, it seems like the value should be like an id
+  location: string;
 }
 
 export interface PlatformQueue {
@@ -70,7 +71,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('queue-entry')
       }
       else {
-        console.log('fiz a coisa');
         
         this.authService.authUser().subscribe((data) => {
           if (data.id_platform) { // If the user is already in queue
@@ -82,9 +82,7 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
             this.userNotification = data.allowNotification
             this.activatePolling()
           }
-          console.log('aloo');
           
-          console.log('oi', data);
         }, (error) => {
           console.error(error)
           this.handleRequestError(error.error.message)
@@ -98,7 +96,6 @@ export class QueueEntryComponent implements OnInit, OnDestroy {
 
     this.httpService.getPlatformQueue().subscribe(data => {
       this.platformQueue = [ ...data ]
-      console.log(this.platformQueue);
       
       this.refIntervalPlatformQueue = setInterval(() => {
         if (this.userPosition !== 1) {

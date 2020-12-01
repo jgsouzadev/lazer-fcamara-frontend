@@ -15,7 +15,7 @@
             <img *ngIf="queue.id_platform == 4" src="../../../../../assets/Monopoly.svg" alt="Ícone para games" srcset="">
             <div class="text-item">
                 <div>
-                  <p id="platform-name">{{ platforms[queue.id_platform - 1].name }}</p>
+                  <p id="platform-name">{{ platforms[queue.id_platform - 1].name}} - {{ platforms[queue.id_platform - 1].location }}</p>
                   <p>{{queue.size}} Pessoas na fila</p>
                 </div>
             </div>
